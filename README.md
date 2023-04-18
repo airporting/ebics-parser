@@ -25,7 +25,7 @@ console.log(result);
 ```
 Result:
 ```json5
-{
+[{
   header: {
     record_code: '01',
       bank_code: '30004',
@@ -48,5 +48,5 @@ Result:
   },
   problems: null,
   transactions: [],
-}
+}]
 ```
