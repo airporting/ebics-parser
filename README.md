@@ -46,6 +46,7 @@ Result:
       next_date: '2023-03-29',
       next_amount: '344569.19',
   },
+  problems: null,
   transactions: [],
 }
 ```
