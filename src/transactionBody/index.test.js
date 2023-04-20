@@ -50,7 +50,22 @@ const cases = [
       record_code: '05',
     },
   ],
-  [`0518020648900001EUR2 00410GXLT0191030323 030323`, {}],
+  [
+    `0518020648900001EUR2 00410GXLT0191030323 030323`,
+    {
+      _1: '',
+      _2: '0303',
+      account_nb: '00410GXLT01',
+      bank_code: '18020',
+      currency_code: 'EUR',
+      desk_code: '00001',
+      internal_code: '6489',
+      nb_of_dec: '2',
+      operation_code: '91',
+      operation_date: '2023-03-03',
+      record_code: '05',
+    },
+  ],
 ];
 
 describe('ebics transaction body parser', function () {

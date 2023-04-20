@@ -119,12 +119,12 @@ describe('ebics parser', function () {
         footer: {},
         header: {
           // account_nb: '00410GXLT01',
-          // bank_code: '18020',
+          bank_code: '18020',
           // currency_code: 'EUR',
           // desk_code: '00001',
           // nb_of_dec: '2',
-          // record_code: '01',
-          // _1: '',
+          record_code: '01',
+          _1: '000',
           // _2: '',
           // _3: '',
           // _4: '',
@@ -170,6 +170,16 @@ describe('ebics parser', function () {
         ],
         transactions: [
           {
+            _1: '',
+            _2: '0303',
+            account_nb: '00410GXLT01',
+            bank_code: '18020',
+            currency_code: 'EUR',
+            desk_code: '00001',
+            internal_code: '6489',
+            nb_of_dec: '2',
+            operation_code: '91',
+            operation_date: '2023-03-03',
             record_code: '04',
           },
           {

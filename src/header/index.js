@@ -67,20 +67,33 @@ module.exports = function (text) {
   ];
 
   const regex = new RegExp(parts.map(({ regex }) => `(${regex})`).join(''));
-  const matching = text.match(regex);
+  let matching = text.match(regex);
 
-  if (matching) {
-    parts.forEach(({ field, transformer }, idx) => {
-      if (transformer) {
-        header[field] = transformer(matching[idx + 1], header);
-      } else {
-        header[field] = matching[idx + 1]?.trim();
+  if (!matching) {
+    parts.pop();
+
+    while (parts.length) {
+      parts.pop();
+
+      const tryRegex = new RegExp(
+        parts.map(({ regex }) => `(${regex})`).join('')
+      );
+      const tryMatching = text.match(tryRegex);
+
+      if (tryMatching) {
+        matching = tryMatching;
+        break;
       }
-    });
-  } else {
-    //TODO: before failing try to match maximum elements using the minimum viable regex
-    return {};
+    }
   }
+
+  parts.forEach(({ field, transformer }, idx) => {
+    if (transformer) {
+      header[field] = transformer(matching[idx + 1], header);
+    } else {
+      header[field] = matching[idx + 1]?.trim();
+    }
+  });
 
   return header;
 };

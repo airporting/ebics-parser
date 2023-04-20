@@ -107,6 +107,14 @@ const cases = [
       _5: '030323060323',
     },
   ],
+  [
+    '0118020 00001EUR2 00410GXLT01',
+    {
+      record_code: '01',
+      bank_code: '18020',
+      _1: '000',
+    },
+  ],
 ];
 
 describe('ebics header parser', function () {
