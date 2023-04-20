@@ -5,42 +5,122 @@ const getAmount = require('../amount');
 module.exports = (text) => {
   const transaction = {};
 
-  // TODO: to split into array like in transactionBody
-  const regex =
-    /(04)([0-9]{5})([a-zA-Z0-9 ]{4})([0-9]{5})([a-zA-Z ]{3})([0-9 ])(.)([a-zA-Z0-9]{11})([a-zA-Z0-9]{2})([0-9]{6})([0-9 ]{2})([0-9]{6})(.{31})(.{2})(.{7})(.)(.)([0-9]{13}[A-R{}])(.{0,16})/;
-  const matching = text.match(regex);
+  const parts = [
+    {
+      field: 'record_code',
+      regex: '04',
+    },
+    {
+      field: 'bank_code',
+      regex: '[0-9]{5}',
+    },
+    {
+      field: 'internal_code',
+      regex: '[a-zA-Z0-9 ]{4}',
+    },
+    {
+      field: 'desk_code',
+      regex: '[0-9]{5}',
+    },
+    {
+      field: 'currency_code',
+      regex: '[a-zA-Z0-9 ]{3}',
+    },
+    {
+      field: 'nb_of_dec',
+      regex: '[0-9 ]{1}',
+    },
+    {
+      field: '_1',
+      regex: '[a-zA-Z0-9 ]{1}',
+    },
+    {
+      field: 'account_nb',
+      regex: '[a-zA-Z0-9]{11}',
+    },
+    {
+      field: 'operation_code',
+      regex: '[a-zA-Z0-9]{2}',
+    },
+    {
+      field: 'operation_date',
+      regex: '[0-9]{6}',
+      transformer: (value) => {
+        return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
+      },
+    },
+    {
+      field: 'reject_code',
+      regex: '[0-9 ]{2}',
+    },
+    {
+      field: 'value_date',
+      regex: '[0-9]{6}',
+      transformer: (value) => {
+        return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
+      },
+    },
+    {
+      field: 'label',
+      regex: '.{31}',
+    },
+    {
+      field: '_2',
+      regex: '.{2}',
+    },
+    {
+      field: 'reference',
+      regex: '.{7}',
+    },
+    {
+      field: 'exempt_code',
+      regex: '.',
+    },
+    {
+      field: '_3',
+      regex: '.',
+    },
+    {
+      field: 'amount',
+      regex: '[0-9]{13}[A-R{}]',
+      transformer: (value, header) => {
+        return getAmount(value, header.nb_of_dec);
+      },
+    },
+    {
+      field: '_4:',
+      regex: '.*',
+    },
+  ];
 
-  if (matching) {
-    transaction.record_code = matching[1];
-    transaction.bank_code = matching[2];
-    transaction.internal_code = matching[3];
-    transaction.desk_code = matching[4];
-    transaction.currency_code = matching[5];
-    transaction.nb_of_dec = matching[6];
-    transaction._1 = matching[7]?.trim();
-    transaction.account_nb = matching[8];
-    transaction.operation_code = matching[9];
-    transaction.operation_date = format(
-      parse(matching[10], 'ddMMyy', new Date()),
-      'yyyy-MM-dd'
-    );
-    transaction.reject_code = matching[11]?.trim();
-    transaction.value_date = format(
-      parse(matching[12], 'ddMMyy', new Date()),
-      'yyyy-MM-dd'
-    );
-    transaction.label = matching[13]?.trim();
-    transaction._2 = matching[14]?.trim();
-    transaction.reference = matching[15]?.trim();
-    transaction.exempt_code = matching[16]?.trim();
-    transaction._3 = matching[17]?.trim();
-    transaction.amount = getAmount(matching[18], transaction.nb_of_dec);
-    transaction['_4:'] = matching[19]?.trim();
-  } else {
-    //TODO: before throw try to match maximum elements using the minimum viable regex
+  const regex = new RegExp(parts.map(({ regex }) => `(${regex})`).join(''));
+  let matching = text.match(regex);
 
-    throw 'transaction header malformed';
+  if (!matching) {
+    parts.pop();
+
+    while (parts.length) {
+      parts.pop();
+
+      const tryRegex = new RegExp(
+        parts.map(({ regex }) => `(${regex})`).join('')
+      );
+      const tryMatching = text.match(tryRegex);
+
+      if (tryMatching) {
+        matching = tryMatching;
+        break;
+      }
+    }
   }
+
+  parts.forEach(({ field, transformer }, idx) => {
+    if (transformer) {
+      transaction[field] = transformer(matching[idx + 1], transaction);
+    } else {
+      transaction[field] = matching[idx + 1]?.trim();
+    }
+  });
 
   return transaction;
 };

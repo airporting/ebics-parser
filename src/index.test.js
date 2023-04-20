@@ -136,34 +136,6 @@ describe('ebics parser', function () {
             message: 'Wrong line qualifier',
           },
           {
-            line: '0418020210400001EUR2 00410GXLT0191030323 030323FACTURE 86013179 NON GARANTIE 2014995 00000000006000{000001',
-            message: 'transaction header malformed',
-          },
-          {
-            line: '0418020404100001EUR2 00410GXLT0121030323 010323VIREMENT BANCAIRE EN VOTRE FAVE 1994254 00000001463361O000070',
-            message: 'transaction header malformed',
-          },
-          {
-            line: '0418020302600001EUR2 00410GXLT0161030323 010323PRECOMPTE DE COMM. DE FINANCEME 1994254 00000000011488J000001',
-            message: 'transaction header malformed',
-          },
-          {
-            line: '0418020352600001EUR2 00410GXLT0161020323 010323COMM. DE FINANCEMENT COMPLEMENT 1974131 00000000012617R000001',
-            message: 'transaction header malformed',
-          },
-          {
-            line: '041802036BZ00001EUR2 00410GXLT01 010323 010323TVA SUR FRAIS DE GESTION DE CON 1891950 00000000000130}000002',
-            message: 'transaction header malformed',
-          },
-          {
-            line: '0418020210700001EUR2 00410GXLT0191280223 280223FACTURE N 63574441 DEVENANT FIN 1834511 00000000006000{000001',
-            message: 'transaction header malformed',
-          },
-          {
-            line: '0418020302600001EUR2 00410GXLT0161270223 250223PRECOMPTE DE COMM. DE FINANCEME 1810893 00000000002268P000001',
-            message: 'transaction header malformed',
-          },
-          {
             line: '030323 0000000773178H',
             message: 'Wrong line qualifier',
           },
@@ -195,9 +167,9 @@ describe('ebics parser', function () {
             operation_code: '91',
             operation_date: '2023-03-03',
             record_code: '04',
+            reject_code: '0',
           },
           {
-            '23D': 'EVENANT FINANCABLE NON GARANTI',
             '23U': 'RN 5292443 VIREMENT N 52924',
             _1: '',
             _2: '0103',
@@ -210,15 +182,14 @@ describe('ebics parser', function () {
             operation_code: '21',
             operation_date: '2023-03-03',
             record_code: '04',
+            reject_code: '0',
           },
           {
-            '23D': 'EVENANT FINANCABLE NON GARANTI',
             '23E':
               'N 2717960 0418020353600001EUR2 00410GXLT0167020323 010323TVA SUR COMM. DE FINANCEMENT CO 1974131 00000000002523O000002',
             '23M': 'PLEMENTAIRE ARRETES DE LA PERI',
             '23N':
               'T VIREMENT N 5292443 0418020101100001EUR2 00410GXLT0191030323 030323REPRISE DE FACTURES INDISPONIBL 1993288 00000000381110R000004',
-            '23U': 'RN 5292443 VIREMENT N 52924',
             _1: '',
             _2: '0103',
             account_nb: '00410GXLT01',
@@ -230,16 +201,10 @@ describe('ebics parser', function () {
             operation_code: '67',
             operation_date: '2023-03-02',
             record_code: '04',
+            reject_code: '0',
           },
           {
             '23A': 'IRE ARRETES DE LA PERIODE 2023',
-            '23D': 'EVENANT FINANCABLE NON GARANTI',
-            '23E':
-              'N 2717960 0418020353600001EUR2 00410GXLT0167020323 010323TVA SUR COMM. DE FINANCEMENT CO 1974131 00000000002523O000002',
-            '23M': 'PLEMENTAIRE ARRETES DE LA PERI',
-            '23N':
-              'T VIREMENT N 5292443 0418020101100001EUR2 00410GXLT0191030323 030323REPRISE DE FACTURES INDISPONIBL 1993288 00000000381110R000004',
-            '23U': 'RN 5292443 VIREMENT N 52924',
             _1: '',
             _2: '0103',
             account_nb: '00410GXLT01',
@@ -251,15 +216,9 @@ describe('ebics parser', function () {
             operation_code: '61',
             operation_date: '2023-03-02',
             record_code: '04',
+            reject_code: '0',
           },
           {
-            '23A': 'IRE ARRETES DE LA PERIODE 2023',
-            '23D': 'EVENANT FINANCABLE NON GARANTI',
-            '23E':
-              'N 2717960 0418020353600001EUR2 00410GXLT0167020323 010323TVA SUR COMM. DE FINANCEMENT CO 1974131 00000000002523O000002',
-            '23M': 'PLEMENTAIRE ARRETES DE LA PERI',
-            '23N':
-              'T VIREMENT N 5292443 0418020101100001EUR2 00410GXLT0191030323 030323REPRISE DE FACTURES INDISPONIBL 1993288 00000000381110R000004',
             '23U': 'RN 5286537 VIREMENT N 52865',
             _1: '',
             _2: '2602',
@@ -275,13 +234,6 @@ describe('ebics parser', function () {
           },
           {
             '23A': 'NCABLE GARANTIE DEBITEUR LERO',
-            '23D': 'EVENANT FINANCABLE NON GARANTI',
-            '23E':
-              'N 2717960 0418020353600001EUR2 00410GXLT0167020323 010323TVA SUR COMM. DE FINANCEMENT CO 1974131 00000000002523O000002',
-            '23M': 'PLEMENTAIRE ARRETES DE LA PERI',
-            '23N':
-              'T VIREMENT N 5292443 0418020101100001EUR2 00410GXLT0191030323 030323REPRISE DE FACTURES INDISPONIBL 1993288 00000000381110R000004',
-            '23U': 'RN 5286537 VIREMENT N 52865',
             _1: '',
             _2: '2802',
             account_nb: '00410GXLT01',
@@ -293,6 +245,7 @@ describe('ebics parser', function () {
             operation_code: '91',
             operation_date: '2023-02-28',
             record_code: '04',
+            reject_code: '2',
           },
         ],
       },
