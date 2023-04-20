@@ -1,3 +1,5 @@
+[![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
+
 # ebics-parser
 
 Lightweight and very fast parser, only one dep (date-fns).
@@ -25,7 +27,9 @@ const result = ebicsParser(fileContent);
 
 console.log(result);
 ```
+
 Result:
+
 ```json5
 [
   {
