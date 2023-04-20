@@ -1,4 +1,4 @@
-module.exports = ({ qualifier, additional_info, ...restTransaction }, text) => {
+module.exports = ({ qualifier, additional_info, ...restTransaction }) => {
   const transaction = {};
 
   switch (qualifier) {
