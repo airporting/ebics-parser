@@ -299,13 +299,13 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@commitlint/cli@17.5.1":
-  version "17.5.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.5.1.tgz#db176538db7b4140c8856c88a46bd15ec705f881"
-  integrity sha512-pRRgGSzdHQHehxZbGA3qF6wVPyl+EEQgTe/t321rtMLFbuJ7nRj2waS17s/v5oEbyZtiY5S8PGB6XtEIm0I+Sg==
+"@commitlint/cli@17.6.1":
+  version "17.6.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.6.1.tgz#571a1272a656cd316f4b601cbb0fcb2ef50bfc7a"
+  integrity sha512-kCnDD9LE2ySiTnj/VPaxy4/oRayRcdv4aCuVxtoum8SxIU7OADHc0nJPQfheE8bHcs3zZdWzDMWltRosuT13bg==
   dependencies:
     "@commitlint/format" "^17.4.4"
-    "@commitlint/lint" "^17.4.4"
+    "@commitlint/lint" "^17.6.1"
     "@commitlint/load" "^17.5.0"
     "@commitlint/read" "^17.5.1"
     "@commitlint/types" "^17.4.4"
@@ -315,10 +315,10 @@
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
-"@commitlint/config-conventional@17.4.4":
-  version "17.4.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.4.4.tgz#f30b1e5b2e48ce5799a483c200c52f218a98efcc"
-  integrity sha512-u6ztvxqzi6NuhrcEDR7a+z0yrh11elY66nRrQIpqsqW6sZmpxYkDLtpRH8jRML+mmxYQ8s4qqF06Q/IQx5aJeQ==
+"@commitlint/config-conventional@17.6.1":
+  version "17.6.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.6.1.tgz#ab07c82c88f99ffee89ae321f1f49f1798127fbb"
+  integrity sha512-ng/ybaSLuTCH9F+7uavSOnEQ9EFMl7lHEjfAEgRh1hwmEe8SpLKpQeMo2aT1IWvHaGMuTb+gjfbzoRf2IR23NQ==
   dependencies:
     conventional-changelog-conventionalcommits "^5.0.0"
 
@@ -363,14 +363,14 @@
     "@commitlint/types" "^17.4.4"
     semver "7.3.8"
 
-"@commitlint/lint@^17.4.4":
-  version "17.4.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-17.4.4.tgz#0ecd70b44ec5f4823c2e00e0c4b04ebd41d42856"
-  integrity sha512-qgkCRRFjyhbMDWsti/5jRYVJkgYZj4r+ZmweZObnbYqPUl5UKLWMf9a/ZZisOI4JfiPmRktYRZ2JmqlSvg+ccw==
+"@commitlint/lint@^17.6.1":
+  version "17.6.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-17.6.1.tgz#52275acc6b3d92a9ad466535331c5dd8e85b6f42"
+  integrity sha512-VARJ9kxH64isgwVnC+ABPafCYzqxpsWJIpDaTuI0gh8aX4GQ0i7cn9tvxtFNfJj4ER2BAJeWJ0vURdNYjK2RQQ==
   dependencies:
     "@commitlint/is-ignored" "^17.4.4"
     "@commitlint/parse" "^17.4.4"
-    "@commitlint/rules" "^17.4.4"
+    "@commitlint/rules" "^17.6.1"
     "@commitlint/types" "^17.4.4"
 
 "@commitlint/load@>6.1.1", "@commitlint/load@^17.5.0":
@@ -430,10 +430,10 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@commitlint/rules@^17.4.4":
-  version "17.4.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/rules/-/rules-17.4.4.tgz#9b33f41e5eb529f916396bac7c62e61f0edd6791"
-  integrity sha512-0tgvXnHi/mVcyR8Y8mjTFZIa/FEQXA4uEutXS/imH2v1UNkYDSEMsK/68wiXRpfW1euSgEdwRkvE1z23+yhNrQ==
+"@commitlint/rules@^17.6.1":
+  version "17.6.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/rules/-/rules-17.6.1.tgz#dff529b8d1e0455808fe7e3e1fa70617e4eb2759"
+  integrity sha512-lUdHw6lYQ1RywExXDdLOKxhpp6857/4c95Dc/1BikrHgdysVUXz26yV0vp1GL7Gv+avx9WqZWTIVB7pNouxlfw==
   dependencies:
     "@commitlint/ensure" "^17.4.4"
     "@commitlint/message" "^17.4.2"
@@ -494,10 +494,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@8.37.0":
-  version "8.37.0"
-  resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.37.0.tgz#cf1b5fa24217fe007f6487a26d765274925efa7d"
-  integrity sha512-x5vzdtOOGgFVDCUs81QRB2+liax8rFg3+7hqM+QhBG0/G3F1ZsoYl97UrqgHgQ9KKT7G6c4V+aTUCgu/n22v1A==
+"@eslint/js@8.38.0":
+  version "8.38.0"
+  resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.38.0.tgz#73a8a0d8aa8a8e6fe270431c5e72ae91b5337892"
+  integrity sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
@@ -1731,15 +1731,15 @@ eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.0.tgz#c7f0f956124ce677047ddbc192a68f999454dedc"
   integrity sha512-HPpKPUBQcAsZOsHAFwTtIKcYlCje62XB7SEAcxjtmW6TD1WVpkS6i6/hOVtTZIl4zGj/mBqpFVGvaDneik+VoQ==
 
-eslint@8.37.0:
-  version "8.37.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.37.0.tgz#1f660ef2ce49a0bfdec0b0d698e0b8b627287412"
-  integrity sha512-NU3Ps9nI05GUoVMxcZx1J8CNR6xOvUT4jAUMH5+z8lpp3aEdPVCImKw6PWG4PY+Vfkpr+jvMpxs/qoE7wq0sPw==
+eslint@8.38.0:
+  version "8.38.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.38.0.tgz#a62c6f36e548a5574dd35728ac3c6209bd1e2f1a"
+  integrity sha512-pIdsD2jwlUGf/U38Jv97t8lq6HpaU/G9NKbYmpWpZGw3LdTNhZLbJePqxOXGB5+JEKfOPU/XLxYxFh03nr1KTg==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.4.0"
     "@eslint/eslintrc" "^2.0.2"
-    "@eslint/js" "8.37.0"
+    "@eslint/js" "8.38.0"
     "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
@@ -2896,10 +2896,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@13.2.0:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.2.0.tgz#b7abaf79c91cd36d824f17b23a4ce5209206126a"
-  integrity sha512-GbyK5iWinax5Dfw5obm2g2ccUiZXNGtAS4mCbJ0Lv4rq6iEtfBSjOYdcbOtAIFtM114t0vdpViDDetjVTSd8Vw==
+lint-staged@13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.2.1.tgz#9d30a14e3e42897ef417bc98556fb757f75cae87"
+  integrity sha512-8gfzinVXoPfga5Dz/ZOn8I2GOhf81Wvs+KwbEXQn/oWZAvCVS2PivrXfVbFJc93zD16uC0neS47RXHIjXKYZQw==
   dependencies:
     chalk "5.2.0"
     cli-truncate "^3.1.0"
