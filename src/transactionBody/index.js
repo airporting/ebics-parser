@@ -77,7 +77,6 @@ module.exports = (text) => {
   } else {
     //TODO: before failing try to match maximum elements using the minimum viable regex
 
-    console.log('transaction body ignored', text);
     return {};
   }
 

@@ -2,53 +2,85 @@ const { parse, format } = require('date-fns');
 
 const getAmount = require('../amount');
 
-module.exports = function (words) {
+module.exports = function (text) {
   const header = {};
 
-  words.forEach((preword, idxWord) => {
-    const word = preword.replace(/\s/g, '');
+  const parts = [
+    {
+      field: 'record_code',
+      regex: '01',
+    },
+    {
+      field: 'bank_code',
+      regex: '[0-9]{5}',
+    },
+    {
+      field: '_1',
+      regex: '.{4}',
+    },
+    {
+      field: 'desk_code',
+      regex: '[0-9]{5}',
+    },
+    {
+      field: 'currency_code',
+      regex: '[a-zA-Z0-9 ]{3}',
+    },
+    {
+      field: 'nb_of_dec',
+      regex: '[0-9 ]{1}',
+    },
+    {
+      field: '_2',
+      regex: '.{1}',
+    },
+    {
+      field: 'account_nb',
+      regex: '[a-zA-Z0-9]{11}',
+    },
+    {
+      field: '_3',
+      regex: '.{2}',
+    },
+    {
+      field: 'prev_date',
+      regex: '[0-9]{6}',
+      transformer: (value) => {
+        return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
+      },
+    },
+    {
+      field: '_4',
+      regex: '.{50}',
+    },
+    {
+      field: 'prev_amount',
+      regex: '[0-9]{13}[A-R{}]',
+      transformer: (value, header) => {
+        return getAmount(value, header.nb_of_dec);
+      },
+    },
+    {
+      field: '_5',
+      regex: '.*',
+    },
+  ];
 
-    let matching;
-    if (word.length !== 0) {
-      switch (idxWord) {
-        case 0:
-          matching = word.match(/(01)([0-9]{5})/);
+  const regex = new RegExp(parts.map(({ regex }) => `(${regex})`).join(''));
+  const matching = text.match(regex);
 
-          if (matching) {
-            header.record_code = matching[1];
-            header.bank_code = matching[2];
-          }
-          break;
-        case 2:
-          matching = word.match(/([0-9]{5,})([A-Z]{3})([0-9]{1})/);
-
-          if (matching) {
-            header.desk_code = matching[1];
-            header.currency_code = matching[2];
-            // Number of decimal
-            header.nb_of_dec = matching[3];
-          }
-          break;
-        case 4:
-          header.account_nb = word;
-          break;
-        case 6:
-          try {
-            header.prev_date = format(
-              parse(word, 'ddMMyy', new Date()),
-              'yyyy-MM-dd'
-            );
-          } catch (err) {
-            console.error({ err, word });
-            throw err;
-          }
-          break;
-        case 8:
-          header.prev_amount = getAmount(word, header.nb_of_dec);
-          break;
+  if (matching) {
+    parts.forEach(({ field, transformer }, idx) => {
+      if (transformer) {
+        header[field] = transformer(matching[idx + 1], header);
+      } else {
+        header[field] = matching[idx + 1]?.trim();
       }
-    }
-  });
+    });
+  } else {
+    //TODO: before failing try to match maximum elements using the minimum viable regex
+    return {};
+  }
 
   return header;
 };

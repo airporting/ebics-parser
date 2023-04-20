@@ -10,6 +10,11 @@ const cases = [
       account_nb: '00010139479',
       prev_date: '2023-03-28',
       prev_amount: '344569.19',
+      _1: '',
+      _2: '',
+      _3: '',
+      _4: '',
+      _5: '',
     },
   ],
   [
@@ -23,6 +28,11 @@ const cases = [
       account_nb: '00010738652',
       prev_date: '2023-03-28',
       prev_amount: '-865.36',
+      _1: '',
+      _2: '',
+      _3: '',
+      _4: '',
+      _5: '',
     },
   ],
   [
@@ -36,6 +46,11 @@ const cases = [
       account_nb: '00010156142',
       prev_date: '2023-03-28',
       prev_amount: '656482.79',
+      _1: '',
+      _2: '',
+      _3: '',
+      _4: '',
+      _5: '',
     },
   ],
   [
@@ -49,6 +64,11 @@ const cases = [
       account_nb: '00410GXLT01',
       prev_date: '2023-04-06',
       prev_amount: '-1225.85',
+      _1: '',
+      _2: '',
+      _3: '',
+      _4: '',
+      _5: '',
     },
   ],
   [
@@ -62,6 +82,29 @@ const cases = [
       account_nb: '00010898395',
       prev_date: '2022-02-16',
       prev_amount: '56667.28',
+      _1: '',
+      _2: '',
+      _3: '',
+      _4: '',
+      _5: '',
+    },
+  ],
+  [
+    '0110278    06186EUR2 00020828502  030323                                                  0000003522324E030323060323    ',
+    {
+      record_code: '01',
+      bank_code: '10278',
+      desk_code: '06186',
+      currency_code: 'EUR',
+      nb_of_dec: '2',
+      account_nb: '00020828502',
+      prev_date: '2023-03-03',
+      prev_amount: '352232.45',
+      _1: '',
+      _2: '',
+      _3: '',
+      _4: '',
+      _5: '030323060323',
     },
   ],
 ];
@@ -70,6 +113,6 @@ describe('ebics header parser', function () {
   let parse = require('./index');
 
   test.each(cases)('case %#', (text, expected) => {
-    expect(parse(text.split(/(\s+)/))).toEqual(expected);
+    expect(parse(text)).toEqual(expected);
   });
 });

@@ -8,6 +8,7 @@ module.exports = function chunkParser(allLines) {
   let footer = {};
   const transactionsList = [];
   let currentTransaction = null;
+  let currentLabelIncrement = 0;
   const problems = [];
 
   allLines.forEach((line) => {
@@ -20,6 +21,7 @@ module.exports = function chunkParser(allLines) {
 
       if (lineQualifier === '04') {
         if (currentTransaction) {
+          currentLabelIncrement = 0;
           transactionsList.push(currentTransaction);
         }
         currentTransaction = transactionHeaderParser(line);
@@ -29,6 +31,12 @@ module.exports = function chunkParser(allLines) {
 
       if (lineQualifier === '05') {
         const transaction = transactionBodyParser(line);
+
+        if (currentTransaction?.label && transaction?.label) {
+          currentLabelIncrement += 1;
+          transaction[`label_${currentLabelIncrement}`] = transaction.label;
+          delete transaction.label;
+        }
 
         currentTransaction = {
           ...currentTransaction,
@@ -40,12 +48,13 @@ module.exports = function chunkParser(allLines) {
       }
 
       if (lineQualifier === '01') {
-        header = headerParser(line.split(/(\s+)/));
+        header = headerParser(line);
         return;
       }
 
       if (lineQualifier === '07') {
         if (currentTransaction) {
+          currentLabelIncrement = 0;
           transactionsList.push(currentTransaction);
         }
         footer = footerParser(line.split(/(\s+)/));
@@ -55,10 +64,6 @@ module.exports = function chunkParser(allLines) {
       problems.push({
         message: 'Wrong line qualifier',
         line,
-      });
-      console.log('line parser not implemented', {
-        line,
-        lineQualifier,
       });
     } catch (err) {
       problems.push({
