@@ -3,8 +3,22 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [ 14, 16, 18 ]
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
       - uses: actions/checkout@v3
+      - name: System info
+        run: |
+          echo "node"
+          node -v
+          echo "npm"
+          npm -v
+          echo "yarn"
+          yarn -v
       - name: Install modules
         run: yarn
       - name: Run lint tasks
