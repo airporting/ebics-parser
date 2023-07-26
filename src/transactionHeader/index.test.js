@@ -22,6 +22,7 @@ const cases = [
       exempt_code: '',
       amount: '35919',
     },
+    [],
   ],
   [
     `0430004081800585EUR2 00010156142B2290323  290323PRLV SEPA/DGFIP IMPOT                   0 0000000560630}FR46ZZZ005002`,
@@ -46,6 +47,7 @@ const cases = [
       amount: '-56063',
       '_4:': 'FR46ZZZ005002',
     },
+    ['transaction header missing part "reference"'],
   ],
   [
     `0418020404100001EUR2 00410GXLT0121070423  050423VIREMENT BANCAIRE EN VOTRE FAVE  3175387 00000000594363K000070`,
@@ -70,13 +72,67 @@ const cases = [
       amount: '-59436.32',
       '_4:': '000070',
     },
+    [],
+  ],
+  [
+    `041802036BZ00001EUR2 00410FVXE01  010723  010723TVA SUR FRAIS DE GESTION DE CON  5950217 00000000000080}000002`,
+    {
+      _1: '',
+      _2: '',
+      _3: '0',
+      '_4:': '000002',
+      amount: '-8',
+      exempt_code: '',
+      record_code: '04',
+      bank_code: '18020',
+      internal_code: '36BZ',
+      label: 'TVA SUR FRAIS DE GESTION DE CON',
+      desk_code: '00001',
+      currency_code: 'EUR',
+      nb_of_dec: '2',
+      account_nb: '00410FVXE01',
+      operation_code: '',
+      operation_date: '2023-07-01',
+      reference: '5950217',
+      reject_code: '',
+      value_date: '2023-07-01',
+    },
+    ['transaction header missing part "operation_code"'],
+  ],
+  [
+    `041802036BZ00001EUR2 00410GXLT01 010323 010323TVA SUR FRAIS DE GESTION DE CON 1891950 00000000000130}000002`,
+    {
+      _1: '',
+      _2: '',
+      _3: '0',
+      '_4:': '000002',
+      record_code: '04',
+      bank_code: '18020',
+      internal_code: '36BZ',
+      desk_code: '00001',
+      currency_code: 'EUR',
+      nb_of_dec: '2',
+      account_nb: '00410GXLT01',
+      operation_code: '',
+      operation_date: '2023-03-01',
+      reject_code: '',
+      reference: '1891950',
+      value_date: '2023-03-01',
+      label: 'TVA SUR FRAIS DE GESTION DE CON',
+      exempt_code: '',
+      amount: '-13',
+    },
+    ['transaction header missing part "operation_code"'],
   ],
 ];
 
 describe('ebics transaction header parser', function () {
   let parse = require('./index');
 
-  test.each(cases)('case %#', (text, expected) => {
-    expect(parse(text)).toEqual(expected);
+  test.each(cases)('case %#', (text, expectedTransaction, expectedProblems) => {
+    const { transaction, problems } = parse(text);
+
+    expect(transaction).toEqual(expectedTransaction);
+    expect(problems).toEqual(expectedProblems);
   });
 });

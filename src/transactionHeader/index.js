@@ -4,31 +4,37 @@ const getAmount = require('../amount');
 
 module.exports = (text) => {
   const transaction = {};
+  const problems = [];
 
   const parts = [
     {
       field: 'record_code',
-      regex: '04',
+      regex: '0[3,4]',
     },
     {
       field: 'bank_code',
       regex: '[0-9]{5}',
+      required: true,
     },
     {
       field: 'internal_code',
       regex: '[a-zA-Z0-9 ]{4}',
+      required: true,
     },
     {
       field: 'desk_code',
       regex: '[0-9]{5}',
+      required: true,
     },
     {
       field: 'currency_code',
       regex: '[a-zA-Z0-9 ]{3}',
+      required: true,
     },
     {
       field: 'nb_of_dec',
       regex: '[0-9 ]{1}',
+      required: true,
     },
     {
       field: '_1',
@@ -36,11 +42,13 @@ module.exports = (text) => {
     },
     {
       field: 'account_nb',
-      regex: '[a-zA-Z0-9]{11}',
+      regex: '[a-zA-Z0-9 ]{11}',
+      required: true,
     },
     {
       field: 'operation_code',
-      regex: '[a-zA-Z0-9]{2}',
+      regex: '[a-zA-Z0-9 ]{1,2}',
+      required: true,
     },
     {
       field: 'operation_date',
@@ -48,10 +56,11 @@ module.exports = (text) => {
       transformer: (value) => {
         return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
       },
+      required: true,
     },
     {
       field: 'reject_code',
-      regex: '[0-9 ]{2}',
+      regex: '[0-9 ]{1,2}',
     },
     {
       field: 'value_date',
@@ -63,14 +72,16 @@ module.exports = (text) => {
     {
       field: 'label',
       regex: '.{31}',
+      required: true,
     },
     {
       field: '_2',
-      regex: '.{2}',
+      regex: '.{1,2}',
     },
     {
       field: 'reference',
       regex: '.{7}',
+      required: true,
     },
     {
       field: 'exempt_code',
@@ -86,6 +97,7 @@ module.exports = (text) => {
       transformer: (value, header) => {
         return getAmount(value, header.nb_of_dec);
       },
+      required: true,
     },
     {
       field: '_4:',
@@ -114,13 +126,19 @@ module.exports = (text) => {
     }
   }
 
-  parts.forEach(({ field, transformer }, idx) => {
+  parts.forEach(({ field, transformer, required }, idx) => {
     if (transformer) {
       transaction[field] = transformer(matching[idx + 1], transaction);
     } else {
       transaction[field] = matching[idx + 1]?.trim();
     }
+    if (required && !transaction[field]) {
+      problems.push(`transaction header missing part "${field}"`);
+    }
   });
 
-  return transaction;
+  return {
+    transaction,
+    problems,
+  };
 };

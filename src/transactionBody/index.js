@@ -12,7 +12,7 @@ module.exports = (text) => {
     },
     {
       field: 'bank_code',
-      regex: '[0-9]{5}',
+      regex: '[0-9 ]{5}',
     },
     {
       field: 'internal_code',
@@ -20,7 +20,7 @@ module.exports = (text) => {
     },
     {
       field: 'desk_code',
-      regex: '[0-9]{5}',
+      regex: '[0-9 ]{5}',
     },
     {
       field: 'currency_code',
@@ -36,11 +36,11 @@ module.exports = (text) => {
     },
     {
       field: 'account_nb',
-      regex: '[a-zA-Z0-9]{11}',
+      regex: '[a-zA-Z0-9 ]{11}',
     },
     {
       field: 'operation_code',
-      regex: '[a-zA-Z0-9]{2}',
+      regex: '[a-zA-Z0-9 ]{2}',
     },
     {
       field: 'operation_date',
@@ -55,7 +55,7 @@ module.exports = (text) => {
     },
     {
       field: 'qualifier',
-      regex: '[a-zA-Z0-9]{3}',
+      regex: '[a-zA-Z0-9 ]{3}',
     },
     {
       field: 'additional_info',

@@ -66,6 +66,40 @@ const cases = [
       record_code: '05',
     },
   ],
+  [
+    `0518020404100001EUR2 00410GXLT0121280223 260223URN 5286537 VIREMENT N 52865`,
+    {
+      '23U': 'RN 5286537 VIREMENT N 52865',
+      _1: '',
+      _2: '2602',
+      account_nb: '00410GXLT01',
+      bank_code: '18020',
+      currency_code: 'EUR',
+      desk_code: '00001',
+      internal_code: '4041',
+      nb_of_dec: '2',
+      operation_code: '21',
+      operation_date: '2023-02-28',
+      record_code: '05',
+    },
+  ],
+  [
+    `0518020100200001EUR2 00410GXLT0191280223 280223 2715010 0418020404100001EUR2 00410GXLT0121280223 260223VIREMENT BANCAIRE EN VOTRE FAVE 1842999 00000002360952M000070`,
+    {
+      23: '2715010 0418020404100001EUR2 00410GXLT0121280223 260223VIREMENT BANCAIRE EN VOTRE FAVE 1842999 00000002360952M000070',
+      _1: '',
+      _2: '2802',
+      account_nb: '00410GXLT01',
+      bank_code: '18020',
+      currency_code: 'EUR',
+      desk_code: '00001',
+      internal_code: '1002',
+      nb_of_dec: '2',
+      operation_code: '91',
+      operation_date: '2023-02-28',
+      record_code: '05',
+    },
+  ],
 ];
 
 describe('ebics transaction body parser', function () {

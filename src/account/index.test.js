@@ -12,6 +12,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: 344569.19,
+        start: 344569.19,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '30004',
@@ -49,6 +55,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: -865.36,
+        start: -865.36,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '30004',
@@ -86,6 +98,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: -847.47,
+        start: -847.47,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '30056',
@@ -134,19 +152,25 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 20144,
+        end: 636338.79,
+        start: 656482.79,
+        transactions: 20144,
+      },
       header: {
         record_code: '01',
         bank_code: '30004',
+        _1: '',
         desk_code: '00585',
         currency_code: 'EUR',
         nb_of_dec: '2',
-        account_nb: '00010156142',
-        prev_date: '2023-03-28',
-        prev_amount: '656482.79',
-        _1: '',
         _2: '',
+        account_nb: '00010156142',
         _3: '',
+        prev_date: '2023-03-28',
         _4: '',
+        prev_amount: '656482.79',
         _5: '',
       },
       footer: {
@@ -167,24 +191,24 @@ describe('account', function () {
           desk_code: '00585',
           currency_code: 'EUR',
           nb_of_dec: '2',
+          _1: '',
           account_nb: '00010156142',
           operation_code: '18',
           operation_date: '2023-03-29',
           reject_code: '',
           value_date: '2023-03-29',
           label: 'DOMUSVI',
+          _2: '',
           reference: '0000000',
           exempt_code: '',
+          _3: '',
           amount: '35919',
+          '_4:': '',
           debtor_name: 'DOMUSVI',
           remittance_information_1: '/INV/3867 8.2.2023',
           end2end_identification: 'NOTPROVIDED',
           purpose: '',
           PDO: 'FR FRANCE',
-          _1: '',
-          _2: '',
-          _3: '',
-          '_4:': '',
         },
         {
           record_code: '04',
@@ -193,18 +217,18 @@ describe('account', function () {
           desk_code: '00585',
           currency_code: 'EUR',
           nb_of_dec: '2',
+          _1: '',
           account_nb: '00010156142',
           operation_code: 'B2',
           operation_date: '2023-03-29',
           reject_code: '',
           value_date: '2023-03-29',
           label: 'PRLV SEPA/DGFIP IMPOT',
+          _2: '',
           reference: '',
           exempt_code: '0',
-          amount: '-56063',
-          _1: '',
-          _2: '',
           _3: '',
+          amount: '-56063',
           '_4:': 'FR46ZZZ005002',
           creditor_name: 'DGFIP IMPOT',
           creditor_id: 'FR46ZZZ005002',
@@ -216,7 +240,17 @@ describe('account', function () {
           remittance_information_1: 'TVA-032023-3310CA3',
         },
       ],
-      problems: null,
+      problems: [
+        {
+          message: 'Transaction #1 has problem(s)',
+          line: '0730004    00585EUR2 00010156142  290323                                                  0000006363387I',
+          details: ['transaction header missing part "reference"'],
+        },
+        {
+          details: '"transactions[1].reference" is not allowed to be empty',
+          message: 'Malformed account',
+        },
+      ],
     });
   });
 
@@ -249,6 +283,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 1225.85,
+        end: 0,
+        start: -1225.85,
+        transactions: 1225.85,
+      },
       header: {
         record_code: '01',
         bank_code: '18020',
@@ -518,7 +558,12 @@ describe('account', function () {
           value_date: '2023-04-07',
         },
       ],
-      problems: null,
+      problems: [
+        {
+          details: '"transactions[0].423" is not allowed',
+          message: 'Malformed account',
+        },
+      ],
     });
   });
 
@@ -539,6 +584,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 6600,
+        end: -2436527.04,
+        start: -2443127.04,
+        transactions: 3600,
+      },
       header: {
         record_code: '01',
         bank_code: '18020',
@@ -564,7 +615,16 @@ describe('account', function () {
         next_date: '2023-04-06',
         next_amount: '-2436527.04',
       },
-      problems: null,
+      problems: [
+        {
+          message:
+            "Sum of transactions (3600) doesn't match with difference between start amount -2443127.04 and end amount -2436527.04",
+        },
+        {
+          details: '"transactions[0].323" is not allowed',
+          message: 'Malformed account',
+        },
+      ],
       transactions: [
         {
           323: '41 LEROY MERLIN FRANCE',
@@ -693,6 +753,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 77317.88,
+        end: 0,
+        start: 77317.88,
+        transactions: 77317.88,
+      },
       header: {
         record_code: '01',
         bank_code: '18020',
@@ -786,7 +852,12 @@ describe('account', function () {
           value_date: '2023-03-04',
         },
       ],
-      problems: null,
+      problems: [
+        {
+          details: '"transactions[0].323" is not allowed',
+          message: 'Malformed account',
+        },
+      ],
     });
   });
 
@@ -797,6 +868,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: 0,
+        start: 0,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '18020',
@@ -834,6 +911,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: -1996637.14,
+        start: -1996637.14,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '18020',
@@ -878,6 +961,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: 47289.83,
+        start: 47289.83,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '30003',
@@ -993,6 +1082,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 641.19,
+        end: 220331.02,
+        start: 220972.21,
+        transactions: 641.19,
+      },
       header: {
         record_code: '01',
         bank_code: '30003',
@@ -1110,19 +1205,25 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 34896.72,
+        end: 367661.59,
+        start: 332764.87,
+        transactions: 6656.72,
+      },
       header: {
         record_code: '01',
         bank_code: '30004',
+        _1: '',
         desk_code: '00071',
         currency_code: 'EUR',
         nb_of_dec: '2',
-        account_nb: '00010139479',
-        prev_date: '2023-04-13',
-        prev_amount: '332764.87',
-        _1: '',
         _2: '',
+        account_nb: '00010139479',
         _3: '',
+        prev_date: '2023-04-13',
         _4: '',
+        prev_amount: '332764.87',
         _5: '',
       },
       footer: {
@@ -1310,7 +1411,21 @@ describe('account', function () {
           purpose: '',
         },
       ],
-      problems: null,
+      problems: [
+        {
+          message: 'Transaction #1 has problem(s)',
+          line: '0430004008300071EUR2 0001013947928140423  140423DU 120423 BLS*MONDAY.COM1 CARTE  00000000 0000000001428} 4974XXXXXXXX050',
+          details: ['transaction header missing part "reference"'],
+        },
+        {
+          message:
+            "Sum of transactions (6656.72) doesn't match with difference between start amount 332764.87 and end amount 367661.59",
+        },
+        {
+          details: '"transactions[1].reference" is not allowed to be empty',
+          message: 'Malformed account',
+        },
+      ],
     });
   });
 
@@ -1322,6 +1437,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 438.55,
+        end: 884606.98,
+        start: 885045.53,
+        transactions: 438.55,
+      },
       header: {
         record_code: '01',
         bank_code: '30004',
@@ -1406,172 +1527,207 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 8112.75,
+        end: 323360.23,
+        start: 315247.48,
+        transactions: 491.25,
+      },
       header: {
-        account_nb: '00010211516',
-        bank_code: '30004',
-        currency_code: 'EUR',
-        desk_code: '00760',
-        nb_of_dec: '2',
-        prev_amount: '315247.48',
-        prev_date: '2023-04-13',
         record_code: '01',
+        bank_code: '30004',
         _1: '',
+        desk_code: '00760',
+        currency_code: 'EUR',
+        nb_of_dec: '2',
         _2: '',
+        account_nb: '00010211516',
         _3: '',
+        prev_date: '2023-04-13',
         _4: '',
+        prev_amount: '315247.48',
         _5: '',
       },
       footer: {
-        account_nb: '00010211516',
-        bank_code: '30004',
-        currency_code: 'EUR',
-        desk_code: '00760',
-        nb_of_dec: '2',
-        next_amount: '323360.23',
-        next_date: '2023-04-14',
         record_code: '07',
+        bank_code: '30004',
+        desk_code: '00760',
+        currency_code: 'EUR',
+        nb_of_dec: '2',
+        account_nb: '00010211516',
+        next_date: '2023-04-14',
+        next_amount: '323360.23',
       },
       transactions: [
         {
-          _1: '',
-          _2: '',
-          _3: '',
-          '_4:': '',
-          account_nb: '00010211516',
-          amount: '-252.48',
+          record_code: '04',
           bank_code: '30004',
-          currency_code: 'EUR',
-          desk_code: '00760',
-          exempt_code: '1',
           internal_code: '0029',
-          label: 'INTERETS ET COMMISSIONS',
+          desk_code: '00760',
+          currency_code: 'EUR',
           nb_of_dec: '2',
+          _1: '',
+          account_nb: '00010211516',
           operation_code: '70',
           operation_date: '2023-04-14',
-          record_code: '04',
-          reference: '0000000',
           reject_code: '',
           value_date: '2023-04-01',
+          label: 'INTERETS ET COMMISSIONS',
+          _2: '',
+          reference: '0000000',
+          exempt_code: '1',
+          _3: '',
+          amount: '-252.48',
+          '_4:': '',
         },
         {
-          _1: '',
-          _2: '',
-          _3: '',
-          '_4:': 'FR90ZZZ460983',
-          account_nb: '00010211516',
-          amount: '-11.98',
+          record_code: '04',
           bank_code: '30004',
+          internal_code: '0813',
+          desk_code: '00760',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          _1: '',
+          account_nb: '00010211516',
+          operation_code: 'B1',
+          operation_date: '2023-04-14',
+          reject_code: '',
+          value_date: '2023-04-14',
+          label: 'PRLV SEPA/OVH SAS',
+          _2: '',
+          reference: '',
+          exempt_code: '0',
+          _3: '',
+          amount: '-11.98',
+          '_4:': 'FR90ZZZ460983',
+          creditor_name: 'OVH SAS',
           creditor_id: 'FR90ZZZ460983',
           creditor_id_type: '',
-          creditor_name: 'OVH SAS',
-          currency_code: 'EUR',
-          desk_code: '00760',
-          end2end_identification: 'KP73765-OVH  ORDER 188475917',
-          exempt_code: '0',
-          internal_code: '0813',
-          label: 'PRLV SEPA/OVH SAS',
-          mandate_identification: 'KP73765-OVH-FR-1                   ',
-          nb_of_dec: '2',
-          operation_code: 'B1',
-          operation_date: '2023-04-14',
-          purpose: '',
-          record_code: '04',
-          reference: '',
-          reject_code: '',
           remittance_information_1: 'PAYMENT ORDER 188475917',
+          end2end_identification: 'KP73765-OVH  ORDER 188475917',
+          purpose: '',
+          mandate_identification: 'KP73765-OVH-FR-1                   ',
           sequence_type: 'RCUR',
-          value_date: '2023-04-14',
         },
         {
-          _1: '',
-          _2: '',
-          _3: '',
-          '_4:': 'FR16ZZZ521291',
-          account_nb: '00010211516',
-          amount: '-47.99',
+          record_code: '04',
           bank_code: '30004',
+          internal_code: '0813',
+          desk_code: '00760',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          _1: '',
+          account_nb: '00010211516',
+          operation_code: 'B1',
+          operation_date: '2023-04-14',
+          reject_code: '',
+          value_date: '2023-04-14',
+          label: 'PRLV SEPA/FREE PRO',
+          _2: '',
+          reference: '',
+          exempt_code: '0',
+          _3: '',
+          amount: '-47.99',
+          '_4:': 'FR16ZZZ521291',
+          creditor_name: 'FREE PRO',
           creditor_id: 'FR16ZZZ521291',
           creditor_id_type: '',
-          creditor_name: 'FREE PRO',
-          currency_code: 'EUR',
-          desk_code: '00760',
-          end2end_identification: '2582434',
-          exempt_code: '0',
-          internal_code: '0813',
-          label: 'PRLV SEPA/FREE PRO',
-          mandate_identification: 'JNRUMLAGRANDESERRE00020211007111533',
-          nb_of_dec: '2',
-          operation_code: 'B1',
-          operation_date: '2023-04-14',
-          purpose: '',
-          record_code: '04',
-          reference: '',
-          reject_code: '',
           remittance_information_1: 'FACTURE FREEPRO 02/04/2023 F202304007806',
+          end2end_identification: '2582434',
+          purpose: '',
+          mandate_identification: 'JNRUMLAGRANDESERRE00020211007111533',
           sequence_type: 'RCUR',
-          value_date: '2023-04-14',
         },
         {
-          _1: '',
-          _2: '',
-          _3: '',
-          '_4:': 'FR77ZZZ636205',
-          account_nb: '00010211516',
-          amount: '-84',
+          record_code: '04',
           bank_code: '30004',
+          internal_code: '0813',
+          desk_code: '00760',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          _1: '',
+          account_nb: '00010211516',
+          operation_code: 'B1',
+          operation_date: '2023-04-14',
+          reject_code: '',
+          value_date: '2023-04-14',
+          label: 'PRLV SEPA/LES JOYEUX RECYCLEURS',
+          _2: '',
+          reference: '',
+          exempt_code: '0',
+          _3: '',
+          amount: '-84',
+          '_4:': 'FR77ZZZ636205',
+          creditor_name: 'LES JOYEUX RECYCLEURS',
           creditor_id: 'FR77ZZZ636205',
           creditor_id_type: '',
-          creditor_name: 'LES JOYEUX RECYCLEURS',
-          currency_code: 'EUR',
-          desk_code: '00760',
-          end2end_identification: 'ABONNEMENT 2023-04',
-          exempt_code: '0',
-          internal_code: '0813',
-          label: 'PRLV SEPA/LES JOYEUX RECYCLEURS',
-          mandate_identification: 'BOXDESJOYEUXRECYCLEURSC1091        ',
-          nb_of_dec: '2',
-          operation_code: 'B1',
-          operation_date: '2023-04-14',
-          purpose: '',
-          record_code: '04',
-          reference: '',
-          reject_code: '',
           remittance_information_1: 'ABONNEMENT 2023-04',
+          end2end_identification: 'ABONNEMENT 2023-04',
+          purpose: '',
+          mandate_identification: 'BOXDESJOYEUXRECYCLEURSC1091        ',
           sequence_type: 'RCUR',
-          value_date: '2023-04-14',
         },
         {
-          _1: '',
-          _2: '',
-          _3: '',
-          '_4:': 'FR18ZZZ002305',
-          account_nb: '00010211516',
-          amount: '-94.8',
+          record_code: '04',
           bank_code: '30004',
-          creditor_id: 'FR18ZZZ002305',
-          creditor_id_type: '',
-          creditor_name: 'ORANGE SA-ORANGE',
-          currency_code: 'EUR',
-          desk_code: '00760',
-          end2end_identification: '1B966E396 B966E3963C474E',
-          exempt_code: '0',
           internal_code: '0813',
-          label: 'PRLV SEPA/ORANGE SA-ORANGE',
-          mandate_identification: 'M0062146555                        ',
+          desk_code: '00760',
+          currency_code: 'EUR',
           nb_of_dec: '2',
+          _1: '',
+          account_nb: '00010211516',
           operation_code: 'B1',
           operation_date: '2023-04-14',
-          purpose: '',
-          record_code: '04',
-          reference: '',
           reject_code: '',
+          value_date: '2023-04-14',
+          label: 'PRLV SEPA/ORANGE SA-ORANGE',
+          _2: '',
+          reference: '',
+          exempt_code: '0',
+          _3: '',
+          amount: '-94.8',
+          '_4:': 'FR18ZZZ002305',
+          creditor_name: 'ORANGE SA-ORANGE',
+          creditor_id: 'FR18ZZZ002305',
+          creditor_id_type: '',
           remittance_information_1:
             'VOTRE ABONNEMENT FIBRE (FACTURE  XXXXX3963C4) - P',
+          end2end_identification: '1B966E396 B966E3963C474E',
+          purpose: '',
+          mandate_identification: 'M0062146555                        ',
           sequence_type: 'RCUR',
-          value_date: '2023-04-14',
         },
       ],
-      problems: null,
+      problems: [
+        {
+          message: 'Transaction #1 has problem(s)',
+          line: '0430004081300760EUR2 00010211516B1140423  140423PRLV SEPA/FREE PRO                      0 0000000000479RFR16ZZZ521291   ',
+          details: ['transaction header missing part "reference"'],
+        },
+        {
+          message: 'Transaction #2 has problem(s)',
+          line: '0430004081300760EUR2 00010211516B1140423  140423PRLV SEPA/LES JOYEUX RECYCLEURS         0 0000000000840}FR77ZZZ636205   ',
+          details: ['transaction header missing part "reference"'],
+        },
+        {
+          message: 'Transaction #3 has problem(s)',
+          line: '0430004081300760EUR2 00010211516B1140423  140423PRLV SEPA/ORANGE SA-ORANGE              0 0000000000948}FR18ZZZ002305   ',
+          details: ['transaction header missing part "reference"'],
+        },
+        {
+          message: 'Transaction #4 has problem(s)',
+          line: '0730004    00760EUR2 00010211516  140423                                                  0000003233602C                ',
+          details: ['transaction header missing part "reference"'],
+        },
+        {
+          message:
+            "Sum of transactions (491.25) doesn't match with difference between start amount 315247.48 and end amount 323360.23",
+        },
+        {
+          details: '"transactions[1].reference" is not allowed to be empty',
+          message: 'Malformed account',
+        },
+      ],
     });
   });
 
@@ -1591,6 +1747,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 252,
+        end: 352484.45,
+        start: 352232.45,
+        transactions: 252,
+      },
       header: {
         record_code: '01',
         bank_code: '10278',
@@ -1664,6 +1826,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 56.16,
+        end: 23462.42,
+        start: 23518.58,
+        transactions: 56.16,
+      },
       header: {
         record_code: '01',
         bank_code: '10207',
@@ -1726,6 +1894,12 @@ describe('account', function () {
     ];
 
     expect(parse(text)).toEqual({
+      amounts: {
+        diff: 0,
+        end: 23518.58,
+        start: 23518.58,
+        transactions: 0,
+      },
       header: {
         record_code: '01',
         bank_code: '10207',
