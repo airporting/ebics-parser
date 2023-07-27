@@ -83,6 +83,7 @@ module.exports = Joi.object({
       purpose: Joi.string().empty('').optional(),
       PDO: Joi.string().empty('').optional(),
       NOM: Joi.string().empty('').optional(),
+      CPY: Joi.string().empty('').optional(),
       payment_infor_id: Joi.string().empty('').optional(),
       instruction_id: Joi.string().empty('').optional(),
       mandate_identification: Joi.string().empty('').optional(),
