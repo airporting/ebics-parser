@@ -1,6 +1,7 @@
-[![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+![Static Badge](https://img.shields.io/badge/coverage-88.8-brightgreen)
+![Static Badge](https://img.shields.io/badge/release-1.13.1-blue)
+[![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
 
@@ -9,7 +10,7 @@ Lightweight and very fast parser, only two dep (date-fns, joi).
 * Coverage : **_88.8%_**
 * Used by [Airporting](https://www.airporting.com)
 
-MIT Licensed
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/airporting)
 
 ## External docs to understand the EBICS standard
 
@@ -42,10 +43,14 @@ Result:
 [
   {
     "amounts": {
-      "start": 656482.79, // account start balance
-      "end": 636338.79, // account end balance
-      "diff": 20144, // difference between start and end
-      "transactions": 35919 // sum of transactions amount
+      "start": 656482.79,
+      // account start balance
+      "end": 636338.79,
+      // account end balance
+      "diff": 20144,
+      // difference between start and end
+      "transactions": 35919
+      // sum of transactions amount
     },
     "header": {
       "record_code": "01",
@@ -115,13 +120,15 @@ Result:
 ### Qualifiers
 
 We were not able to find a complete specification about this format, so we don't know how to match some transaction qualifiers, like:
+
 - PDO
 - NOM
 - CPY
 
 ### Line record code
 
-Most lines start with code `01` (start balance), `07` (end balance), `04` (main transaction line) and `05` (transaction detail line). But we already met line with record code `03`. We have guess that it's a very similar usage of record code `03`, so for the moment, when met, transformed in `04`.
+Most lines start with code `01` (start balance), `07` (end balance), `04` (main transaction line) and `05` (transaction detail line). But we already met line
+with record code `03`. We have guess that it's a very similar usage of record code `03`, so for the moment, when met, transformed in `04`.
 
 ### Whatever
 
