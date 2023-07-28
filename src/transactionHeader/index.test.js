@@ -97,7 +97,7 @@ const cases = [
       reject_code: '',
       value_date: '2023-07-01',
     },
-    ['transaction header missing part "operation_code"'],
+    [],
   ],
   [
     `041802036BZ00001EUR2 00410GXLT01 010323 010323TVA SUR FRAIS DE GESTION DE CON 1891950 00000000000130}000002`,
@@ -122,7 +122,7 @@ const cases = [
       exempt_code: '',
       amount: '-13',
     },
-    ['transaction header missing part "operation_code"'],
+    [],
   ],
 ];
 

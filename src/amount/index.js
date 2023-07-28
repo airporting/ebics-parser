@@ -31,7 +31,18 @@ module.exports = function (word, nbDecimals) {
 
   const lastKey = word.slice(-1);
   const startIndex = Array.from(word).findIndex((element) => element !== '0');
-  const needed = word.slice(startIndex, -1);
+  let needed = word.slice(startIndex, -1);
+  // console.log({
+  //   nbDecimals,
+  //   word,
+  //   lastKey,
+  //   startIndex,
+  //   needed,
+  // });
+
+  if (!needed.length) {
+    needed = 0;
+  }
 
   let sign = '';
   if (debitLetters.includes(lastKey)) {

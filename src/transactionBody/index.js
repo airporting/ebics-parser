@@ -92,7 +92,7 @@ module.exports = (text) => {
     }
   });
 
-  const resolved = qualifierResolver(transaction, text);
+  const resolved = qualifierResolver(transaction);
 
   return resolved;
 };

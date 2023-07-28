@@ -1,14 +1,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Static Badge](https://img.shields.io/badge/coverage-88.8-brightgreen)
-![Static Badge](https://img.shields.io/badge/release-1.13.2-blue)
+![Static Badge](https://img.shields.io/badge/release-1.13.3-blue)
 [![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
 
 Lightweight and very fast parser, only two dep (date-fns, joi).
 
-* Coverage : **_88.8%_**
-* Used by [Airporting](https://www.airporting.com)
+Used by [Airporting](https://www.airporting.com)
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/airporting)
 
@@ -115,20 +114,14 @@ Result:
 ]
 ```
 
-## Known bugs & pitfalls
+## Opinions, known bugs & pitfalls
 
-### Qualifiers
+### Opinions
 
-We were not able to find a complete specification about this format, so we don't know how to match some transaction qualifiers, like:
+We took some decisions about what is allowed or not in an EBICS parse result. We still don't have found a complete and exhaustive docs about this format. So
+everything is based on our guesses. See section "[Whatever](#whatever)".
 
-- PDO
-- NOM
-- CPY
-- MTR
-- RIB
-- FEE
-- BBE
-- BDB
+In transactions items, fields `internal_code` and `operation_code` need one them is not empty, in this case, the other can be empty.
 
 ### Line record code
 

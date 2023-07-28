@@ -247,7 +247,7 @@ describe('account', function () {
           details: ['transaction header missing part "reference"'],
         },
         {
-          details: '"transactions[1].reference" is not allowed to be empty',
+          details: '"transactions[1]" does not match any of the allowed types',
           message: 'Malformed account',
         },
       ],
@@ -558,12 +558,7 @@ describe('account', function () {
           value_date: '2023-04-07',
         },
       ],
-      problems: [
-        {
-          details: '"transactions[0].423" is not allowed',
-          message: 'Malformed account',
-        },
-      ],
+      problems: null,
     });
   });
 
@@ -619,10 +614,6 @@ describe('account', function () {
         {
           message:
             "Sum of transactions (3600) doesn't match with difference between start amount -2443127.04 and end amount -2436527.04",
-        },
-        {
-          details: '"transactions[0].323" is not allowed',
-          message: 'Malformed account',
         },
       ],
       transactions: [
@@ -852,12 +843,7 @@ describe('account', function () {
           value_date: '2023-03-04',
         },
       ],
-      problems: [
-        {
-          details: '"transactions[0].323" is not allowed',
-          message: 'Malformed account',
-        },
-      ],
+      problems: null,
     });
   });
 
@@ -1422,7 +1408,7 @@ describe('account', function () {
             "Sum of transactions (6656.72) doesn't match with difference between start amount 332764.87 and end amount 367661.59",
         },
         {
-          details: '"transactions[1].reference" is not allowed to be empty',
+          details: '"transactions[1]" does not match any of the allowed types',
           message: 'Malformed account',
         },
       ],
@@ -1724,7 +1710,7 @@ describe('account', function () {
             "Sum of transactions (491.25) doesn't match with difference between start amount 315247.48 and end amount 323360.23",
         },
         {
-          details: '"transactions[1].reference" is not allowed to be empty',
+          details: '"transactions[1]" does not match any of the allowed types',
           message: 'Malformed account',
         },
       ],

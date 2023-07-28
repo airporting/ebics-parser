@@ -1,10 +1,6 @@
+const parse = require('./index');
+
 describe('ebics parser', function () {
-  let parse;
-
-  beforeEach(() => {
-    parse = require('./index');
-  });
-
   test('no transactions A', () => {
     const text = `0130004    00071EUR2 00010139479  280323                                                  0000003445691I
 0730004    00071EUR2 00010139479  290323                                                  0000003445691I`;
@@ -326,11 +322,6 @@ describe('ebics parser', function () {
         ],
         problems: [
           {
-            details: ['transaction header missing part "operation_code"'],
-            line: '0418020210700001EUR2 00410GXLT0191280223 280223FACTURE N 63574441 DEVENANT FIN 1834511 00000000006000{000001',
-            message: 'Transaction #5 has problem(s)',
-          },
-          {
             message: 'No start amount',
           },
           {
@@ -457,7 +448,8 @@ describe('ebics parser', function () {
             details: ['transaction header missing part "reference"'],
           },
           {
-            details: '"transactions[1].reference" is not allowed to be empty',
+            details:
+              '"transactions[1]" does not match any of the allowed types',
             message: 'Malformed account',
           },
         ],
@@ -556,10 +548,6 @@ describe('ebics parser', function () {
           {
             message:
               "Sum of transactions (59579.29) doesn't match with difference between start amount -1225.85 and end amount 0",
-          },
-          {
-            details: '"transactions[0].423" is not allowed',
-            message: 'Malformed account',
           },
         ],
       },
@@ -687,12 +675,7 @@ describe('ebics parser', function () {
             value_date: '2023-03-04',
           },
         ],
-        problems: [
-          {
-            details: '"transactions[0].323" is not allowed',
-            message: 'Malformed account',
-          },
-        ],
+        problems: null,
       },
       {
         amounts: {
@@ -726,12 +709,7 @@ describe('ebics parser', function () {
           _4: '',
           _5: '',
         },
-        problems: [
-          {
-            details: '"transactions[0].323" is not allowed',
-            message: 'Malformed account',
-          },
-        ],
+        problems: null,
         transactions: [
           {
             323: 'R VIREMENT  5295341',
@@ -2255,22 +2233,7 @@ describe('ebics parser', function () {
             '_4:': '000001',
           },
         ],
-        problems: [
-          {
-            message: 'Transaction #51 has problem(s)',
-            line: '041802032BZ00001EUR2 00410FVXE01  010723  010723FRAIS DE GESTION DE CONTRAT EN   5950217 00000000000400}000001',
-            details: ['transaction header missing part "operation_code"'],
-          },
-          {
-            message: 'Transaction #52 has problem(s)',
-            line: '0718020    00001EUR2 00410FVXE01  030723                                                  0000005188211C',
-            details: ['transaction header missing part "operation_code"'],
-          },
-          {
-            details: '"transactions[0].623" is not allowed',
-            message: 'Malformed account',
-          },
-        ],
+        problems: null,
       },
       {
         amounts: {
@@ -2680,22 +2643,217 @@ describe('ebics parser', function () {
             '_4:': '000005',
           },
         ],
+        problems: null,
+      },
+    ]);
+  });
+
+  test('internal_code and operation code can be empty under conditions', () => {
+    const text = `0130004    00585EUR2 00010156142  280323                                                  0000006564827I
+0430004056800585EUR2 00010156142  290323  290323ABCDEFG                          0000000  0000000000000{
+0430004    00585EUR2 0001015614218290323  290323ABCDEFG                          0000000  0000000000000{
+0430004    00585EUR2 00010156142  290323  290323ABCDEFG                          0000000  0000000000000{
+0730004    00585EUR2 00010156142  290323                                                  0000006564827I`;
+
+    expect(parse(text)).toEqual([
+      {
+        amounts: {
+          diff: 0,
+          end: 656482.79,
+          start: 656482.79,
+          transactions: 0,
+        },
+        footer: {
+          account_nb: '00010156142',
+          bank_code: '30004',
+          currency_code: 'EUR',
+          desk_code: '00585',
+          nb_of_dec: '2',
+          next_amount: '656482.79',
+          next_date: '2023-03-29',
+          record_code: '07',
+        },
+        header: {
+          _1: '',
+          _2: '',
+          _3: '',
+          _4: '',
+          _5: '',
+          account_nb: '00010156142',
+          bank_code: '30004',
+          currency_code: 'EUR',
+          desk_code: '00585',
+          nb_of_dec: '2',
+          prev_amount: '656482.79',
+          prev_date: '2023-03-28',
+          record_code: '01',
+        },
+        transactions: [
+          {
+            _1: '',
+            _2: '',
+            _3: '',
+            '_4:': '',
+            account_nb: '00010156142',
+            amount: '0',
+            bank_code: '30004',
+            currency_code: 'EUR',
+            desk_code: '00585',
+            exempt_code: '',
+            internal_code: '0568',
+            label: 'ABCDEFG',
+            nb_of_dec: '2',
+            operation_code: '',
+            operation_date: '2023-03-29',
+            record_code: '04',
+            reference: '0000000',
+            reject_code: '',
+            value_date: '2023-03-29',
+          },
+          {
+            _1: '',
+            _2: '',
+            _3: '',
+            '_4:': '',
+            account_nb: '00010156142',
+            amount: '0',
+            bank_code: '30004',
+            currency_code: 'EUR',
+            desk_code: '00585',
+            exempt_code: '',
+            internal_code: '',
+            label: 'ABCDEFG',
+            nb_of_dec: '2',
+            operation_code: '18',
+            operation_date: '2023-03-29',
+            record_code: '04',
+            reference: '0000000',
+            reject_code: '',
+            value_date: '2023-03-29',
+          },
+          {
+            _1: '',
+            _2: '',
+            _3: '',
+            '_4:': '',
+            account_nb: '00010156142',
+            amount: '0',
+            bank_code: '30004',
+            currency_code: 'EUR',
+            desk_code: '00585',
+            exempt_code: '',
+            internal_code: '',
+            label: 'ABCDEFG',
+            nb_of_dec: '2',
+            operation_code: '',
+            operation_date: '2023-03-29',
+            record_code: '04',
+            reference: '0000000',
+            reject_code: '',
+            value_date: '2023-03-29',
+          },
+        ],
         problems: [
           {
-            message: 'Transaction #15 has problem(s)',
-            line: '041802032BZ00001EUR2 00410FVXE11  010723  010723FRAIS DE GESTION DE CONTRAT EN   5950217 00000000000400}000005',
-            details: ['transaction header missing part "operation_code"'],
-          },
-          {
-            message: 'Transaction #16 has problem(s)',
-            line: '0718020    00001EUR2 00410FVXE11  030723                                                  0000026953127J',
-            details: ['transaction header missing part "operation_code"'],
-          },
-          {
-            details: '"transactions[0].623" is not allowed',
+            details:
+              '"transactions[2]" does not match any of the allowed types',
             message: 'Malformed account',
           },
         ],
+      },
+    ]);
+  });
+
+  test('various 2', () => {
+    const text = `0130003    03328EUR2 00020409333  140723                                                  0000000001072G
+0430003740003328EUR2 000204093336215072300130723ENT SEPA RECU                    00000001 0000000000000RFRAIS VIREM
+0530003740003328EUR2 0002040933362150723     LIBREF 1380896458S
+0530003740003328EUR2 0002040933362150723     LIBDE 23 23 EUR DU 13/07/23
+0430003661003328EUR2 000204093332817072300170723CARTE X0154 15/07 TYPEFORM  S.L  00010000 0000000001068}.
+0530003661003328EUR2 0002040933328170723     LIBCOMMERCE ELECTRONIQUE
+0730003    03328EUR2 00020409333  170723                                                  0000000000003H`;
+
+    expect(parse(text)).toEqual([
+      {
+        amounts: {
+          start: 107.27,
+          end: 0.38,
+          diff: 106.89,
+          transactions: 106.89,
+        },
+        header: {
+          record_code: '01',
+          bank_code: '30003',
+          _1: '',
+          desk_code: '03328',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          _2: '',
+          account_nb: '00020409333',
+          _3: '',
+          prev_date: '2023-07-14',
+          _4: '',
+          prev_amount: '107.27',
+          _5: '',
+        },
+        footer: {
+          record_code: '07',
+          bank_code: '30003',
+          desk_code: '03328',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          account_nb: '00020409333',
+          next_date: '2023-07-17',
+          next_amount: '0.38',
+        },
+        transactions: [
+          {
+            record_code: '04',
+            bank_code: '30003',
+            internal_code: '7400',
+            desk_code: '03328',
+            currency_code: 'EUR',
+            nb_of_dec: '2',
+            _1: '',
+            account_nb: '00020409333',
+            operation_code: '62',
+            operation_date: '2023-07-15',
+            reject_code: '00',
+            value_date: '2023-07-13',
+            label: 'ENT SEPA RECU',
+            _2: '',
+            reference: '0000000',
+            exempt_code: '1',
+            _3: '',
+            amount: '-0.09',
+            '_4:': 'FRAIS VIREM',
+            label_1: 'REF 1380896458S',
+            label_2: 'DE 23 23 EUR DU 13/07/23',
+          },
+          {
+            record_code: '04',
+            bank_code: '30003',
+            internal_code: '6610',
+            desk_code: '03328',
+            currency_code: 'EUR',
+            nb_of_dec: '2',
+            _1: '',
+            account_nb: '00020409333',
+            operation_code: '28',
+            operation_date: '2023-07-17',
+            reject_code: '00',
+            value_date: '2023-07-17',
+            label: 'CARTE X0154 15/07 TYPEFORM  S.L',
+            _2: '',
+            reference: '0001000',
+            exempt_code: '0',
+            _3: '',
+            amount: '-106.8',
+            '_4:': '.',
+            label_1: 'COMMERCE ELECTRONIQUE',
+          },
+        ],
+        problems: null,
       },
     ]);
   });

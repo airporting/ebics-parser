@@ -19,7 +19,6 @@ module.exports = (text) => {
     {
       field: 'internal_code',
       regex: '[a-zA-Z0-9 ]{4}',
-      required: true,
     },
     {
       field: 'desk_code',
@@ -48,7 +47,6 @@ module.exports = (text) => {
     {
       field: 'operation_code',
       regex: '[a-zA-Z0-9 ]{1,2}',
-      required: true,
     },
     {
       field: 'operation_date',

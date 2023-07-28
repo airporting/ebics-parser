@@ -3,8 +3,6 @@ const transactionBodyParser = require('../transactionBody');
 const headerParser = require('../header');
 const footerParser = require('../footer');
 
-const schema = require('./schema');
-
 module.exports = function chunkParser(allLines) {
   let header = {};
   let footer = {};
@@ -161,6 +159,7 @@ module.exports = function chunkParser(allLines) {
     problems: problems.length ? problems : null,
   };
 
+  const schema = require('./schema')();
   const isAccountValid = schema.validate(account);
 
   if (isAccountValid.error) {
