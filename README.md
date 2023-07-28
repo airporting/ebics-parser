@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Static Badge](https://img.shields.io/badge/coverage-88.8-brightgreen)
-![Static Badge](https://img.shields.io/badge/release-1.13.1-blue)
+![Static Badge](https://img.shields.io/badge/release-1.13.2-blue)
 [![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
@@ -124,6 +124,11 @@ We were not able to find a complete specification about this format, so we don't
 - PDO
 - NOM
 - CPY
+- MTR
+- RIB
+- FEE
+- BBE
+- BDB
 
 ### Line record code
 
