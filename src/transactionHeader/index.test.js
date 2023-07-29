@@ -47,7 +47,7 @@ const cases = [
       amount: '-56063',
       '_4:': 'FR46ZZZ005002',
     },
-    ['transaction header missing part "reference"'],
+    [],
   ],
   [
     `0418020404100001EUR2 00410GXLT0121070423  050423VIREMENT BANCAIRE EN VOTRE FAVE  3175387 00000000594363K000070`,

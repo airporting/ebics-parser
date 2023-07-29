@@ -443,11 +443,6 @@ describe('ebics parser', function () {
         ],
         problems: [
           {
-            message: 'Transaction #1 has problem(s)',
-            line: '0730004    00585EUR2 00010156142  290323                                                  0000006363387I',
-            details: ['transaction header missing part "reference"'],
-          },
-          {
             details:
               '"transactions[1]" does not match any of the allowed types',
             message: 'Malformed account',

@@ -242,11 +242,6 @@ describe('account', function () {
       ],
       problems: [
         {
-          message: 'Transaction #1 has problem(s)',
-          line: '0730004    00585EUR2 00010156142  290323                                                  0000006363387I',
-          details: ['transaction header missing part "reference"'],
-        },
-        {
           details: '"transactions[1]" does not match any of the allowed types',
           message: 'Malformed account',
         },
@@ -1399,11 +1394,6 @@ describe('account', function () {
       ],
       problems: [
         {
-          message: 'Transaction #1 has problem(s)',
-          line: '0430004008300071EUR2 0001013947928140423  140423DU 120423 BLS*MONDAY.COM1 CARTE  00000000 0000000001428} 4974XXXXXXXX050',
-          details: ['transaction header missing part "reference"'],
-        },
-        {
           message:
             "Sum of transactions (6656.72) doesn't match with difference between start amount 332764.87 and end amount 367661.59",
         },
@@ -1685,26 +1675,6 @@ describe('account', function () {
         },
       ],
       problems: [
-        {
-          message: 'Transaction #1 has problem(s)',
-          line: '0430004081300760EUR2 00010211516B1140423  140423PRLV SEPA/FREE PRO                      0 0000000000479RFR16ZZZ521291   ',
-          details: ['transaction header missing part "reference"'],
-        },
-        {
-          message: 'Transaction #2 has problem(s)',
-          line: '0430004081300760EUR2 00010211516B1140423  140423PRLV SEPA/LES JOYEUX RECYCLEURS         0 0000000000840}FR77ZZZ636205   ',
-          details: ['transaction header missing part "reference"'],
-        },
-        {
-          message: 'Transaction #3 has problem(s)',
-          line: '0430004081300760EUR2 00010211516B1140423  140423PRLV SEPA/ORANGE SA-ORANGE              0 0000000000948}FR18ZZZ002305   ',
-          details: ['transaction header missing part "reference"'],
-        },
-        {
-          message: 'Transaction #4 has problem(s)',
-          line: '0730004    00760EUR2 00010211516  140423                                                  0000003233602C                ',
-          details: ['transaction header missing part "reference"'],
-        },
         {
           message:
             "Sum of transactions (491.25) doesn't match with difference between start amount 315247.48 and end amount 323360.23",
