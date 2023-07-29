@@ -79,7 +79,6 @@ module.exports = (text) => {
     {
       field: 'reference',
       regex: '.{7}',
-      required: true,
     },
     {
       field: 'exempt_code',

@@ -1,6 +1,6 @@
 {
   "name": "@airporting/ebics-parser",
-  "version": "1.13.3",
+  "version": "1.13.4",
   "main": "src/index.js",
   "repository": "git@github.com:airporting/ebics-parser.git",
   "author": "mathrobin <mthrobin@gmail.com>",
