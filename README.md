@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Static Badge](https://img.shields.io/badge/coverage-88.8-brightgreen)
-![Static Badge](https://img.shields.io/badge/release-1.13.3-blue)
+![Static Badge](https://img.shields.io/badge/coverage-87.86-brightgreen)
+![Static Badge](https://img.shields.io/badge/release-1.13.6-blue)
 [![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
