@@ -6,7 +6,7 @@ const Joi = require('joi').defaults((schema) =>
 );
 
 module.exports = () => {
-  const transactionSchema = {
+  const transactionSchema = Joi.object({
     record_code: Joi.valid('04'),
     bank_code: Joi.string(),
     operation_date: Joi.string(),
@@ -21,7 +21,7 @@ module.exports = () => {
     reject_code: Joi.string().empty('').optional(),
     value_date: Joi.string(),
     label: Joi.string().empty(''),
-    reference: Joi.string().optional(),
+    reference: Joi.string().empty('').optional(),
     exempt_code: Joi.string().empty('').optional(),
     amount: Joi.string(),
     creditor_id: Joi.string().empty('').optional(),
@@ -47,7 +47,13 @@ module.exports = () => {
     instruction_id: Joi.string().empty('').optional(),
     mandate_identification: Joi.string().empty('').optional(),
     sequence_type: Joi.string().empty('').optional(),
-  };
+    internal_code: Joi.string().empty(''),
+    operation_code: Joi.when('internal_code', {
+      is: '',
+      then: Joi.string(),
+      otherwise: Joi.string().empty('').optional(),
+    }),
+  }).unknown();
 
   return Joi.object({
     amounts: Joi.object({
@@ -81,20 +87,7 @@ module.exports = () => {
       next_date: Joi.string(),
       next_amount: Joi.string(),
     }),
-    transactions: Joi.array().items(
-      Joi.alternatives().try(
-        Joi.object({
-          ...transactionSchema,
-          internal_code: Joi.string(),
-          operation_code: Joi.string().empty('').optional(),
-        }).unknown()
-      ),
-      Joi.object({
-        ...transactionSchema,
-        internal_code: Joi.string().empty('').optional(),
-        operation_code: Joi.string(),
-      }).unknown()
-    ),
+    transactions: Joi.array().items(transactionSchema),
     problems: Joi.array()
       .items(
         Joi.object({

@@ -441,13 +441,7 @@ describe('ebics parser', function () {
             remittance_information_1: 'TVA-032023-3310CA3',
           },
         ],
-        problems: [
-          {
-            details:
-              '"transactions[1]" does not match any of the allowed types',
-            message: 'Malformed account',
-          },
-        ],
+        problems: null,
       },
     ]);
   });
@@ -2750,8 +2744,7 @@ describe('ebics parser', function () {
         ],
         problems: [
           {
-            details:
-              '"transactions[2]" does not match any of the allowed types',
+            details: '"transactions[1].internal_code" is required',
             message: 'Malformed account',
           },
         ],

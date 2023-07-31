@@ -240,12 +240,7 @@ describe('account', function () {
           remittance_information_1: 'TVA-032023-3310CA3',
         },
       ],
-      problems: [
-        {
-          details: '"transactions[1]" does not match any of the allowed types',
-          message: 'Malformed account',
-        },
-      ],
+      problems: null,
     });
   });
 
@@ -1397,10 +1392,6 @@ describe('account', function () {
           message:
             "Sum of transactions (6656.72) doesn't match with difference between start amount 332764.87 and end amount 367661.59",
         },
-        {
-          details: '"transactions[1]" does not match any of the allowed types',
-          message: 'Malformed account',
-        },
       ],
     });
   });
@@ -1678,10 +1669,6 @@ describe('account', function () {
         {
           message:
             "Sum of transactions (491.25) doesn't match with difference between start amount 315247.48 and end amount 323360.23",
-        },
-        {
-          details: '"transactions[1]" does not match any of the allowed types',
-          message: 'Malformed account',
         },
       ],
     });
