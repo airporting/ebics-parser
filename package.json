@@ -5,7 +5,7 @@
   "repository": "git@github.com:airporting/ebics-parser.git",
   "author": "mathrobin <mthrobin@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@3.6.2",
+  "packageManager": "yarn@3.6.3",
   "scripts": {
     "commit": "cz",
     "husky": "husky install",
