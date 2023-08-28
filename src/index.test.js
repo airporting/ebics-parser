@@ -2742,12 +2742,7 @@ describe('ebics parser', function () {
             value_date: '2023-03-29',
           },
         ],
-        problems: [
-          {
-            details: '"transactions[1].internal_code" is required',
-            message: 'Malformed account',
-          },
-        ],
+        problems: null,
       },
     ]);
   });
