@@ -47,7 +47,7 @@ module.exports = () => {
     instruction_id: Joi.string().empty('').optional(),
     mandate_identification: Joi.string().empty('').optional(),
     sequence_type: Joi.string().empty('').optional(),
-    internal_code: Joi.string().empty(''),
+    internal_code: Joi.string().empty('').optional(),
     operation_code: Joi.when('internal_code', {
       is: '',
       then: Joi.string(),
