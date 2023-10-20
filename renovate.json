@@ -1,5 +1,83 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base"],
+  "timezone": "Europe/Paris",
+  "schedule": ["on sunday"],
+  "encrypted": {
+    "npmToken": "wcFMA/xDdHCJBTolAQ//VLuqk2hLnX2Ps7iiun9+vnd8S4XdXd5urPS1r0loO8vPe+jSpJu+vRgAadB6IDclJCXga73fS2Ew/GB6w8DX1t/TwY4RI36uz7ZcnMq7BhmHiabD9DwbKQcJ1g2+cEAYnZawOSypPnA7t3VRE/sY7sXeScktQ51BGdaYE2JkM/WScMen8d/lkis64thA60A46jLhOxfghgi9Emo64z5G+LSnzL3ibrJVQ9hOuw1KRARObuyj40H6ObMMzK5WJN9+M5tYngsuMfu86sxb9gNbcp0AJhuDEe4JFgu8PbSgPdPxnMFm5aA13f/EeSKNiqkqm1dFeeM39eI2P/VxBj/tAsr3TpDU+49HI1C0Xe/arLsAWrzmpNvdADeOUujtGZBEKmG8MU5JkIKKxzlT1M6rEwm9qo36bQwq6BdFRZUROrnTx62y21eiI2M1Uov7pJ+ZUxRMjGfLQCBuiBdG1Vu2VJSrZUzpCT/4NzwbgLilM82ApUZaY0e1eOhbNhQoYbbF3wextjCPvFnvDt7x9cnA2T7l9SJj/Q6qaKc1XoHZoXDyMjYb4wA7mNhIk4bNOSC3LApBwkm6oG7akiZZ82qB1bHTk2hHH2x3HdGLBnAB8qlp/qijgz/Z9FjRkMZIGLKfJskROkH+Nm65PNWngiTJWnuvkqagTk8MaCKxCY527BXSeQGv3RJMN69v9LDX4bo7yE82cPlL7puZkhpYZmAaxSGVLctCawhryhoLZE85Daa+uSDucSsxNGrh1Mdp2wI6uc/3TMw06OB0THO+Ub5gJysa/nXGc0w9qRUgbG+MOQtNWhQfVpofnFfdgmrlGh8Q/xoNfLoprTfFccY"
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["nvm"],
+      "enabled": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": ["mysql", "node"],
+      "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "all patch dependencies",
+      "groupSlug": "all-patch",
+      "automerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "@airporting/*",
+        "@ngneat/falso",
+        "algoliasearch",
+        "aws*sdk*",
+        "date-fns",
+        "handlebars",
+        "joi",
+        "lambda-returns",
+        "lint-staged",
+        "log4js",
+        "lodash",
+        "mime-types",
+        "node-mailjet",
+        "puppeteer*",
+        "sequelize",
+        "stripe",
+        "superagent",
+        "winston"
+      ],
+      "matchUpdateTypes": ["minor"],
+      "matchDepTypes": ["dependencies"],
+      "groupName": "all minor corporate and trusted dependencies",
+      "groupSlug": "all-minor-trusted",
+      "automerge": true
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "all minor devDependencies",
+      "groupSlug": "all-minor",
+      "automerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "@commitlint/*",
+        "@types",
+        "commitizen",
+        "cz-conventional-changelog",
+        "eslint*",
+        "husky",
+        "jest",
+        "lint-staged",
+        "prettier"
+      ],
+      "matchUpdateTypes": ["major"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "all major trusted devDependencies",
+      "groupSlug": "all-major-trusted-devDeps",
+      "automerge": true
+    }
   ]
 }
