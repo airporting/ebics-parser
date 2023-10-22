@@ -5,7 +5,7 @@
   "repository": "git@github.com:airporting/ebics-parser.git",
   "author": "mathrobin <mthrobin@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@3.6.4",
   "scripts": {
     "commit": "cz",
     "husky": "husky install",
@@ -31,7 +31,7 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.49.0",
     "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-jest": "27.4.2",
+    "eslint-plugin-jest": "27.4.3",
     "husky": "8.0.3",
     "jest": "29.6.4",
     "lint-staged": "15.0.2",
