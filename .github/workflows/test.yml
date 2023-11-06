@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ 14, 16, 18 ]
+        version: [ 18, 20 ]
     steps:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.version }}
-      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #v4
       - name: System info
         run: |
           echo "node"
