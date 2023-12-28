@@ -5,8 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ 16, 18, 20, 21 ]
+        version: [ 18, 20, 21 ]
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: Europe/Paris
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.version }}
@@ -20,8 +30,8 @@ jobs:
           echo "yarn"
           yarn -v
       - name: Install modules
-        run: yarn
-      - name: Run lint tasks
+        run: yarn install
+      - name: Run lint task
         run: yarn lint
       - name: Run tests
         run: yarn test
