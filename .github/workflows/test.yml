@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [ 18, 20 ]
+        version: [ 18, 20, 21 ]
     steps:
       - uses: actions/setup-node@v4
         with:
