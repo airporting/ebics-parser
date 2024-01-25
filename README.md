@@ -123,12 +123,12 @@ Result:
 We took some decisions about what is allowed or not in an EBICS parse result. We still don't have found a complete and exhaustive docs about this format. So
 everything is based on our guesses. See section "[Whatever](#whatever)".
 
-In transactions items, fields `internal_code` and `operation_code` need one them is not empty, in this case, the other can be empty.
+In transactions items, fields `internal_code` and `operation_code` need at least one of them to be filled.
 
 ### Line record code
 
-Most lines start with code `01` (start balance), `07` (end balance), `04` (main transaction line) and `05` (transaction detail line). But we already met line
-with record code `03`. We have guess that it's a very similar usage of record code `03`, so for the moment, when met, transformed in `04`.
+Most lines start with code `01` (start balance), `07` (end balance), `04` (main transaction line) and `05` (transaction detail line). But we already met lines
+with record code `03`. We have guess that it's a very similar usage of record code `04`, so for the moment, when met, transformed in `04`.
 
 ### Whatever
 
