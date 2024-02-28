@@ -43,76 +43,76 @@ Result:
 ```json5
 [
   {
-    "amounts": {
-      "start": 656482.79,
+    amounts: {
+      start: 656482.79,
       // account start balance
-      "end": 636338.79,
+      end: 636338.79,
       // account end balance
-      "diff": 20144,
+      diff: 20144,
       // difference between start and end
-      "transactions": 35919
+      transactions: 35919,
       // sum of transactions amount
     },
-    "header": {
-      "record_code": "01",
-      "bank_code": "30004",
-      "_1": "",
-      "desk_code": "00585",
-      "currency_code": "EUR",
-      "nb_of_dec": "2",
-      "_2": "",
-      "account_nb": "00010156142",
-      "_3": "",
-      "prev_date": "2023-03-28",
-      "_4": "",
-      "prev_amount": "656482.79",
-      "_5": ""
+    header: {
+      record_code: '01',
+      bank_code: '30004',
+      _1: '',
+      desk_code: '00585',
+      currency_code: 'EUR',
+      nb_of_dec: '2',
+      _2: '',
+      account_nb: '00010156142',
+      _3: '',
+      prev_date: '2023-03-28',
+      _4: '',
+      prev_amount: '656482.79',
+      _5: '',
     },
-    "footer": {
-      "record_code": "07",
-      "bank_code": "30004",
-      "desk_code": "00585",
-      "currency_code": "EUR",
-      "nb_of_dec": "2",
-      "account_nb": "00010156142",
-      "next_date": "2023-03-29",
-      "next_amount": "636338.79"
+    footer: {
+      record_code: '07',
+      bank_code: '30004',
+      desk_code: '00585',
+      currency_code: 'EUR',
+      nb_of_dec: '2',
+      account_nb: '00010156142',
+      next_date: '2023-03-29',
+      next_amount: '636338.79',
     },
-    "transactions": [
+    transactions: [
       {
-        "record_code": "04",
-        "bank_code": "30004",
-        "internal_code": "0568",
-        "desk_code": "00585",
-        "currency_code": "EUR",
-        "nb_of_dec": "2",
-        "_1": "",
-        "account_nb": "00010156142",
-        "operation_code": "18",
-        "operation_date": "2023-03-29",
-        "reject_code": "",
-        "value_date": "2023-03-29",
-        "label": "DOMUSVI",
-        "_2": "",
-        "reference": "0000000",
-        "exempt_code": "",
-        "_3": "",
-        "amount": "35919",
-        "_4:": "",
-        "debtor_name": "DOMUSVI",
-        "remittance_information_1": "/INV/3867 8.2.2023",
-        "end2end_identification": "NOTPROVIDED",
-        "purpose": "",
-        "PDO": "FR FRANCE"
-      }
+        record_code: '04',
+        bank_code: '30004',
+        internal_code: '0568',
+        desk_code: '00585',
+        currency_code: 'EUR',
+        nb_of_dec: '2',
+        _1: '',
+        account_nb: '00010156142',
+        operation_code: '18',
+        operation_date: '2023-03-29',
+        reject_code: '',
+        value_date: '2023-03-29',
+        label: 'DOMUSVI',
+        _2: '',
+        reference: '0000000',
+        exempt_code: '',
+        _3: '',
+        amount: '35919',
+        '_4:': '',
+        debtor_name: 'DOMUSVI',
+        remittance_information_1: '/INV/3867 8.2.2023',
+        end2end_identification: 'NOTPROVIDED',
+        purpose: '',
+        PDO: 'FR FRANCE',
+      },
     ],
     // problems detected during parse. If no problems, null
-    "problems": [
+    problems: [
       {
-        "message": "Sum of transactions (35919) doesn't match with difference between start amount 656482.79 and end amount 636338.79"
-      }
-    ]
-  }
+        message: "Sum of transactions (35919) doesn't match with difference between start amount 656482.79 and end amount 636338.79",
+      },
+    ],
+  },
 ]
 ```
 
@@ -138,4 +138,3 @@ with record code `03`. We have guess that it's a very similar usage of record co
 ## Thanks
 
 Made by [Airporting](https://www.airporting.com) people with 🧡.
-

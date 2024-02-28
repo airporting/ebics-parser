@@ -8,9 +8,12 @@
   "packageManager": "yarn@4.1.0",
   "scripts": {
     "commit": "cz",
+    "crazy:up": "git pull && yarn set version latest && yarn up '*' && yarn install && yarn prettier:write && git add package.json yarn.lock && git status",
     "husky": "husky install",
     "lint": "eslint .",
     "prepare": "husky install",
+    "prettier": "prettier --check ./",
+    "prettier:write": "prettier --write ./",
     "publish": "yarn npm publish && git add package.json yarn.lock",
     "test": "jest --coverage"
   },
@@ -25,8 +28,8 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "18.6.1",
-    "@commitlint/config-conventional": "18.6.2",
+    "@commitlint/cli": "19.0.2",
+    "@commitlint/config-conventional": "19.0.0",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.57.0",
