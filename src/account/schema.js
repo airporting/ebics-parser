@@ -86,6 +86,11 @@ module.exports = () => {
       account_nb: Joi.string(),
       next_date: Joi.string(),
       next_amount: Joi.string(),
+      _1: Joi.string().empty('').optional(),
+      _2: Joi.string().empty('').optional(),
+      _3: Joi.string().empty('').optional(),
+      _4: Joi.string().empty('').optional(),
+      _5: Joi.string().empty('').optional(),
     }),
     transactions: Joi.array().items(transactionSchema),
     problems: Joi.array()

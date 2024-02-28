@@ -93,7 +93,7 @@ module.exports = function chunkParser(allLines) {
           transactionsList.push(currentTransaction.transaction);
         }
 
-        footer = footerParser(line.split(/(\s+)/));
+        footer = footerParser(line);
 
         endAmount = footer.next_amount;
 

@@ -1,2 +1,7 @@
+# GENERATED FILE - Do not edit manually
+
 # Ignore artifacts:
 coverage
+.yarn
+.idea
+node_modules
