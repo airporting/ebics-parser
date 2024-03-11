@@ -1,6 +1,6 @@
 {
   "name": "@airporting/ebics-parser",
-  "version": "1.13.10",
+  "version": "1.14.0",
   "main": "src/index.js",
   "repository": "git@github.com:airporting/ebics-parser.git",
   "author": "mathrobin <mthrobin@gmail.com>",
@@ -14,7 +14,7 @@
     "prepare": "husky install",
     "prettier": "prettier --check ./",
     "prettier:write": "prettier --write ./",
-    "publish": "yarn npm publish && git add package.json yarn.lock",
+    "publish": "yarn npm publish && git add package.json yarn.lock && git commit -m 'feat(version): bump' && git push && git status",
     "test": "jest --coverage"
   },
   "config": {
@@ -41,7 +41,7 @@
     "prettier": "3.2.5"
   },
   "dependencies": {
-    "date-fns": "3.3.1",
+    "date-fns": "3.4.0",
     "joi": "17.12.2"
   }
 }

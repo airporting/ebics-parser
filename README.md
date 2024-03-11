@@ -132,6 +132,7 @@ with record code `03`. We have guess that it's a very similar usage of record co
 
 ### Whatever
 
+- We try to manage when carriage return is not present in the raw text file, we didn't found any bug yet but you probably will. We do the best we can.
 - If you find a bug, don't hesitate to open an issue or a pull request.
 - If you have a doc with complete specs, we'll thanks you a lot.
 
