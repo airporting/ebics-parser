@@ -2948,4 +2948,78 @@ describe('ebics parser', function () {
       },
     ]);
   });
+
+  test('no line breaks', () => {
+    const text = `0117406    00283EUR2 65041564965  060324                                                  0000001071841C  047           0417406000200283EUR2E6504156496502070324  070324REMISE CHQ 6316889 RANDOM PILES  6316889100000000008252{                0717406    00283EUR2 65041564965  070324                                                  0000001307106B                `;
+
+    expect(parse(text)).toEqual([
+      {
+        amounts: {
+          start: 107184.13,
+          diff: 23526.49,
+          end: 130710.62,
+          transactions: 825.2,
+        },
+        header: {
+          record_code: '01',
+          bank_code: '17406',
+          _1: '',
+          desk_code: '00283',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          _2: '',
+          account_nb: '65041564965',
+          _3: '',
+          prev_date: '2024-03-06',
+          _4: '',
+          prev_amount: '107184.13',
+          _5: '047',
+        },
+        footer: {
+          _1: '',
+          _2: '',
+          _3: '',
+          _4: '',
+          _5: '',
+          record_code: '07',
+          bank_code: '17406',
+          desk_code: '00283',
+          currency_code: 'EUR',
+          nb_of_dec: '2',
+          account_nb: '65041564965',
+          next_date: '2024-03-07',
+          next_amount: '130710.62',
+        },
+        transactions: [
+          {
+            _1: 'E',
+            _2: '',
+            _3: '0',
+            '_4:': '',
+            account_nb: '65041564965',
+            amount: '825.2',
+            bank_code: '17406',
+            currency_code: 'EUR',
+            desk_code: '00283',
+            exempt_code: '1',
+            internal_code: '0002',
+            label: 'REMISE CHQ 6316889 RANDOM PILES',
+            nb_of_dec: '2',
+            operation_code: '02',
+            operation_date: '2024-03-07',
+            record_code: '04',
+            reference: '6316889',
+            reject_code: '',
+            value_date: '2024-03-07',
+          },
+        ],
+        problems: [
+          {
+            message:
+              "Sum of transactions (825.2) doesn't match with difference between start amount 107184.13 and end amount 130710.62",
+          },
+        ],
+      },
+    ]);
+  });
 });

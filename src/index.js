@@ -1,7 +1,14 @@
 const accountParser = require('./account');
 
 module.exports = function (text) {
-  const allLines = text.split(/\r?\n/);
+  let allLines = text.split(/\r?\n/);
+
+  if (allLines?.length === 1) {
+    allLines = text
+      .replaceAll(/ (01|04|03|05|07)([0-9]{5})( |0)/g, ' \n$1$2$3')
+      .split(/\r?\n/);
+  }
+
   const reduced = allLines.reduce(
     (accumulator, currentLine) => {
       if (currentLine.startsWith('01')) {
