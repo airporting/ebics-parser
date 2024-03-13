@@ -60,10 +60,19 @@ module.exports = function chunkParser(allLines) {
           delete transaction.label;
         }
 
+        const filledTransactionFields = {};
+        Object.entries(transaction)
+          .filter(([key, value]) => {
+            return value !== '' || !currentTransaction.transaction[key];
+          })
+          .forEach(([key, value]) => {
+            filledTransactionFields[key] = value;
+          });
+
         currentTransaction = {
           transaction: {
             ...currentTransaction.transaction,
-            ...transaction,
+            ...filledTransactionFields,
             record_code: '04',
           },
           problems: [...currentTransaction.problems],

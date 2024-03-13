@@ -25,13 +25,13 @@ https://www.promosoft.fr/wp-content/uploads/2013/06/Livre_blanc_SEPA.pdf
 ```javascript
 const ebicsParser = require('@airporting/ebics-parser');
 
-const fileContent = `0130004    00585EUR2 00010156142  280323                                                  0000006564827I
-0430004056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{
-0530004056800585EUR2 0001015614218290323     NPYDOMUSVI
-0530004056800585EUR2 0001015614218290323     LCC/INV/3867 8.2.2023
-0530004056800585EUR2 0001015614218290323     RCNNOTPROVIDED
-0530004056800585EUR2 0001015614218290323     PDOFR FRANCE
-0730004    00585EUR2 00010156142  290323                                                  0000006363387I`;
+const fileContent = `0130012    00585EUR2 00010156142  280323                                                  0000006564827I
+0430012056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{
+0530012056800585EUR2 0001015614218290323     NPYDOMUSVI
+0530012056800585EUR2 0001015614218290323     LCC/INV/3867 8.2.2023
+0530012056800585EUR2 0001015614218290323     RCNNOTPROVIDED
+0530012056800585EUR2 0001015614218290323     PDOFR FRANCE
+0730012    00585EUR2 00010156142  290323                                                  0000006363387I`;
 
 const result = ebicsParser(fileContent);
 
@@ -55,7 +55,7 @@ Result:
     },
     header: {
       record_code: '01',
-      bank_code: '30004',
+      bank_code: '30012',
       _1: '',
       desk_code: '00585',
       currency_code: 'EUR',
@@ -70,7 +70,7 @@ Result:
     },
     footer: {
       record_code: '07',
-      bank_code: '30004',
+      bank_code: '30012',
       desk_code: '00585',
       currency_code: 'EUR',
       nb_of_dec: '2',
@@ -81,7 +81,7 @@ Result:
     transactions: [
       {
         record_code: '04',
-        bank_code: '30004',
+        bank_code: '30012',
         internal_code: '0568',
         desk_code: '00585',
         currency_code: 'EUR',

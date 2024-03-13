@@ -1,9 +1,9 @@
 const cases = [
   [
-    `0130004    00071EUR2 00010139479  280323                                                  0000003445691I`,
+    `0130012    00071EUR2 00010139479  280323                                                  0000003445691I`,
     {
       record_code: '01',
-      bank_code: '30004',
+      bank_code: '30012',
       desk_code: '00071',
       currency_code: 'EUR',
       nb_of_dec: '2',
@@ -18,10 +18,10 @@ const cases = [
     },
   ],
   [
-    `0130004    00823EUR2 00010738652  280323                                                  0000000008653O`,
+    `0130012    00823EUR2 00010738652  280323                                                  0000000008653O`,
     {
       record_code: '01',
-      bank_code: '30004',
+      bank_code: '30012',
       desk_code: '00823',
       currency_code: 'EUR',
       nb_of_dec: '2',
@@ -36,10 +36,10 @@ const cases = [
     },
   ],
   [
-    `0130004    00585EUR2 00010156142  280323                                                  0000006564827I`,
+    `0130012    00585EUR2 00010156142  280323                                                  0000006564827I`,
     {
       record_code: '01',
-      bank_code: '30004',
+      bank_code: '30012',
       desk_code: '00585',
       currency_code: 'EUR',
       nb_of_dec: '2',
@@ -72,10 +72,10 @@ const cases = [
     },
   ],
   [
-    `0130004    00822EUR2 00010898395  160222                                                  0000000566672H                `,
+    `0130012    00822EUR2 00010898395  160222                                                  0000000566672H                `,
     {
       record_code: '01',
-      bank_code: '30004',
+      bank_code: '30012',
       desk_code: '00822',
       currency_code: 'EUR',
       nb_of_dec: '2',

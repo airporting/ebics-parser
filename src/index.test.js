@@ -2,8 +2,8 @@ const parse = require('./index');
 
 describe('ebics parser', function () {
   test('no transactions A', () => {
-    const text = `0130004    00071EUR2 00010139479  280323                                                  0000003445691I
-0730004    00071EUR2 00010139479  290323                                                  0000003445691I`;
+    const text = `0130012    00071EUR2 00010139479  280323                                                  0000003445691I
+0730012    00071EUR2 00010139479  290323                                                  0000003445691I`;
 
     expect(parse(text)).toEqual([
       {
@@ -15,7 +15,7 @@ describe('ebics parser', function () {
         },
         header: {
           record_code: '01',
-          bank_code: '30004',
+          bank_code: '30012',
           desk_code: '00071',
           currency_code: 'EUR',
           nb_of_dec: '2',
@@ -35,7 +35,7 @@ describe('ebics parser', function () {
           _4: '',
           _5: '',
           record_code: '07',
-          bank_code: '30004',
+          bank_code: '30012',
           desk_code: '00071',
           currency_code: 'EUR',
           nb_of_dec: '2',
@@ -50,8 +50,8 @@ describe('ebics parser', function () {
   });
 
   test('no transactions B', () => {
-    const text = `0130004    00823EUR2 00010738652  280323                                                  0000000008653O
-0730004    00823EUR2 00010738652  290323                                                  0000000008653O`;
+    const text = `0130012    00823EUR2 00010738652  280323                                                  0000000008653O
+0730012    00823EUR2 00010738652  290323                                                  0000000008653O`;
 
     expect(parse(text)).toEqual([
       {
@@ -63,7 +63,7 @@ describe('ebics parser', function () {
         },
         header: {
           record_code: '01',
-          bank_code: '30004',
+          bank_code: '30012',
           desk_code: '00823',
           currency_code: 'EUR',
           nb_of_dec: '2',
@@ -83,7 +83,7 @@ describe('ebics parser', function () {
           _4: '',
           _5: '',
           record_code: '07',
-          bank_code: '30004',
+          bank_code: '30012',
           desk_code: '00823',
           currency_code: 'EUR',
           nb_of_dec: '2',
@@ -347,19 +347,19 @@ describe('ebics parser', function () {
   });
 
   test('various', () => {
-    const text = `0130004    00585EUR2 00010156142  280323                                                  0000006564827I
-0430004056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{
-0530004056800585EUR2 0001015614218290323     NPYDOMUSVI
-0530004056800585EUR2 0001015614218290323     LCC/INV/3867 8.2.2023
-0530004056800585EUR2 0001015614218290323     RCNNOTPROVIDED
-0530004056800585EUR2 0001015614218290323     PDOFR FRANCE
-0430004081800585EUR2 00010156142B2290323  290323PRLV SEPA/DGFIP IMPOT                   0 0000000560630}FR46ZZZ005002
-0530004081800585EUR2 00010156142B2290323     NBEDGFIP IMPOT
-0530004081800585EUR2 00010156142B2290323     IBEFR46ZZZ005002
-0530004081800585EUR2 00010156142B2290323     RUMNN804148211DGFIP2019921505K41FN7QQ
-0530004081800585EUR2 00010156142B2290323     RCN220750510700113748308
-0530004081800585EUR2 00010156142B2290323     LCCTVA-032023-3310CA3
-0730004    00585EUR2 00010156142  290323                                                  0000006363387I`;
+    const text = `0130012    00585EUR2 00010156142  280323                                                  0000006564827I
+0430012056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{
+0530012056800585EUR2 0001015614218290323     NPYDOMUSVI
+0530012056800585EUR2 0001015614218290323     LCC/INV/3867 8.2.2023
+0530012056800585EUR2 0001015614218290323     RCNNOTPROVIDED
+0530012056800585EUR2 0001015614218290323     PDOFR FRANCE
+0430012081800585EUR2 00010156142B2290323  290323PRLV SEPA/DGFIP IMPOT                   0 0000000560630}FR46ZZZ005002
+0530012081800585EUR2 00010156142B2290323     NBEDGFIP IMPOT
+0530012081800585EUR2 00010156142B2290323     IBEFR46ZZZ005002
+0530012081800585EUR2 00010156142B2290323     RUMNN804148211DGFIP2019921505K41FN7QQ
+0530012081800585EUR2 00010156142B2290323     RCN220750510700113748308
+0530012081800585EUR2 00010156142B2290323     LCCTVA-032023-3310CA3
+0730012    00585EUR2 00010156142  290323                                                  0000006363387I`;
 
     expect(parse(text)).toEqual([
       {
@@ -371,7 +371,7 @@ describe('ebics parser', function () {
         },
         header: {
           record_code: '01',
-          bank_code: '30004',
+          bank_code: '30012',
           _1: '',
           desk_code: '00585',
           currency_code: 'EUR',
@@ -391,7 +391,7 @@ describe('ebics parser', function () {
           _4: '',
           _5: '',
           record_code: '07',
-          bank_code: '30004',
+          bank_code: '30012',
           desk_code: '00585',
           currency_code: 'EUR',
           nb_of_dec: '2',
@@ -402,7 +402,7 @@ describe('ebics parser', function () {
         transactions: [
           {
             record_code: '04',
-            bank_code: '30004',
+            bank_code: '30012',
             internal_code: '0568',
             desk_code: '00585',
             currency_code: 'EUR',
@@ -428,7 +428,7 @@ describe('ebics parser', function () {
           },
           {
             record_code: '04',
-            bank_code: '30004',
+            bank_code: '30012',
             internal_code: '0818',
             desk_code: '00585',
             currency_code: 'EUR',
@@ -2688,11 +2688,11 @@ describe('ebics parser', function () {
   });
 
   test('internal_code and operation code can be empty under conditions', () => {
-    const text = `0130004    00585EUR2 00010156142  280323                                                  0000006564827I
-0430004056800585EUR2 00010156142  290323  290323ABCDEFG                          0000000  0000000000000{
-0430004    00585EUR2 0001015614218290323  290323ABCDEFG                          0000000  0000000000000{
-0430004    00585EUR2 00010156142  290323  290323ABCDEFG                          0000000  0000000000000{
-0730004    00585EUR2 00010156142  290323                                                  0000006564827I`;
+    const text = `0130012    00585EUR2 00010156142  280323                                                  0000006564827I
+0430012056800585EUR2 00010156142  290323  290323ABCDEFG                          0000000  0000000000000{
+0430012    00585EUR2 0001015614218290323  290323ABCDEFG                          0000000  0000000000000{
+0430012    00585EUR2 00010156142  290323  290323ABCDEFG                          0000000  0000000000000{
+0730012    00585EUR2 00010156142  290323                                                  0000006564827I`;
 
     expect(parse(text)).toEqual([
       {
@@ -2709,7 +2709,7 @@ describe('ebics parser', function () {
           _4: '',
           _5: '',
           account_nb: '00010156142',
-          bank_code: '30004',
+          bank_code: '30012',
           currency_code: 'EUR',
           desk_code: '00585',
           nb_of_dec: '2',
@@ -2724,7 +2724,7 @@ describe('ebics parser', function () {
           _4: '',
           _5: '',
           account_nb: '00010156142',
-          bank_code: '30004',
+          bank_code: '30012',
           currency_code: 'EUR',
           desk_code: '00585',
           nb_of_dec: '2',
@@ -2740,7 +2740,7 @@ describe('ebics parser', function () {
             '_4:': '',
             account_nb: '00010156142',
             amount: '0',
-            bank_code: '30004',
+            bank_code: '30012',
             currency_code: 'EUR',
             desk_code: '00585',
             exempt_code: '',
@@ -2761,7 +2761,7 @@ describe('ebics parser', function () {
             '_4:': '',
             account_nb: '00010156142',
             amount: '0',
-            bank_code: '30004',
+            bank_code: '30012',
             currency_code: 'EUR',
             desk_code: '00585',
             exempt_code: '',
@@ -2782,7 +2782,7 @@ describe('ebics parser', function () {
             '_4:': '',
             account_nb: '00010156142',
             amount: '0',
-            bank_code: '30004',
+            bank_code: '30012',
             currency_code: 'EUR',
             desk_code: '00585',
             exempt_code: '',

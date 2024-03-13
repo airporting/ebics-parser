@@ -1,11 +1,11 @@
 const cases = [
   [
-    `0530004056800585EUR2 0001015614218290323     NPYDOMUSVI`,
+    `0530012056800585EUR2 0001015614218290323     NPYDOMUSVI`,
     {
       _1: '',
       _2: '',
       record_code: '05',
-      bank_code: '30004',
+      bank_code: '30012',
       internal_code: '0568',
       desk_code: '00585',
       currency_code: 'EUR',
