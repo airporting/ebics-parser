@@ -26,7 +26,7 @@ __metadata:
     eslint-plugin-jest: "npm:27.9.0"
     husky: "npm:9.0.11"
     jest: "npm:29.7.0"
-    joi: "npm:17.12.3"
+    joi: "npm:17.13.0"
     lint-staged: "npm:15.2.2"
     prettier: "npm:3.2.5"
   languageName: unknown
@@ -3884,16 +3884,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:17.12.3":
-  version: 17.12.3
-  resolution: "joi@npm:17.12.3"
+"joi@npm:17.13.0":
+  version: 17.13.0
+  resolution: "joi@npm:17.13.0"
   dependencies:
     "@hapi/hoek": "npm:^9.3.0"
     "@hapi/topo": "npm:^5.1.0"
     "@sideway/address": "npm:^4.1.5"
     "@sideway/formula": "npm:^3.0.1"
     "@sideway/pinpoint": "npm:^2.0.0"
-  checksum: 10/454dcc8ff1b095f978253bb1ef6d3033812d091d6a0a3da0ba7c3cb85623c7a1e657c19a8685839e991fe1cfb83ca25ea0caa1d17c9806dea0ffd49e43ecb0a2
+  checksum: 10/aae196d71edeb752b76c12560728e0c5a2b813956934443ddf5294af993a0bdf81c22cffc2170e4751f2adaa56873a4eafc24d697c2ec7055709219505e3e56b
   languageName: node
   linkType: hard
 
