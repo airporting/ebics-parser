@@ -1,3 +1,5 @@
+import { transactionHeaderParser } from './index.js';
+
 const cases = [
   [
     `0430012056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{`,
@@ -152,10 +154,8 @@ const cases = [
 ];
 
 describe('ebics transaction header parser', function () {
-  let parse = require('./index');
-
   test.each(cases)('case %#', (text, expectedTransaction, expectedProblems) => {
-    const { transaction, problems } = parse(text);
+    const { transaction, problems } = transactionHeaderParser(text);
 
     expect(transaction).toEqual(expectedTransaction);
     expect(problems).toEqual(expectedProblems);

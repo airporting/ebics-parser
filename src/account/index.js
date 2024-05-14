@@ -1,9 +1,10 @@
-const transactionHeaderParser = require('../transactionHeader');
-const transactionBodyParser = require('../transactionBody');
-const headerParser = require('../header');
-const footerParser = require('../footer');
+import { transactionHeaderParser } from '../transactionHeader/index.js';
+import { transactionBodyParser } from '../transactionBody/index.js';
+import { headerParser } from '../header/index.js';
+import { footerParser } from '../footer/index.js';
+import schemaFactory from './schema.js';
 
-module.exports = function chunkParser(allLines) {
+export function accountParser(allLines) {
   let header = {};
   let footer = {};
   const transactionsList = [];
@@ -168,7 +169,7 @@ module.exports = function chunkParser(allLines) {
     problems: problems.length ? problems : null,
   };
 
-  const schema = require('./schema')();
+  const schema = schemaFactory();
   const isAccountValid = schema.validate(account);
 
   if (isAccountValid.error) {
@@ -183,4 +184,4 @@ module.exports = function chunkParser(allLines) {
   }
 
   return account;
-};
+}

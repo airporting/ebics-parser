@@ -1,6 +1,6 @@
-const accountParser = require('./account');
+import { accountParser } from './account/index.js';
 
-module.exports = function (text) {
+export default function (text) {
   let allLines = text.split(/\r?\n/);
 
   if (allLines?.length === 1) {
@@ -36,4 +36,4 @@ module.exports = function (text) {
       throw err;
     }
   }
-};
+}

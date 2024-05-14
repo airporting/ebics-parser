@@ -1,4 +1,4 @@
-const parse = require('./index');
+import parse from './index.js';
 
 describe('ebics parser', function () {
   test('no transactions A', () => {

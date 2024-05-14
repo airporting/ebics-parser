@@ -1,11 +1,13 @@
-const Joi = require('joi').defaults((schema) =>
+import JoiBase from 'joi';
+
+const Joi = JoiBase.defaults((schema) =>
   schema.options({
     presence: 'required',
     convert: true,
   })
 );
 
-module.exports = () => {
+export default () => {
   const transactionSchema = Joi.object({
     record_code: Joi.valid('04'),
     bank_code: Joi.string(),

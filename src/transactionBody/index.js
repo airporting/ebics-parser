@@ -1,8 +1,8 @@
-const { format, parse } = require('date-fns');
+import { format, parse } from 'date-fns';
 
-const qualifierResolver = require('./qualifier');
+import qualifierResolver from './qualifier/index.js';
 
-module.exports = (text) => {
+export function transactionBodyParser(text) {
   const transaction = {};
 
   const parts = [
@@ -95,4 +95,4 @@ module.exports = (text) => {
   const resolved = qualifierResolver(transaction);
 
   return resolved;
-};
+}

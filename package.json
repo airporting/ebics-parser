@@ -16,7 +16,7 @@
     "prettier": "prettier --check ./",
     "prettier:write": "prettier --write ./",
     "publish": "yarn npm publish && git add package.json yarn.lock && git commit -m 'feat(version): bump' && git push && git status",
-    "test": "jest --coverage"
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --runInBand --config jest.config.js"
   },
   "config": {
     "commitizen": {
@@ -34,6 +34,7 @@
     "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "19.2.2",
     "@eslint/js": "9.2.0",
+    "@jest/globals": "29.7.0",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "9.2.0",
