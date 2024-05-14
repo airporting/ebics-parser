@@ -1,11 +1,16 @@
 import { parse, format } from 'date-fns';
 
 import getAmount from '../amount';
+import { ParsedTransactionFields, TransactionFields } from '../transaction';
 
-export default function (text) {
-  const header = {};
+export default function (text: string): ParsedTransactionFields {
+  const header: ParsedTransactionFields = {};
 
-  const parts = [
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    transformer?: (value: string, header: any) => string;
+  }[] = [
     {
       field: 'record_code',
       regex: '01',

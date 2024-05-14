@@ -1,9 +1,9 @@
 import accountParser from './account';
 
-export default function (text) {
+export default function (text: string) {
   let allLines = text.split(/\r?\n/);
 
-  if (allLines?.length === 1) {
+  if (allLines.length === 1) {
     allLines = text
       .replaceAll(/ (01|04|03|05|07)([0-9]{5})( |0)/g, ' \n$1$2$3')
       .split(/\r?\n/);
@@ -22,7 +22,7 @@ export default function (text) {
     },
     {
       currentIdx: -1,
-      chunks: [],
+      chunks: [] as string[][],
     }
   );
   const chunksByBank = reduced.chunks;

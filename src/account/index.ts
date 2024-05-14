@@ -1,19 +1,26 @@
-import transactionHeaderParser from '../transactionHeader';
+import transactionHeaderParser, {
+  ParsedTransactionHeader,
+} from '../transactionHeader';
 import transactionBodyParser from '../transactionBody';
 import headerParser from '../header';
 import footerParser from '../footer';
 import schema from './schema';
+import { ParsedTransactionFields } from '../transaction';
 
-export default function chunkParser(allLines) {
-  let header: any = {};
-  let footer: any = {};
-  const transactionsList = [];
-  let currentTransaction = null;
+export default function chunkParser(allLines: string[]) {
+  let header: ParsedTransactionFields = {};
+  let footer: ParsedTransactionFields = {};
+  const transactionsList: ParsedTransactionFields[] = [];
+  let currentTransaction: ParsedTransactionHeader = null;
   let currentLabelIncrement = 0;
-  const problems = [];
-  let startAmount;
-  let endAmount;
-  const transactionsAmounts = [];
+  const problems: {
+    message: string;
+    line?: string;
+    details?: any;
+  }[] = [];
+  let startAmount: string;
+  let endAmount: string;
+  const transactionsAmounts: string[] = [];
 
   allLines.forEach((line) => {
     if (!line.length) {
@@ -37,14 +44,13 @@ export default function chunkParser(allLines) {
         }
         currentTransaction = transactionHeaderParser(line);
 
-        if (currentTransaction.record_code === '03') {
+        if (currentTransaction.transaction.record_code === '03') {
           currentTransaction.problems.push({
             message: 'Wrong line qualifier',
             line,
           });
         }
 
-        // console.log({ amount: currentTransaction });
         if (currentTransaction.transaction.amount) {
           transactionsAmounts.push(currentTransaction.transaction.amount);
         }
@@ -145,7 +151,9 @@ export default function chunkParser(allLines) {
     Math.round(allTransactionsAmountsSum * 100) / 100
   );
   if (startAmount && endAmount) {
-    diff = Math.abs(Math.round((startAmount - endAmount) * 100) / 100);
+    diff = Math.abs(
+      Math.round((parseFloat(startAmount) - parseFloat(endAmount)) * 100) / 100
+    );
 
     if (diff !== transactionsSum) {
       problems.push({
@@ -156,11 +164,16 @@ export default function chunkParser(allLines) {
     }
   }
 
+  const parseFloatOr = <T>(value: string, or: T) => {
+    const parsed = parseFloat(value);
+    return isNaN(parsed) ? or : parsed;
+  };
+
   const account = {
     amounts: {
-      start: startAmount == +startAmount ? +startAmount : undefined,
-      end: endAmount == +endAmount ? +endAmount : undefined,
-      diff: diff == +diff ? +diff : undefined,
+      start: parseFloatOr(startAmount, undefined),
+      end: parseFloatOr(endAmount, undefined),
+      diff: parseFloatOr(diff?.toString(), undefined),
       transactions: transactionsSum,
     },
     header,

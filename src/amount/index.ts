@@ -26,22 +26,15 @@ const debitLettersList = {
 
 const debitLetters = Object.keys(debitLettersList);
 
-export default function (word, nbDecimals) {
+export default function (word: string, nbDecimals: number): string {
   let amount;
 
   const lastKey = word.slice(-1);
   const startIndex = Array.from(word).findIndex((element) => element !== '0');
   let needed = word.slice(startIndex, -1);
-  // console.log({
-  //   nbDecimals,
-  //   word,
-  //   lastKey,
-  //   startIndex,
-  //   needed,
-  // });
 
   if (!needed.length) {
-    needed = 0;
+    needed = '0';
   }
 
   let sign = '';

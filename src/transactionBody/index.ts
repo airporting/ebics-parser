@@ -1,11 +1,20 @@
 import { format, parse } from 'date-fns';
 
 import qualifierResolver from './qualifier';
+import { TransactionFields } from '../transaction';
 
-export default function (text) {
-  const transaction: any = {};
+export type ParsedTransactionBody = Partial<
+  Record<keyof TransactionFields, string>
+>;
 
-  const parts = [
+export default function (text: string): ParsedTransactionBody {
+  const transaction: ParsedTransactionBody = {};
+
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    transformer?: (value: string, transaction: any) => string;
+  }[] = [
     {
       field: 'record_code',
       regex: '05',
@@ -45,7 +54,7 @@ export default function (text) {
     {
       field: 'operation_date',
       regex: '[0-9]{6}',
-      transformer: (value, transaction: any) => {
+      transformer: (value, transaction) => {
         return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
       },
     },

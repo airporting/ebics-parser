@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import parse from './index';
 
-const cases = [
+const cases: [string, string, number][] = [
   ['0000006564827I', '656482.79', 2],
   ['0000000008653O', '-865.36', 2],
   ['0000003445691I', '344569.19', 2],

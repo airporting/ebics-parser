@@ -1,10 +1,15 @@
 import { parse, format } from 'date-fns';
 import getAmount from '../amount';
+import { ParsedTransactionFields, TransactionFields } from '../transaction';
 
-export default function (text) {
-  const footer = {};
+export default function (text: string): ParsedTransactionFields {
+  const footer: ParsedTransactionFields = {};
 
-  const parts = [
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    transformer?: (value: string, footer: ParsedTransactionFields) => string;
+  }[] = [
     {
       field: 'record_code',
       regex: '07',
@@ -55,8 +60,8 @@ export default function (text) {
     {
       field: 'next_amount',
       regex: '[0-9]{13}[A-R{}]',
-      transformer: (value, header) => {
-        return getAmount(value, header.nb_of_dec);
+      transformer: (value, footer) => {
+        return getAmount(value, parseInt(footer.nb_of_dec));
       },
     },
     {

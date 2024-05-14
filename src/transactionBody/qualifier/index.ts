@@ -1,4 +1,10 @@
-export default function ({ qualifier, additional_info, ...restTransaction }) {
+import { ParsedTransactionFields } from '../../transaction';
+
+export default function ({
+  qualifier,
+  additional_info,
+  ...restTransaction
+}: ParsedTransactionFields) {
   const transaction: any = {};
 
   switch (qualifier) {

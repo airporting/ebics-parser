@@ -1,12 +1,26 @@
 import { format, parse } from 'date-fns';
 
 import getAmount from '../amount';
+import { ParsedTransactionFields, TransactionFields } from '../transaction';
 
-export default function (text) {
-  const transaction = {};
-  const problems = [];
+export type ParsedTransactionHeader = {
+  transaction: ParsedTransactionFields;
+  problems: { message: string; line: string }[];
+};
 
-  const parts = [
+export default function (text: string): ParsedTransactionHeader {
+  const transaction: ParsedTransactionHeader['transaction'] = {};
+  const problems: ParsedTransactionHeader['problems'] = [];
+
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    required?: boolean;
+    transformer?: (
+      value: string,
+      header: ParsedTransactionHeader['transaction']
+    ) => string;
+  }[] = [
     {
       field: 'record_code',
       regex: '0[3,4]',
@@ -92,11 +106,12 @@ export default function (text) {
       field: 'amount',
       regex: '[0-9]{13}[A-R{}]',
       transformer: (value, header) => {
-        return getAmount(value, header.nb_of_dec);
+        return getAmount(value, parseInt(header.nb_of_dec));
       },
       required: true,
     },
     {
+      // TODO: @MathRobin trailing ':'?
       field: '_4:',
       regex: '.*',
     },
@@ -130,7 +145,10 @@ export default function (text) {
       transaction[field] = matching[idx + 1]?.trim();
     }
     if (required && !transaction[field]) {
-      problems.push(`transaction header missing part "${field}"`);
+      problems.push({
+        message: `Missing required field: ${field}`,
+        line: text,
+      });
     }
   });
 

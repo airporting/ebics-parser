@@ -1,7 +1,7 @@
 import parse from './index';
 import { describe, test, expect } from 'vitest';
 
-const cases = [
+const cases: [string, Record<string, string>][] = [
   [
     `0530012056800585EUR2 0001015614218290323     NPYDOMUSVI`,
     {
