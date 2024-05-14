@@ -26,7 +26,7 @@ const debitLettersList = {
 
 const debitLetters = Object.keys(debitLettersList);
 
-module.exports = function (word, nbDecimals) {
+export default function (word, nbDecimals) {
   let amount;
 
   const lastKey = word.slice(-1);
@@ -68,4 +68,4 @@ module.exports = function (word, nbDecimals) {
   }
 
   return amount;
-};
+}

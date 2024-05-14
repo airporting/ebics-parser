@@ -1,10 +1,7 @@
+import { describe, test, expect } from 'vitest';
+import parse from './index';
+
 describe('account', function () {
-  let parse;
-
-  beforeEach(() => {
-    parse = require('./index');
-  });
-
   test('Sycomore - no transactions', () => {
     const text = [
       `0130012    00071EUR2 00010139479  280323                                                  0000003445691I`,

@@ -1,3 +1,6 @@
+import { describe, test, expect } from 'vitest';
+import parse from './index';
+
 const cases = [
   [
     `0130012    00071EUR2 00010139479  280323                                                  0000003445691I`,
@@ -118,8 +121,6 @@ const cases = [
 ];
 
 describe('ebics header parser', function () {
-  let parse = require('./index');
-
   test.each(cases)('case %#', (text, expected) => {
     expect(parse(text)).toEqual(expected);
   });

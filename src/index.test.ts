@@ -1,4 +1,5 @@
-const parse = require('./index');
+import { describe, test, expect } from 'vitest';
+import parse from './index';
 
 describe('ebics parser', function () {
   test('no transactions A', () => {

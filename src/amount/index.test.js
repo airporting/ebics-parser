@@ -1,3 +1,6 @@
+import { describe, test, expect } from 'vitest';
+import parse from './index';
+
 const cases = [
   ['0000006564827I', '656482.79', 2],
   ['0000000008653O', '-865.36', 2],
@@ -13,8 +16,6 @@ const cases = [
 ];
 
 describe('ebics amount parser', function () {
-  let parse = require('./index');
-
   test.each(cases)('case %s to %s (%s decimals)', (text, expected, nbDec) => {
     expect(parse(text, nbDec)).toEqual(expected);
   });

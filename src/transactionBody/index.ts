@@ -1,26 +1,26 @@
-const { parse, format } = require('date-fns');
+import { format, parse } from 'date-fns';
 
-const getAmount = require('../amount');
+import qualifierResolver from './qualifier';
 
-module.exports = function (text) {
-  const header = {};
+export default function (text) {
+  const transaction: any = {};
 
   const parts = [
     {
       field: 'record_code',
-      regex: '01',
+      regex: '05',
     },
     {
       field: 'bank_code',
-      regex: '[0-9]{5}',
+      regex: '[0-9 ]{5}',
     },
     {
-      field: '_1',
-      regex: '.{4}',
+      field: 'internal_code',
+      regex: '[a-zA-Z0-9 ]{4}',
     },
     {
       field: 'desk_code',
-      regex: '[0-9]{5}',
+      regex: '[0-9 ]{5}',
     },
     {
       field: 'currency_code',
@@ -31,37 +31,34 @@ module.exports = function (text) {
       regex: '[0-9 ]{1}',
     },
     {
-      field: '_2',
-      regex: '.{1}',
+      field: '_1',
+      regex: '[a-zA-Z0-9 ]{1}',
     },
     {
       field: 'account_nb',
-      regex: '[a-zA-Z0-9]{11}',
+      regex: '[a-zA-Z0-9 ]{11}',
     },
     {
-      field: '_3',
-      regex: '.{2}',
+      field: 'operation_code',
+      regex: '[a-zA-Z0-9 ]{2}',
     },
     {
-      field: 'prev_date',
+      field: 'operation_date',
       regex: '[0-9]{6}',
-      transformer: (value) => {
+      transformer: (value, transaction: any) => {
         return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
       },
     },
     {
-      field: '_4',
-      regex: '.{50}',
+      field: '_2',
+      regex: '.{5}',
     },
     {
-      field: 'prev_amount',
-      regex: '[0-9]{13}[A-R{}]',
-      transformer: (value, header) => {
-        return getAmount(value, header.nb_of_dec);
-      },
+      field: 'qualifier',
+      regex: '[a-zA-Z0-9 ]{3}',
     },
     {
-      field: '_5',
+      field: 'additional_info',
       regex: '.*',
     },
   ];
@@ -89,11 +86,13 @@ module.exports = function (text) {
 
   parts.forEach(({ field, transformer }, idx) => {
     if (transformer) {
-      header[field] = transformer(matching[idx + 1], header);
+      transaction[field] = transformer(matching[idx + 1], transaction);
     } else {
-      header[field] = matching[idx + 1]?.trim();
+      transaction[field] = matching[idx + 1]?.trim();
     }
   });
 
-  return header;
-};
+  const resolved = qualifierResolver(transaction);
+
+  return resolved;
+}

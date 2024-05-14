@@ -1,3 +1,6 @@
+import parse from './index';
+import { describe, test, expect } from 'vitest';
+
 const cases = [
   [
     `0530012056800585EUR2 0001015614218290323     NPYDOMUSVI`,
@@ -103,8 +106,6 @@ const cases = [
 ];
 
 describe('ebics transaction body parser', function () {
-  let parse = require('./index');
-
   test.each(cases)('case %#', (text, expected) => {
     expect(parse(text)).toEqual(expected);
   });

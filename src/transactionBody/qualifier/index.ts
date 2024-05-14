@@ -1,5 +1,5 @@
-module.exports = ({ qualifier, additional_info, ...restTransaction }) => {
-  const transaction = {};
+export default function ({ qualifier, additional_info, ...restTransaction }) {
+  const transaction: any = {};
 
   switch (qualifier) {
     case 'CBE':
@@ -73,4 +73,4 @@ module.exports = ({ qualifier, additional_info, ...restTransaction }) => {
   }
 
   return { ...transaction, ...restTransaction };
-};
+}
