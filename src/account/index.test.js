@@ -1,17 +1,13 @@
+import { accountParser } from './index.js';
+
 describe('account', function () {
-  let parse;
-
-  beforeEach(() => {
-    parse = require('./index');
-  });
-
   test('Sycomore - no transactions', () => {
     const text = [
       `0130012    00071EUR2 00010139479  280323                                                  0000003445691I`,
       `0730012    00071EUR2 00010139479  290323                                                  0000003445691I`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: 344569.19,
@@ -59,7 +55,7 @@ describe('account', function () {
       `0730012    00823EUR2 00010738652  290323                                                  0000000008653O`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: -865.36,
@@ -107,7 +103,7 @@ describe('account', function () {
       `0730056    00917EUR2 09170295947  070921                                                  0000000008474P                `,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: -847.47,
@@ -166,7 +162,7 @@ describe('account', function () {
       `0730012    00585EUR2 00010156142  290323                                                  0000006363387I`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 20144,
         end: 636338.79,
@@ -292,7 +288,7 @@ describe('account', function () {
       `0718020    00001EUR2 00410GXLT01  070423                                                  0000000000000}`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 1225.85,
         end: 0,
@@ -593,7 +589,7 @@ describe('account', function () {
       '0718020    00001EUR2 00410GXLT11  060423                                                  0000024365270M                ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 6600,
         end: -2436527.04,
@@ -763,7 +759,7 @@ describe('account', function () {
       `0718020    00001EUR2 00410GXLT01  060323                                                  0000000000000}`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 77317.88,
         end: 0,
@@ -878,7 +874,7 @@ describe('account', function () {
       `0718020    00001EUR2 00410GXLT01  220323                                                  0000000000000}`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: 0,
@@ -926,7 +922,7 @@ describe('account', function () {
       `0718020    00001EUR2 00410GXLT11  220323                                                  0000019966371M                `,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: -1996637.14,
@@ -981,7 +977,7 @@ describe('account', function () {
       `0730003    01678EUR2 00020086644  170423                                                  0000000472898C`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: 47289.83,
@@ -1107,7 +1103,7 @@ describe('account', function () {
       `0730003    03300EUR2 00020547711  170423                                                  0000002203310B                C`,
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 641.19,
         end: 220331.02,
@@ -1235,7 +1231,7 @@ describe('account', function () {
       '0730012    00071EUR2 00010139479  140423                                                  0000003676615I                ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 34896.72,
         end: 367661.59,
@@ -1463,7 +1459,7 @@ describe('account', function () {
       '0730012    00585EUR2 00010156142  140423                                                  0000008846069H',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 438.55,
         end: 884606.98,
@@ -1558,7 +1554,7 @@ describe('account', function () {
       '0730012    00760EUR2 01124412726  140423                                                  0000003233602C                ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 8112.75,
         end: 323360.23,
@@ -1759,7 +1755,7 @@ describe('account', function () {
       '0710278    06186EUR2 00020828502  060323                                                  0000003524844E    ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 252,
         end: 352484.45,
@@ -1843,7 +1839,7 @@ describe('account', function () {
       '0710207    00233EUR2 32418565371  070323                                                  0000000234624B                ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 56.16,
         end: 23462.42,
@@ -1916,7 +1912,7 @@ describe('account', function () {
       '0710207    00233EUR2 24218653792  060323                                                  0000000235185H        ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 0,
         end: 23518.58,
@@ -1966,7 +1962,7 @@ describe('account', function () {
       '0710279    01084EUR2 00023107391  110424                                                  0000002524730E                ',
     ];
 
-    expect(parse(text)).toEqual({
+    expect(accountParser(text)).toEqual({
       amounts: {
         diff: 303.94,
         end: 252473.05,

@@ -1,8 +1,8 @@
-const { format, parse } = require('date-fns');
+import { format, parse } from 'date-fns';
 
-const getAmount = require('../amount');
+import { getAmount } from '../amount/index.js';
 
-module.exports = (text) => {
+export function transactionHeaderParser(text) {
   const transaction = {};
   const problems = [];
 
@@ -138,4 +138,4 @@ module.exports = (text) => {
     transaction,
     problems,
   };
-};
+}

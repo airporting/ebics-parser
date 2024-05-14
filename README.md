@@ -23,7 +23,7 @@ https://www.promosoft.fr/wp-content/uploads/2013/06/Livre_blanc_SEPA.pdf
 ## Usage
 
 ```javascript
-const ebicsParser = require('@airporting/ebics-parser');
+import ebicsParser from '@airporting/ebics-parser';
 
 const fileContent = `0130012    00585EUR2 00010156142  280323                                                  0000006564827I
 0430012056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{

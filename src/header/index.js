@@ -1,8 +1,8 @@
-const { parse, format } = require('date-fns');
+import { parse, format } from 'date-fns';
 
-const getAmount = require('../amount');
+import { getAmount } from '../amount/index.js';
 
-module.exports = function (text) {
+export function headerParser(text) {
   const header = {};
 
   const parts = [
@@ -96,4 +96,4 @@ module.exports = function (text) {
   });
 
   return header;
-};
+}
