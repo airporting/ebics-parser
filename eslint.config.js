@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 // import json from 'eslint-plugin-json';
 
 export default [
-  { ignores: ['.idea/*', '.yarn/*', 'node_modules/*', 'coverage/*'] },
+  { ignores: ['.idea/*', '.yarn/*', 'node_modules/*', 'coverage/*', 'dist/*'] },
   js.configs.recommended,
   eslintPrettier,
   ...tseslint.configs.recommended,
@@ -28,6 +28,15 @@ export default [
         babelOptions: {
           plugins: ['@babel/plugin-syntax-import-assertions'],
         },
+      },
+    },
+  },
+  {
+    files: ['**/*.test.js'],
+    plugins: { jest },
+    languageOptions: {
+      globals: {
+        ...globals.jest,
       },
     },
   },
