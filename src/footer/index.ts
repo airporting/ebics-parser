@@ -61,7 +61,7 @@ export default function (text: string): ParsedTransactionFields {
       field: 'next_amount',
       regex: '[0-9]{13}[A-R{}]',
       transformer: (value, footer) => {
-        return getAmount(value, parseInt(footer.nb_of_dec ?? '2'));
+        return getAmount(value, parseInt(footer.nb_of_dec ?? '0'));
       },
     },
     {

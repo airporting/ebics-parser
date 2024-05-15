@@ -111,7 +111,6 @@ export default function (text: string): ParsedTransactionHeader {
       required: true,
     },
     {
-      // TODO: @MathRobin trailing ':'?
       field: '_4:',
       regex: '.*',
     },
