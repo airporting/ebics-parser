@@ -3,6 +3,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "target": "ES2021",
+    "esModuleInterop": true,
     "declaration": true,
     "outDir": "./dist",
     "allowJs": true,

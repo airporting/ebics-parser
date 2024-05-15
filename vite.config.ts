@@ -10,6 +10,8 @@ void !function () {
 }();
 `;
 
+const D_TS_DECLARE_MODULE = `declare module "@airporting/ebics-parser-ts"`;
+
 export default defineConfig({
   build: {
     minify: true,
@@ -19,7 +21,18 @@ export default defineConfig({
       fileName: 'index',
     },
   },
-  plugins: [dts(), injectContent([{ path: /.*/, content: DEFINE_SELF }])],
+  plugins: [
+    dts({
+      beforeWriteFile(filePath, content) {
+        const res = { filePath, content };
+        if (!filePath.includes('dist/index')) return res;
+        if (res.content.includes(D_TS_DECLARE_MODULE)) return res;
+        res.content = `${D_TS_DECLARE_MODULE} {${res.content}}`;
+        return res;
+      },
+    }),
+    injectContent([{ path: /.*/, content: DEFINE_SELF }]),
+  ],
 });
 
 function injectContent(options: { path: RegExp; content: string }[]): Plugin {

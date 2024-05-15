@@ -1,11 +1,45 @@
 import { ParsedTransactionFields } from '../../transaction';
 
+export type ParsedTransaction = {
+  creditor_account?: string;
+  creditor_id?: string;
+  creditor_id_type?: string;
+  ultimate_creditor_id?: string;
+  ultimate_creditor_type?: string;
+  ultimate_debtor_id?: string;
+  ultimate_debtor_id_type?: string;
+  debtor_id?: string;
+  debtor_type?: string;
+  remittance_information_1?: string;
+  remittance_information_2?: string;
+  creditor_ref_information?: string;
+  label?: string;
+  currency_code?: string;
+  nb_of_dec_amount?: string;
+  equivalent_amount?: string;
+  nb_of_dec_exchange_rate?: string;
+  exchange_rate?: string;
+  _?: string;
+  creditor_name?: string;
+  ultimate_creditor_name?: string;
+  ultimate_debtor_name?: string;
+  debtor_name?: string;
+  PDO?: string;
+  end2end_identification?: string;
+  purpose?: string;
+  payment_infor_id?: string;
+  instruction_id?: string;
+  mandate_identification?: string;
+  sequence_type?: string;
+  [key: string]: string;
+} & Omit<ParsedTransactionFields, 'qualifier' | 'additional_info'>;
+
 export default function ({
   qualifier,
   additional_info,
   ...restTransaction
-}: ParsedTransactionFields) {
-  const transaction: any = {};
+}: ParsedTransactionFields): ParsedTransaction {
+  const transaction: Partial<ParsedTransaction> = {};
 
   switch (qualifier) {
     case 'CBE':

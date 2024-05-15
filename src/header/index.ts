@@ -9,7 +9,7 @@ export default function (text: string): ParsedTransactionFields {
   const parts: {
     field: keyof TransactionFields;
     regex: string;
-    transformer?: (value: string, header: any) => string;
+    transformer?: (value: string, header: ParsedTransactionFields) => string;
   }[] = [
     {
       field: 'record_code',
@@ -62,7 +62,7 @@ export default function (text: string): ParsedTransactionFields {
       field: 'prev_amount',
       regex: '[0-9]{13}[A-R{}]',
       transformer: (value, header) => {
-        return getAmount(value, header.nb_of_dec);
+        return getAmount(value, parseInt(header.nb_of_dec));
       },
     },
     {

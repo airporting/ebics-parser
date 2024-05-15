@@ -16,7 +16,7 @@ export default function chunkParser(allLines: string[]) {
   const problems: {
     message: string;
     line?: string;
-    details?: any;
+    details?: { message: string; line?: string }[];
   }[] = [];
   let startAmount: string;
   let endAmount: string;
@@ -191,7 +191,7 @@ export default function chunkParser(allLines: string[]) {
 
     account.problems.push({
       message: 'Malformed account',
-      details: isAccountValid.error?.message,
+      details: [{ message: isAccountValid.error?.message }],
     });
   }
 
