@@ -92,6 +92,10 @@ export default function (text: string) {
     }
   }
 
+  if (!matching) {
+    throw 'Could not parse transaction body';
+  }
+
   parts.forEach(({ field, transformer }, idx) => {
     if (transformer) {
       transaction[field] = transformer(matching[idx + 1], transaction);

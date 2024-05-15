@@ -106,7 +106,7 @@ export default function (text: string): ParsedTransactionHeader {
       field: 'amount',
       regex: '[0-9]{13}[A-R{}]',
       transformer: (value, header) => {
-        return getAmount(value, parseInt(header.nb_of_dec));
+        return getAmount(value, parseInt(header.nb_of_dec ?? '2'));
       },
       required: true,
     },
@@ -136,6 +136,17 @@ export default function (text: string): ParsedTransactionHeader {
         break;
       }
     }
+  }
+
+  if (!matching) {
+    problems.push({
+      message: 'Could not match header line with regex',
+      line: text,
+    });
+    return {
+      transaction,
+      problems,
+    };
   }
 
   parts.forEach(({ field, transformer, required }, idx) => {

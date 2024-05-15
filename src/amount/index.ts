@@ -1,3 +1,4 @@
+type CreditLetterKey = keyof typeof creditLettersList;
 const creditLettersList = {
   A: '1',
   B: '2',
@@ -11,6 +12,7 @@ const creditLettersList = {
   '{': '0',
 };
 
+type DebitLetterKey = keyof typeof debitLettersList;
 const debitLettersList = {
   J: '1',
   K: '2',
@@ -39,10 +41,10 @@ export default function (word: string, nbDecimals: number): string {
 
   let sign = '';
   if (debitLetters.includes(lastKey)) {
-    amount = `${needed}${debitLettersList[lastKey]}`;
+    amount = `${needed}${debitLettersList[lastKey as DebitLetterKey]}`;
     sign = '-';
   } else {
-    amount = `${needed}${creditLettersList[lastKey]}`;
+    amount = `${needed}${creditLettersList[lastKey as CreditLetterKey]}`;
   }
 
   if (amount.length > nbDecimals) {

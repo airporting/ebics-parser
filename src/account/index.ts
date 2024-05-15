@@ -5,21 +5,21 @@ import transactionBodyParser from '../transactionBody';
 import headerParser from '../header';
 import footerParser from '../footer';
 import schema from './schema';
-import { ParsedTransactionFields } from '../transaction';
+import { ParsedTransactionFields, TransactionFields } from '../transaction';
 
 export default function chunkParser(allLines: string[]) {
   let header: ParsedTransactionFields = {};
   let footer: ParsedTransactionFields = {};
   const transactionsList: ParsedTransactionFields[] = [];
-  let currentTransaction: ParsedTransactionHeader = null;
+  let currentTransaction: ParsedTransactionHeader | null = null;
   let currentLabelIncrement = 0;
   const problems: {
     message: string;
     line?: string;
     details?: { message: string; line?: string }[];
   }[] = [];
-  let startAmount: string;
-  let endAmount: string;
+  let startAmount: string | undefined;
+  let endAmount: string | undefined;
   const transactionsAmounts: string[] = [];
 
   allLines.forEach((line) => {
@@ -67,10 +67,13 @@ export default function chunkParser(allLines: string[]) {
           delete transaction.label;
         }
 
-        const filledTransactionFields = {};
+        const filledTransactionFields: Record<string, string | undefined> = {};
         Object.entries(transaction)
           .filter(([key, value]) => {
-            return value !== '' || !currentTransaction.transaction[key];
+            return (
+              value !== '' ||
+              !currentTransaction?.transaction[key as keyof TransactionFields]
+            );
           })
           .forEach(([key, value]) => {
             filledTransactionFields[key] = value;
@@ -78,11 +81,11 @@ export default function chunkParser(allLines: string[]) {
 
         currentTransaction = {
           transaction: {
-            ...currentTransaction.transaction,
+            ...currentTransaction?.transaction,
             ...filledTransactionFields,
             record_code: '04',
           },
-          problems: [...currentTransaction.problems],
+          problems: currentTransaction?.problems.slice(0) || [],
         };
 
         return;
@@ -122,7 +125,7 @@ export default function chunkParser(allLines: string[]) {
       });
     } catch (err) {
       problems.push({
-        message: err,
+        message: (err as string).toString(),
         line,
       });
     }
@@ -147,7 +150,7 @@ export default function chunkParser(allLines: string[]) {
   }
 
   let diff;
-  let transactionsSum = Math.abs(
+  const transactionsSum = Math.abs(
     Math.round(allTransactionsAmountsSum * 100) / 100
   );
   if (startAmount && endAmount) {
@@ -164,7 +167,8 @@ export default function chunkParser(allLines: string[]) {
     }
   }
 
-  const parseFloatOr = <T>(value: string, or: T) => {
+  const parseFloatOr = <T>(value: string | undefined, or: T) => {
+    if (!value) return or;
     const parsed = parseFloat(value);
     return isNaN(parsed) ? or : parsed;
   };

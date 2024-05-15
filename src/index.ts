@@ -28,7 +28,7 @@ export default function (text: string) {
   const chunksByBank = reduced.chunks;
 
   try {
-    return chunksByBank.map((chunk) => accountParser(chunk));
+    return chunksByBank.map((chunk) => accountParser(chunk).problems);
   } catch (err) {
     if (!chunksByBank) {
       throw 'Header, or footer, missing or malformed';

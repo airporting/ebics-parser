@@ -62,7 +62,7 @@ export default function (text: string): ParsedTransactionFields {
       field: 'prev_amount',
       regex: '[0-9]{13}[A-R{}]',
       transformer: (value, header) => {
-        return getAmount(value, parseInt(header.nb_of_dec));
+        return getAmount(value, parseInt(header.nb_of_dec ?? '2'));
       },
     },
     {
@@ -90,6 +90,10 @@ export default function (text: string): ParsedTransactionFields {
         break;
       }
     }
+  }
+
+  if (!matching) {
+    throw 'Header, or footer, missing or malformed';
   }
 
   parts.forEach(({ field, transformer }, idx) => {
