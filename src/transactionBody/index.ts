@@ -1,7 +1,7 @@
 import { format, parse } from 'date-fns';
 
 import qualifierResolver from './qualifier';
-import { ParsedTransactionFields, TransactionFields } from '../transaction';
+import { ParsedTransactionFields, TransactionFields } from '@/src/transaction';
 
 export default function (text: string) {
   const transaction: ParsedTransactionFields = {};

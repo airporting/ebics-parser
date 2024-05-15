@@ -1,7 +1,7 @@
 import { format, parse } from 'date-fns';
 
-import getAmount from '../amount';
-import { ParsedTransactionFields, TransactionFields } from '../transaction';
+import getAmount from '@/src/amount';
+import { ParsedTransactionFields, TransactionFields } from '@/src/transaction';
 
 export type ParsedTransactionHeader = {
   transaction: ParsedTransactionFields;

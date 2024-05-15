@@ -1,6 +1,7 @@
 import { Plugin, defineConfig } from 'vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const DEFINE_SELF = `
 void !function () {
@@ -22,6 +23,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    tsconfigPaths(),
     dts({
       beforeWriteFile(filePath, content) {
         const res = { filePath, content };

@@ -1,4 +1,4 @@
-import { ParsedTransactionFields } from '../../transaction';
+import { ParsedTransactionFields } from '@/src/transaction';
 
 export type ParsedTransaction = {
   creditor_account?: string;

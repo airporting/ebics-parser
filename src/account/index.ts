@@ -1,11 +1,11 @@
 import transactionHeaderParser, {
   ParsedTransactionHeader,
-} from '../transactionHeader';
-import transactionBodyParser from '../transactionBody';
-import headerParser from '../header';
-import footerParser from '../footer';
+} from '@/src/transactionHeader';
+import transactionBodyParser from '@/src/transactionBody';
+import headerParser from '@/src/header';
+import footerParser from '@/src/footer';
 import schema from './schema';
-import { ParsedTransactionFields, TransactionFields } from '../transaction';
+import { ParsedTransactionFields, TransactionFields } from '@/src/transaction';
 
 export default function chunkParser(allLines: string[]) {
   let header: ParsedTransactionFields = {};

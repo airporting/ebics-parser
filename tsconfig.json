@@ -8,6 +8,12 @@
     "outDir": "./dist",
     "allowJs": true,
     "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
   },
   "include": [
     "src/**/*"

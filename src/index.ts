@@ -1,4 +1,4 @@
-import accountParser from './account';
+import accountParser from '@/src/account';
 
 export default function (text: string) {
   let allLines = text.split(/\r?\n/);

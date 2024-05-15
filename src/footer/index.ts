@@ -1,6 +1,6 @@
 import { parse, format } from 'date-fns';
-import getAmount from '../amount';
-import { ParsedTransactionFields, TransactionFields } from '../transaction';
+import getAmount from '@/src/amount';
+import { ParsedTransactionFields, TransactionFields } from '@/src/transaction';
 
 export default function (text: string): ParsedTransactionFields {
   const footer: ParsedTransactionFields = {};
