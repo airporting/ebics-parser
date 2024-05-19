@@ -28,7 +28,7 @@ __metadata:
     eslint: "npm:9.3.0"
     eslint-config-prettier: "npm:9.1.0"
     eslint-plugin-jest: "npm:28.5.0"
-    globals: "npm:15.2.0"
+    globals: "npm:15.3.0"
     husky: "npm:9.0.11"
     jest: "npm:29.7.0"
     joi: "npm:17.13.1"
@@ -2953,10 +2953,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:15.2.0":
-  version: 15.2.0
-  resolution: "globals@npm:15.2.0"
-  checksum: 10/a3cb67b037c84bfae1a6bedbe316a392a0e40a602b7730fe846312bcc460dd7b08059210762ae6f0e4343259334d473a821d537246983399b10c30c6911b7f9c
+"globals@npm:15.3.0":
+  version: 15.3.0
+  resolution: "globals@npm:15.3.0"
+  checksum: 10/ad4e845884e045d211fd7c4511f51a3484d6db8438d7a8ec9366919771f802596964aaa514f2561bd375ee7d0d57e83a056ef50996eee5a676400534c75e4d06
   languageName: node
   linkType: hard
 
