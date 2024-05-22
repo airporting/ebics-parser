@@ -5,7 +5,7 @@ export default function (text) {
 
   if (allLines?.length === 1) {
     allLines = text
-      .replaceAll(/ (01|04|03|05|07)([0-9]{5})( |0)/g, ' \n$1$2$3')
+      .replaceAll(/ (01|04|05|07)([0-9]{5})( |0)/g, ' \n$1$2$3')
       .split(/\r?\n/);
   }
 
