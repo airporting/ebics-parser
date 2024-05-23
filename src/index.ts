@@ -1,6 +1,6 @@
-import { accountParser } from './account/index.js';
+import { accountParser } from '@/src/account';
 
-export default function (text) {
+export default function (text: string) {
   let allLines = text.split(/\r?\n/);
 
   if (allLines?.length === 1) {
@@ -23,6 +23,9 @@ export default function (text) {
     {
       currentIdx: -1,
       chunks: [],
+    } as {
+      currentIdx: number;
+      chunks: string[][];
     }
   );
   const chunksByBank = reduced.chunks;

@@ -1,6 +1,6 @@
 {
   "name": "@airporting/ebics-parser",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -38,6 +38,10 @@
       "prettier --write"
     ]
   },
+  "dependencies": {
+    "date-fns": "3.6.0",
+    "joi": "17.13.1"
+  },
   "devDependencies": {
     "@babel/core": "7.24.5",
     "@babel/eslint-parser": "7.24.5",
@@ -60,9 +64,5 @@
     "vite-plugin-dts": "3.9.1",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.6.0"
-  },
-  "dependencies": {
-    "date-fns": "3.6.0",
-    "joi": "17.13.1"
   }
 }

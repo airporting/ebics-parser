@@ -5,3 +5,4 @@ coverage
 .yarn
 .idea
 node_modules
+dist

@@ -1,15 +1,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Static Badge](https://img.shields.io/badge/coverage-82.56-brightgreen)
-![Static Badge](https://img.shields.io/badge/release-1.13.9-blue)
+![Static Badge](https://img.shields.io/badge/coverage-92-brightgreen)
+![Static Badge](https://img.shields.io/badge/release-3.0.1-blue)
 [![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
 
-Lightweight and very fast parser, only two dep (date-fns, joi).
+Lightweight and very fast parser, only two dep (date-fns, joi). Developed with TS, can be used with ESM only in JS. Fully typed.
 
 Used by [Airporting](https://www.airporting.com)
 
-Tested on NodeJS 18.x and 20.x
+Tested on NodeJS 18.x, 20.x and 22.x
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/airporting)
 
