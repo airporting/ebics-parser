@@ -5,7 +5,8 @@
 
 # ebics-parser
 
-Lightweight and very fast parser, only two dep (date-fns, joi). Developed with TS, can be used with ESM only in JS. Fully typed.
+Lightweight and very fast parser for EBICS file for Node.js & TypeScript.
+Only two dep (date-fns, joi).
 
 Used by [Airporting](https://www.airporting.com)
 
