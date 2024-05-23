@@ -1,19 +1,30 @@
-import { transactionHeaderParser } from '../transactionHeader/index.js';
-import { transactionBodyParser } from '../transactionBody/index.js';
-import { headerParser } from '../header/index.js';
-import { footerParser } from '../footer/index.js';
-import schemaFactory from './schema.js';
+import {
+  type ParsedTransactionHeader,
+  transactionHeaderParser,
+} from '@/src/transactionHeader';
+import { transactionBodyParser } from '@/src/transactionBody';
+import { headerParser } from '@/src/header';
+import { footerParser } from '@/src/footer';
+import { schema } from './schema';
+import type {
+  ParsedTransactionFields,
+  TransactionFields,
+} from '@/src/transaction';
 
-export function accountParser(allLines) {
-  let header = {};
-  let footer = {};
-  const transactionsList = [];
-  let currentTransaction = null;
+export function accountParser(allLines: string[]) {
+  let header: ParsedTransactionFields = {};
+  let footer: ParsedTransactionFields = {};
+  const transactionsList: ParsedTransactionFields[] = [];
+  let currentTransaction: ParsedTransactionHeader | null = null;
   let currentLabelIncrement = 0;
-  const problems = [];
-  let startAmount;
-  let endAmount;
-  const transactionsAmounts = [];
+  const problems: {
+    message: string;
+    line?: string;
+    details?: { message: string; line?: string }[];
+  }[] = [];
+  let startAmount: string | undefined;
+  let endAmount: string | undefined;
+  const transactionsAmounts: string[] = [];
 
   allLines.forEach((line) => {
     if (!line.length) {
@@ -37,14 +48,13 @@ export function accountParser(allLines) {
         }
         currentTransaction = transactionHeaderParser(line);
 
-        if (currentTransaction.record_code === '03') {
+        if (currentTransaction.transaction.record_code === '03') {
           currentTransaction.problems.push({
             message: 'Wrong line qualifier',
             line,
           });
         }
 
-        // console.log({ amount: currentTransaction });
         if (currentTransaction.transaction.amount) {
           transactionsAmounts.push(currentTransaction.transaction.amount);
         }
@@ -61,10 +71,13 @@ export function accountParser(allLines) {
           delete transaction.label;
         }
 
-        const filledTransactionFields = {};
+        const filledTransactionFields: Record<string, string | undefined> = {};
         Object.entries(transaction)
           .filter(([key, value]) => {
-            return value !== '' || !currentTransaction.transaction[key];
+            return (
+              value !== '' ||
+              !currentTransaction?.transaction[key as keyof TransactionFields]
+            );
           })
           .forEach(([key, value]) => {
             filledTransactionFields[key] = value;
@@ -72,11 +85,11 @@ export function accountParser(allLines) {
 
         currentTransaction = {
           transaction: {
-            ...currentTransaction.transaction,
+            ...currentTransaction?.transaction,
             ...filledTransactionFields,
             record_code: '04',
           },
-          problems: [...currentTransaction.problems],
+          problems: currentTransaction?.problems.slice(0) || [],
         };
 
         return;
@@ -116,7 +129,7 @@ export function accountParser(allLines) {
       });
     } catch (err) {
       problems.push({
-        message: err,
+        message: (err as string).toString(),
         line,
       });
     }
@@ -141,11 +154,15 @@ export function accountParser(allLines) {
   }
 
   let diff;
-  let transactionsSum = Math.abs(
+  const transactionsSum = Math.abs(
     Math.round(allTransactionsAmountsSum * 100) / 100
   );
   if (startAmount && endAmount) {
-    diff = Math.abs(Math.round((startAmount - endAmount) * 100) / 100);
+    diff = Math.abs(
+      Math.round(
+        (Number.parseFloat(startAmount) - Number.parseFloat(endAmount)) * 100
+      ) / 100
+    );
 
     if (diff !== transactionsSum) {
       problems.push({
@@ -156,11 +173,17 @@ export function accountParser(allLines) {
     }
   }
 
+  const parseFloatOr = <T>(value: string | undefined, or: T) => {
+    if (!value) return or;
+    const parsed = Number.parseFloat(value);
+    return isNaN(parsed) ? or : parsed;
+  };
+
   const account = {
     amounts: {
-      start: startAmount == +startAmount ? +startAmount : undefined,
-      end: endAmount == +endAmount ? +endAmount : undefined,
-      diff: diff == +diff ? +diff : undefined,
+      start: parseFloatOr(startAmount, undefined),
+      end: parseFloatOr(endAmount, undefined),
+      diff: parseFloatOr(diff?.toString(), undefined),
       transactions: transactionsSum,
     },
     header,
@@ -169,8 +192,7 @@ export function accountParser(allLines) {
     problems: problems.length ? problems : null,
   };
 
-  const schema = schemaFactory();
-  const isAccountValid = schema.validate(account);
+  const isAccountValid = schema().validate(account);
 
   if (isAccountValid.error) {
     if (!account.problems) {
@@ -179,7 +201,7 @@ export function accountParser(allLines) {
 
     account.problems.push({
       message: 'Malformed account',
-      details: isAccountValid.error?.message,
+      details: [{ message: isAccountValid.error?.message }],
     });
   }
 

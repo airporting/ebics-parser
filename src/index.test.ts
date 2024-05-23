@@ -1,6 +1,8 @@
+import { describe, test, expect } from 'vitest';
+
 import parse from './index.js';
 
-describe('ebics parser', function () {
+describe('ebics parser', () => {
   test('no transactions A', () => {
     const text = `0130012    00071EUR2 00010139479  280323                                                  0000003445691I
 0730012    00071EUR2 00010139479  290323                                                  0000003445691I`;
@@ -165,7 +167,6 @@ describe('ebics parser', function () {
             label: 'RESTITUTION FONDS DE GARANTIE 2',
             reference: '5123 00',
             value_date: '2023-03-03',
-            undefined: undefined,
           },
           {
             record_code: '04',
@@ -272,7 +273,6 @@ describe('ebics parser', function () {
             _2: '2602',
             23: '2715010 0418020404100001EUR2 00410GXLT0121280223 260223VIREMENT BANCAIRE EN VOTRE FAVE 1842999 00000002360952M000070',
             '23U': 'RN 5286537 VIREMENT N 52865',
-            undefined: undefined,
             '_4:': '000002',
             amount: '-13',
             exempt_code: '',
@@ -338,7 +338,7 @@ describe('ebics parser', function () {
             message: 'No end amount',
           },
           {
-            details: '"header.desk_code" is required',
+            details: [{ message: '"header.desk_code" is required' }],
             message: 'Malformed account',
           },
         ],

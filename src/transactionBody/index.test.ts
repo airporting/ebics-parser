@@ -1,6 +1,8 @@
+import { describe, test, expect } from 'vitest';
+
 import { transactionBodyParser } from './index.js';
 
-const cases = [
+const cases: [string, Record<string, string>][] = [
   [
     `0530012056800585EUR2 0001015614218290323     NPYDOMUSVI`,
     {
@@ -104,7 +106,7 @@ const cases = [
   ],
 ];
 
-describe('ebics transaction body parser', function () {
+describe('ebics transaction body parser', () => {
   test.each(cases)('case %#', (text, expected) => {
     expect(transactionBodyParser(text)).toEqual(expected);
   });

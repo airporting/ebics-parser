@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2021",
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["coverage", "node_modules", "dist"]
+}

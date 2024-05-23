@@ -1,14 +1,23 @@
-import { parse, format } from 'date-fns';
+import { format, parse } from 'date-fns';
+
+import type {
+  ParsedTransactionFields,
+  TransactionFields,
+} from '@/src/transaction';
 
 import { getAmount } from '../amount/index.js';
 
-export function headerParser(text) {
-  const header = {};
+export function footerParser(text: string): ParsedTransactionFields {
+  const footer: ParsedTransactionFields = {};
 
-  const parts = [
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    transformer?: (value: string, footer: ParsedTransactionFields) => string;
+  }[] = [
     {
       field: 'record_code',
-      regex: '01',
+      regex: '07',
     },
     {
       field: 'bank_code',
@@ -43,7 +52,7 @@ export function headerParser(text) {
       regex: '.{2}',
     },
     {
-      field: 'prev_date',
+      field: 'next_date',
       regex: '[0-9]{6}',
       transformer: (value) => {
         return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
@@ -54,10 +63,10 @@ export function headerParser(text) {
       regex: '.{50}',
     },
     {
-      field: 'prev_amount',
+      field: 'next_amount',
       regex: '[0-9]{13}[A-R{}]',
-      transformer: (value, header) => {
-        return getAmount(value, header.nb_of_dec);
+      transformer: (value, footer) => {
+        return getAmount(value, Number.parseInt(footer.nb_of_dec ?? '2'));
       },
     },
     {
@@ -87,13 +96,17 @@ export function headerParser(text) {
     }
   }
 
+  if (!matching) {
+    throw 'Footer, or header, missing or malformed';
+  }
+
   parts.forEach(({ field, transformer }, idx) => {
     if (transformer) {
-      header[field] = transformer(matching[idx + 1], header);
+      footer[field] = transformer(matching[idx + 1], footer);
     } else {
-      header[field] = matching[idx + 1]?.trim();
+      footer[field] = matching[idx + 1]?.trim();
     }
   });
 
-  return header;
+  return footer;
 }

@@ -1,11 +1,23 @@
 import { format, parse } from 'date-fns';
 
+import type {
+  ParsedTransactionFields,
+  TransactionFields,
+} from '@/src/transaction';
+
 import qualifierResolver from './qualifier/index.js';
 
-export function transactionBodyParser(text) {
-  const transaction = {};
+export function transactionBodyParser(text: string) {
+  const transaction: ParsedTransactionFields = {};
 
-  const parts = [
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    transformer?: (
+      value: string,
+      transaction: ParsedTransactionFields
+    ) => string;
+  }[] = [
     {
       field: 'record_code',
       regex: '05',
@@ -82,6 +94,10 @@ export function transactionBodyParser(text) {
         break;
       }
     }
+  }
+
+  if (!matching) {
+    throw 'Could not parse transaction body';
   }
 
   parts.forEach(({ field, transformer }, idx) => {

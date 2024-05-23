@@ -1,6 +1,8 @@
+import { describe, test, expect } from 'vitest';
+
 import { footerParser } from './index.js';
 
-const cases = [
+const cases: [string, Record<string, string>][] = [
   [
     `0730012    00071EUR2 00010139479  290323                                                  0000003445691I`,
     {
@@ -75,7 +77,7 @@ const cases = [
   ],
 ];
 
-describe('ebics footer parser', function () {
+describe('ebics footer parser', () => {
   test.each(cases)('case %#', (text, expected) => {
     expect(footerParser(text)).toEqual(expected);
   });

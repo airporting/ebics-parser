@@ -1,12 +1,29 @@
 import { format, parse } from 'date-fns';
 
 import { getAmount } from '../amount/index.js';
+import type {
+  ParsedTransactionFields,
+  TransactionFields,
+} from '@/src/transaction';
 
-export function transactionHeaderParser(text) {
-  const transaction = {};
-  const problems = [];
+export type ParsedTransactionHeader = {
+  transaction: ParsedTransactionFields;
+  problems: { message: string; line: string }[];
+};
 
-  const parts = [
+export function transactionHeaderParser(text: string): ParsedTransactionHeader {
+  const transaction: ParsedTransactionHeader['transaction'] = {};
+  const problems: ParsedTransactionHeader['problems'] = [];
+
+  const parts: {
+    field: keyof TransactionFields;
+    regex: string;
+    required?: boolean;
+    transformer?: (
+      value: string,
+      header: ParsedTransactionHeader['transaction']
+    ) => string;
+  }[] = [
     {
       field: 'record_code',
       regex: '0[3,4]',
@@ -51,7 +68,7 @@ export function transactionHeaderParser(text) {
     {
       field: 'operation_date',
       regex: '[0-9]{6}',
-      transformer: (value) => {
+      transformer: (value: string) => {
         return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
       },
       required: true,
@@ -63,7 +80,7 @@ export function transactionHeaderParser(text) {
     {
       field: 'value_date',
       regex: '[0-9]{6}',
-      transformer: (value) => {
+      transformer: (value: string) => {
         return format(parse(value, 'ddMMyy', new Date()), 'yyyy-MM-dd');
       },
     },
@@ -92,7 +109,7 @@ export function transactionHeaderParser(text) {
       field: 'amount',
       regex: '[0-9]{13}[A-R{}]',
       transformer: (value, header) => {
-        return getAmount(value, header.nb_of_dec);
+        return getAmount(value, Number.parseInt(header.nb_of_dec ?? '2'));
       },
       required: true,
     },
@@ -123,6 +140,17 @@ export function transactionHeaderParser(text) {
     }
   }
 
+  if (!matching) {
+    problems.push({
+      message: 'Could not match header line with regex',
+      line: text,
+    });
+    return {
+      transaction,
+      problems,
+    };
+  }
+
   parts.forEach(({ field, transformer, required }, idx) => {
     if (transformer) {
       transaction[field] = transformer(matching[idx + 1], transaction);
@@ -130,7 +158,10 @@ export function transactionHeaderParser(text) {
       transaction[field] = matching[idx + 1]?.trim();
     }
     if (required && !transaction[field]) {
-      problems.push(`transaction header missing part "${field}"`);
+      problems.push({
+        message: `Missing required field: ${field}`,
+        line: text,
+      });
     }
   });
 

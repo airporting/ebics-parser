@@ -1,6 +1,8 @@
-import { accountParser } from './index.js';
+import { describe, test, expect } from 'vitest';
 
-describe('account', function () {
+import { accountParser } from './index';
+
+describe('account', () => {
   test('Sycomore - no transactions', () => {
     const text = [
       `0130012    00071EUR2 00010139479  280323                                                  0000003445691I`,

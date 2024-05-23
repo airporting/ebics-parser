@@ -1,6 +1,8 @@
+import { describe, test, expect } from 'vitest';
+
 import { headerParser } from './index.js';
 
-const cases = [
+const cases: [string, Record<string, string>][] = [
   [
     `0130012    00071EUR2 00010139479  280323                                                  0000003445691I`,
     {
@@ -119,7 +121,7 @@ const cases = [
   ],
 ];
 
-describe('ebics header parser', function () {
+describe('ebics header parser', () => {
   test.each(cases)('case %#', (text, expected) => {
     expect(headerParser(text)).toEqual(expected);
   });

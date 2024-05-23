@@ -1,6 +1,8 @@
-import { transactionHeaderParser } from './index.js';
+import { describe, test, expect } from 'vitest';
 
-const cases = [
+import { transactionHeaderParser } from '@/src/transactionHeader/index';
+
+const cases: [string, Record<string, string>, []][] = [
   [
     `0430012056800585EUR2 0001015614218290323  290323DOMUSVI                          0000000  0000000359190{`,
     {
@@ -153,7 +155,7 @@ const cases = [
   ],
 ];
 
-describe('ebics transaction header parser', function () {
+describe('ebics transaction header parser', () => {
   test.each(cases)('case %#', (text, expectedTransaction, expectedProblems) => {
     const { transaction, problems } = transactionHeaderParser(text);
 

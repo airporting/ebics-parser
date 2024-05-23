@@ -1,13 +1,13 @@
-import JoiBase from 'joi';
+import JoiDefault from 'joi';
 
-const Joi = JoiBase.defaults((schema) =>
+const Joi = JoiDefault.defaults((schema) =>
   schema.options({
     presence: 'required',
     convert: true,
   })
 );
 
-export default () => {
+export function schema() {
   const transactionSchema = Joi.object({
     record_code: Joi.valid('04'),
     bank_code: Joi.string(),
@@ -105,4 +105,4 @@ export default () => {
       )
       .allow(null),
   });
-};
+}

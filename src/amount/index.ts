@@ -1,3 +1,4 @@
+type CreditLetterKey = keyof typeof creditLettersList;
 const creditLettersList = {
   A: '1',
   B: '2',
@@ -11,6 +12,7 @@ const creditLettersList = {
   '{': '0',
 };
 
+type DebitLetterKey = keyof typeof debitLettersList;
 const debitLettersList = {
   J: '1',
   K: '2',
@@ -26,33 +28,26 @@ const debitLettersList = {
 
 const debitLetters = Object.keys(debitLettersList);
 
-export function getAmount(word, nbDecimals) {
+export function getAmount(word: string, nbDecimals: string | number): string {
   let amount;
 
   const lastKey = word.slice(-1);
   const startIndex = Array.from(word).findIndex((element) => element !== '0');
   let needed = word.slice(startIndex, -1);
-  // console.log({
-  //   nbDecimals,
-  //   word,
-  //   lastKey,
-  //   startIndex,
-  //   needed,
-  // });
 
   if (!needed.length) {
-    needed = 0;
+    needed = '0';
   }
 
   let sign = '';
   if (debitLetters.includes(lastKey)) {
-    amount = `${needed}${debitLettersList[lastKey]}`;
+    amount = `${needed}${debitLettersList[lastKey as DebitLetterKey]}`;
     sign = '-';
   } else {
-    amount = `${needed}${creditLettersList[lastKey]}`;
+    amount = `${needed}${creditLettersList[lastKey as CreditLetterKey]}`;
   }
 
-  if (amount.length > nbDecimals) {
+  if (amount.length > +nbDecimals) {
     amount = [amount.slice(0, -nbDecimals), amount.slice(-nbDecimals)].join(
       '.'
     );
