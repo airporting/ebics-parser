@@ -11,7 +11,7 @@ void !function () {
 }();
 `;
 
-const D_TS_DECLARE_MODULE = `declare module "@airporting/ebics-parser-ts"`;
+const D_TS_DECLARE_MODULE = `declare module "@airporting/ebics-parser"`;
 
 export default defineConfig({
   build: {
