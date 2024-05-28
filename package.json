@@ -1,6 +1,6 @@
 {
   "name": "@airporting/ebics-parser",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -17,7 +17,7 @@
   "type": "module",
   "packageManager": "yarn@4.2.2",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && rm -rf ./dist/**/*.test.d.ts",
     "commit": "cz",
     "crazy:up": "git pull && yarn set version latest && yarn up '*' && yarn install && yarn prettier:write && git add package.json yarn.lock && git status",
     "husky": "husky install",
