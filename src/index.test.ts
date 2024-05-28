@@ -3811,7 +3811,7 @@ describe('ebics parser', () => {
     ]);
   });
 
-  test.only('no line breaks 3 from jedeclare', () => {
+  test('no line breaks 3 from jedeclare', () => {
     const text = `0118206    00283EUR2 65039564925  210524                                                  0000000666845F  097           0418206007800283EUR2E6503956492562210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418206007800283EUR2E6503956492562210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718206    00283EUR2 65039564925  220524                                                  0000000666690B                `;
 
     expect(parse(text)).toEqual([
