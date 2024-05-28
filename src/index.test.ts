@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import parse from './index.js';
 
@@ -2949,7 +2949,7 @@ describe('ebics parser', () => {
     ]);
   });
 
-  test('no line breaks', () => {
+  test('no line breaks from jedeclare', () => {
     const text = `0117406    00283EUR2 65041564965  060324                                                  0000001071841C  047           0417406000200283EUR2E6504156496502070324  070324REMISE CHQ 6316889 RANDOM PILES  6316889100000000008252{                0717406    00283EUR2 65041564965  070324                                                  0000001307106B                `;
 
     expect(parse(text)).toEqual([
@@ -3396,7 +3396,7 @@ describe('ebics parser', () => {
     ]);
   });
 
-  test('manually added line breaks to jedeclare', () => {
+  test('manually added line breaks 2 to jedeclare', () => {
     const text = `0112736    00283EUR2 65039564932  050524                                                  0000001127600I  088
 0412736005000283EUR2E65039564932B1060524  060524EDUSIGN                          0000000000000000002500}
 0512736005000283EUR2E65039564932B1060524     NBEEDUSIGN
@@ -3807,6 +3807,96 @@ describe('ebics parser', () => {
         },
         transactions: [],
         problems: null,
+      },
+    ]);
+  });
+
+  test.only('no line breaks 3 from jedeclare', () => {
+    const text = `0118206    00283EUR2 65039564925  210524                                                  0000000666845F  097           0418206007800283EUR2E6503956492562210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418206007800283EUR2E6503956492562210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718206    00283EUR2 65039564925  220524                                                  0000000666690B                `;
+
+    expect(parse(text)).toEqual([
+      {
+        amounts: {
+          diff: 15.54,
+          end: 66669.02,
+          start: 66684.56,
+          transactions: 15.54,
+        },
+        footer: {
+          _1: '',
+          _2: '',
+          _3: '',
+          _4: '',
+          _5: '',
+          account_nb: '65039564925',
+          bank_code: '18206',
+          currency_code: 'EUR',
+          desk_code: '00283',
+          nb_of_dec: '2',
+          next_amount: '66669.02',
+          next_date: '2024-05-22',
+          record_code: '07',
+        },
+        header: {
+          _1: '',
+          _2: '',
+          _3: '',
+          _4: '',
+          _5: '097',
+          account_nb: '65039564925',
+          bank_code: '18206',
+          currency_code: 'EUR',
+          desk_code: '00283',
+          nb_of_dec: '2',
+          prev_amount: '66684.56',
+          prev_date: '2024-05-21',
+          record_code: '01',
+        },
+        problems: null,
+        transactions: [
+          {
+            _1: 'E',
+            _2: '',
+            _3: '0',
+            '_4:': '',
+            account_nb: '65039564925',
+            amount: '-1',
+            bank_code: '18206',
+            currency_code: 'EUR',
+            desk_code: '00283',
+            exempt_code: '1',
+            internal_code: '0078',
+            label: 'FRAIS CARTE  TRANGER HORS UE',
+            nb_of_dec: '2',
+            operation_code: '62',
+            operation_date: '2024-05-21',
+            record_code: '04',
+            reference: '0000000',
+            reject_code: '',
+            value_date: '2024-05-22',
+          },
+          {
+            _1: 'E',
+            _2: '',
+            _3: '0',
+            '_4:': '',
+            account_nb: '65039564925',
+            amount: '-14.54',
+            bank_code: '18206',
+            currency_code: 'EUR',
+            desk_code: '00283',
+            exempt_code: '1',
+            internal_code: '0078',
+            label: 'FRAIS CARTE  TRANGER HORS UE',
+            nb_of_dec: '2',
+            operation_code: '62',
+            operation_date: '2024-05-21',
+            record_code: '04',
+            reference: '0000000',
+            reject_code: '',
+            value_date: '2024-05-22',
+          },
+        ],
       },
     ]);
   });
