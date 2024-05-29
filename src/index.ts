@@ -1,13 +1,25 @@
 import { accountParser } from '@/src/account';
 
 export default function (text: string) {
-  let allLines = text.split(/\r?\n/);
+  let allLines = text.split(/\r?\n/).filter((line) => line !== '');
 
   if (allLines?.length === 1) {
     allLines = text
       .replaceAll(/ (01|04|05|07)([0-9]{5})( |0)/g, ' \n$1$2$3')
-      .split(/\r?\n/);
+      .split(/\r?\n/)
+      .filter((line) => line !== '');
   }
+  // console.log(allLines);
+  if (allLines.every((line) => line.startsWith('01'))) {
+    allLines = allLines
+      .map((line) => {
+        return line
+          .replaceAll(/ (01|04|05|07)([0-9]{5})( |0)/g, ' \n$1$2$3')
+          .split(/\r?\n/);
+      })
+      .flat();
+  }
+  // console.log(allLines);
 
   const reduced = allLines.reduce(
     (accumulator, currentLine) => {
