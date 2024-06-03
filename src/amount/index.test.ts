@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { getAmount } from './index.js';
+import { getAmount } from './';
 
 const cases = [
   ['0000006564827I', '656482.79', 2],

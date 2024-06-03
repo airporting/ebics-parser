@@ -1,33 +1,15 @@
-import babelParser from '@babel/eslint-parser';
-import js from '@eslint/js';
-import eslintPrettier from 'eslint-config-prettier';
-import globals from 'globals';
+import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-// import json from 'eslint-plugin-json';
+import eslintprettier from 'eslint-config-prettier';
 
-export default [
+export default tseslint.config(
   { ignores: ['.idea/*', '.yarn/*', 'node_modules/*', 'coverage/*', 'dist/*'] },
-  js.configs.recommended,
-  eslintPrettier,
+  eslint.configs.recommended,
+  eslintprettier,
   ...tseslint.configs.recommended,
   {
-    files: ['**/*.js'],
-    linterOptions: {
-      noInlineConfig: true,
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
     },
-    languageOptions: {
-      parser: babelParser,
-      ecmaVersion: 2023,
-      sourceType: 'module',
-      globals: {
-        ...globals.node,
-      },
-      parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-          plugins: ['@babel/plugin-syntax-import-assertions'],
-        },
-      },
-    },
-  },
-];
+  }
+);

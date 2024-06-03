@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { headerParser } from './index.js';
+import { headerParser } from './';
 
 const cases: [string, Record<string, string>][] = [
   [

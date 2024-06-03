@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { transactionBodyParser } from './index.js';
+import { transactionBodyParser } from './';
 
 const cases: [string, Record<string, string>][] = [
   [

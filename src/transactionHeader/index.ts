@@ -1,6 +1,6 @@
 import { format, parse } from 'date-fns';
 
-import { getAmount } from '../amount/index.js';
+import { getAmount } from '../amount/';
 import type {
   ParsedTransactionFields,
   TransactionFields,

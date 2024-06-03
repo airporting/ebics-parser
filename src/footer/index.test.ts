@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { footerParser } from './index.js';
+import { footerParser } from './';
 
 const cases: [string, Record<string, string>][] = [
   [

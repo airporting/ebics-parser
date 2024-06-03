@@ -5,7 +5,7 @@ import type {
   TransactionFields,
 } from '@/src/transaction';
 
-import { getAmount } from '../amount/index.js';
+import { getAmount } from '../amount/';
 
 export function headerParser(text: string): ParsedTransactionFields {
   const header: ParsedTransactionFields = {};

@@ -13,6 +13,5 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["src/**/*"],
   "exclude": ["coverage", "node_modules", "dist"]
 }

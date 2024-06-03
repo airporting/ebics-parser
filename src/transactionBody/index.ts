@@ -5,7 +5,7 @@ import type {
   TransactionFields,
 } from '@/src/transaction';
 
-import qualifierResolver from './qualifier/index.js';
+import qualifierResolver from './qualifier/';
 
 export function transactionBodyParser(text: string) {
   const transaction: ParsedTransactionFields = {};
