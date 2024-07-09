@@ -9,6 +9,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 344569.19,
@@ -57,6 +60,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: -865.36,
@@ -136,6 +142,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 8,
+        },
         amounts: {
           diff: undefined,
           end: undefined,
@@ -363,6 +372,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 2,
+        },
         amounts: {
           diff: 20144,
           end: 636338.79,
@@ -471,6 +483,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 2,
+        },
         amounts: {
           diff: 1225.85,
           end: 0,
@@ -585,6 +600,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 3,
+        },
         amounts: {
           diff: 77317.88,
           end: 0,
@@ -692,6 +710,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 4,
+        },
         amounts: {
           diff: 77317.88,
           end: -2584123.57,
@@ -831,6 +852,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 0,
@@ -871,6 +895,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: -1996637.14,
@@ -1063,6 +1090,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 53,
+        },
         amounts: {
           diff: 463707.85,
           end: 518821.13,
@@ -2270,6 +2300,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 17,
+        },
         amounts: {
           diff: 452244.21,
           end: -2695312.71,
@@ -2696,6 +2729,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 3,
+        },
         amounts: {
           diff: 0,
           end: 656482.79,
@@ -2813,6 +2849,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 2,
+        },
         amounts: {
           start: 107.27,
           end: 0.38,
@@ -2907,6 +2946,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           start: 0,
           diff: 0,
@@ -2954,6 +2996,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 1,
+        },
         amounts: {
           start: 107184.13,
           diff: 23526.49,
@@ -3028,6 +3073,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 10,
+        },
         amounts: {
           start: 112760.09,
           end: 111473.92,
@@ -3324,6 +3372,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: { start: 112760.09, end: 112760.09, diff: 0, transactions: 0 },
         header: {
           record_code: '01',
@@ -3359,6 +3410,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: { start: 112760.09, end: 112760.09, diff: 0, transactions: 0 },
         header: {
           record_code: '01',
@@ -3443,6 +3497,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 10,
+        },
         amounts: {
           start: 112760.09,
           end: 111473.92,
@@ -3739,6 +3796,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: { start: 112760.09, end: 112760.09, diff: 0, transactions: 0 },
         header: {
           record_code: '01',
@@ -3774,6 +3834,9 @@ describe('ebics parser', () => {
         problems: null,
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: { start: 112760.09, end: 112760.09, diff: 0, transactions: 0 },
         header: {
           record_code: '01',
@@ -3816,6 +3879,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 2,
+        },
         amounts: {
           diff: 15.54,
           end: 66669.02,
@@ -3915,6 +3981,9 @@ describe('ebics parser', () => {
 
     expect(parse(text)).toEqual([
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 142089.01,
@@ -3955,6 +4024,9 @@ describe('ebics parser', () => {
         transactions: [],
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 142089.01,
@@ -3995,6 +4067,9 @@ describe('ebics parser', () => {
         transactions: [],
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 142089.01,
@@ -4035,6 +4110,9 @@ describe('ebics parser', () => {
         transactions: [],
       },
       {
+        details: {
+          countTransactions: 2,
+        },
         amounts: {
           diff: 15.54,
           end: 66669.02,
@@ -4118,6 +4196,9 @@ describe('ebics parser', () => {
         ],
       },
       {
+        details: {
+          countTransactions: 5,
+        },
         amounts: {
           diff: 4258.04,
           end: 65826.46,
@@ -4302,6 +4383,9 @@ describe('ebics parser', () => {
         ],
       },
       {
+        details: {
+          countTransactions: 2,
+        },
         amounts: {
           diff: 15.54,
           end: 66669.02,
@@ -4385,6 +4469,9 @@ describe('ebics parser', () => {
         ],
       },
       {
+        details: {
+          countTransactions: 6,
+        },
         amounts: {
           diff: 891.06,
           end: 66684.56,
@@ -4563,6 +4650,9 @@ describe('ebics parser', () => {
         ],
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 65826.46,
@@ -4603,6 +4693,9 @@ describe('ebics parser', () => {
         transactions: [],
       },
       {
+        details: {
+          countTransactions: 0,
+        },
         amounts: {
           diff: 0,
           end: 65826.46,
@@ -4643,6 +4736,9 @@ describe('ebics parser', () => {
         transactions: [],
       },
       {
+        details: {
+          countTransactions: 1,
+        },
         amounts: {
           diff: 32.96,
           end: 65793.5,
@@ -4716,6 +4812,9 @@ describe('ebics parser', () => {
         ],
       },
       {
+        details: {
+          countTransactions: 6,
+        },
         amounts: {
           diff: 13856.24,
           end: 52812.78,
@@ -4943,6 +5042,9 @@ describe('ebics parser', () => {
         ],
       },
       {
+        details: {
+          countTransactions: 9,
+        },
         amounts: {
           diff: 89276.23,
           end: 142089.01,

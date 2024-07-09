@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Static Badge](https://img.shields.io/badge/coverage-92-brightgreen)
-![Static Badge](https://img.shields.io/badge/release-3.0.1-blue)
+![Static Badge](https://img.shields.io/badge/coverage-91.34-brightgreen)
+![Static Badge](https://img.shields.io/badge/release-3.1.0-blue)
 [![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
@@ -44,6 +44,9 @@ Result:
 ```json5
 [
   {
+    details: {
+      countTransactions: 1,
+    },
     amounts: {
       start: 656482.79,
       // account start balance

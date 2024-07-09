@@ -180,6 +180,9 @@ export function accountParser(allLines: string[]) {
   };
 
   const account = {
+    details: {
+      countTransactions: transactionsList?.length ?? 0,
+    },
     amounts: {
       start: parseFloatOr(startAmount, undefined),
       end: parseFloatOr(endAmount, undefined),

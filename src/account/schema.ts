@@ -58,6 +58,9 @@ export function schema() {
   }).unknown();
 
   return Joi.object({
+    details: Joi.object({
+      countTransactions: Joi.number().default(0),
+    }),
     amounts: Joi.object({
       diff: Joi.number().optional(),
       end: Joi.number().optional(),

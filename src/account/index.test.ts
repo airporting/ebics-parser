@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import { accountParser } from './index';
 
@@ -10,6 +10,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 0,
+      },
       amounts: {
         diff: 0,
         end: 344569.19,
@@ -58,6 +61,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 0,
+      },
       amounts: {
         diff: 0,
         end: -865.36,
@@ -106,6 +112,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 0,
+      },
       amounts: {
         diff: 0,
         end: -847.47,
@@ -165,6 +174,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 2,
+      },
       amounts: {
         diff: 20144,
         end: 636338.79,
@@ -291,6 +303,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 11,
+      },
       amounts: {
         diff: 1225.85,
         end: 0,
@@ -592,6 +607,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 5,
+      },
       amounts: {
         diff: 6600,
         end: -2436527.04,
@@ -762,6 +780,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 3,
+      },
       amounts: {
         diff: 77317.88,
         end: 0,
@@ -877,6 +898,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 0,
+      },
       amounts: {
         diff: 0,
         end: 0,
@@ -925,6 +949,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 0,
+      },
       amounts: {
         diff: 0,
         end: -1996637.14,
@@ -980,6 +1007,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 3,
+      },
       amounts: {
         diff: 0,
         end: 47289.83,
@@ -1106,6 +1136,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 2,
+      },
       amounts: {
         diff: 641.19,
         end: 220331.02,
@@ -1234,6 +1267,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 7,
+      },
       amounts: {
         diff: 34896.72,
         end: 367661.59,
@@ -1462,6 +1498,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 1,
+      },
       amounts: {
         diff: 438.55,
         end: 884606.98,
@@ -1557,6 +1596,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 5,
+      },
       amounts: {
         diff: 8112.75,
         end: 323360.23,
@@ -1758,6 +1800,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 1,
+      },
       amounts: {
         diff: 252,
         end: 352484.45,
@@ -1842,6 +1887,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 1,
+      },
       amounts: {
         diff: 56.16,
         end: 23462.42,
@@ -1915,6 +1963,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 0,
+      },
       amounts: {
         diff: 0,
         end: 23518.58,
@@ -1965,6 +2016,9 @@ describe('account', () => {
     ];
 
     expect(accountParser(text)).toEqual({
+      details: {
+        countTransactions: 1,
+      },
       amounts: {
         diff: 303.94,
         end: 252473.05,

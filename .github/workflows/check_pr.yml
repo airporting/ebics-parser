@@ -22,6 +22,8 @@ jobs:
         uses: MathRobin/timezone-action@v1.1
         with:
           timezoneLinux: Europe/Paris
+      - name: Allow modify yarn.lock
+        run: yarn config set -H enableImmutableInstalls false
       - name: System info
         run: |
           echo "node"
@@ -32,8 +34,6 @@ jobs:
           yarn -v
           echo "yarn enableImmutableInstalls"
           yarn config get enableImmutableInstalls
-      - name: Allow modify yarn.lock
-        run: yarn config set -H enableImmutableInstalls false
       - name: Install modules
         run: yarn install
       - name: Run lint task
