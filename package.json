@@ -57,7 +57,7 @@
     "@types/babel__core": "7.20.5",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/eslint__js": "8.42.3",
-    "@vitest/coverage-v8": "2.0.1",
+    "@vitest/coverage-v8": "2.0.2",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "9.6.0",
@@ -66,9 +66,9 @@
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "pkgroll": "2.1.1",
-    "prettier": "3.3.2",
+    "prettier": "3.3.3",
     "typescript": "5.5.3",
     "typescript-eslint": "7.16.0",
-    "vitest": "2.0.1"
+    "vitest": "2.0.2"
   }
 }
