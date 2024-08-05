@@ -26,6 +26,7 @@ export type TransactionFields = {
   _4: string;
   '_4:': string;
   _5: string;
+  _rank: string;
 };
 
 export type ParsedTransactionFields = Partial<

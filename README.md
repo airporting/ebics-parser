@@ -10,7 +10,7 @@ Only two dep (date-fns, joi).
 
 Used by [Airporting](https://www.airporting.com)
 
-Tested on NodeJS 18.x, 20.x and 22.x
+Tested from NodeJS 18.x to 22.x
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/airporting)
 
@@ -45,6 +45,7 @@ Result:
 [
   {
     details: {
+      // obvious
       countTransactions: 1,
     },
     amounts: {
@@ -108,6 +109,8 @@ Result:
         end2end_identification: 'NOTPROVIDED',
         purpose: '',
         PDO: 'FR FRANCE',
+        // Position in account transactions'list, not an official field
+        _rank: '0',
       },
     ],
     // problems detected during parse. If no problems, null
@@ -133,6 +136,14 @@ In transactions items, fields `internal_code` and `operation_code` need at least
 
 Most lines start with code `01` (start balance), `07` (end balance), `04` (main transaction line) and `05` (transaction detail line). But we already met lines
 with record code `03`. We have guess that it's a very similar usage of record code `04`, so for the moment, when met, transformed in `04`.
+
+### Transactions \_rank
+
+For each transaction in an account, we have added a field `_rank`. It helps to know at which position in the account it was positionned.
+
+### Details
+
+For each account, we provide a set of data which is guessed by our parser. It's NOT provided by the original file. See the example above to know the exact usage.
 
 ### Whatever
 

@@ -16,6 +16,7 @@ export function accountParser(allLines: string[]) {
   let footer: ParsedTransactionFields = {};
   const transactionsList: ParsedTransactionFields[] = [];
   let currentTransaction: ParsedTransactionHeader | null = null;
+  let currentTransactionIncrement = -1;
   let currentLabelIncrement = 0;
   const problems: {
     message: string;
@@ -46,6 +47,7 @@ export function accountParser(allLines: string[]) {
           }
           transactionsList.push(currentTransaction.transaction);
         }
+        currentTransactionIncrement += 1;
         currentTransaction = transactionHeaderParser(line);
 
         if (currentTransaction.transaction.record_code === '03') {
@@ -58,6 +60,8 @@ export function accountParser(allLines: string[]) {
         if (currentTransaction.transaction.amount) {
           transactionsAmounts.push(currentTransaction.transaction.amount);
         }
+        currentTransaction.transaction._rank =
+          currentTransactionIncrement.toString();
 
         return;
       }
