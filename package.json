@@ -53,22 +53,22 @@
   "devDependencies": {
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
-    "@eslint/js": "9.11.1",
+    "@eslint/js": "9.12.0",
     "@types/babel__core": "7.20.5",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/eslint__js": "8.42.3",
     "@vitest/coverage-v8": "2.1.2",
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "9.11.1",
+    "eslint": "9.12.0",
     "eslint-config-prettier": "9.1.0",
-    "globals": "15.9.0",
+    "globals": "15.10.0",
     "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "pkgroll": "2.5.0",
     "prettier": "3.3.3",
     "typescript": "5.6.2",
-    "typescript-eslint": "8.7.0",
+    "typescript-eslint": "8.8.0",
     "vitest": "2.1.2"
   }
 }
