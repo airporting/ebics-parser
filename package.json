@@ -67,8 +67,8 @@
     "lint-staged": "15.2.10",
     "pkgroll": "2.5.0",
     "prettier": "3.3.3",
-    "typescript": "5.6.2",
-    "typescript-eslint": "8.8.0",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.8.1",
     "vitest": "2.1.2"
   }
 }
