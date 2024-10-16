@@ -356,12 +356,14 @@ describe('ebics parser', () => {
     expect(parse(text)).toMatchSnapshot();
   });
 
+  // yogi
   test('no line breaks 3 from jedeclare', () => {
     const text = `0118309    00283EUR2 65189565024  210524                                                  0000000666845F  097           0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718309    00283EUR2 65189565024  220524                                                  0000000666690B                `;
 
     expect(parse(text)).toMatchSnapshot();
   });
 
+  // yogi
   test('line breaks only on header, not on rest, plus empty lines', () => {
     const text = `0118309    00283EUR2 65189565024  260524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  270524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0118309    00283EUR2 65189565024  240524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  250524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0118309    00283EUR2 65189565024  250524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  260524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100
 
@@ -385,6 +387,12 @@ describe('ebics parser', () => {
 0430012051203120EUR2 0671126844921290524  290524VR.PERMANENT GESTION DUE         00000000 0000000136956}
 0430012051203120EUR2 0671126844921290524  290524VR.PERMANENT GESTION DUE         00000000 0000000136956}
 0730012    03120EUR2 06711268449  290524                                                  0000014458055C`;
+
+    expect(parse(text)).toMatchSnapshot();
+  });
+
+  test('no line breaks from jedeclare 3', () => {
+    const text = `0117806    00245EUR2 63138567924  010924                                                  0000000611809A  169           0418206000000283EUR2E6503956492505020924  020924VIR AGDIS 0375061                0425072100000000037561H                0518206000000283EUR2E6503956492505020924     NPYAFDAS                                                                   0518206000000283EUR2E6503956492505020924     NBESUCMIN                                                                 0518206000000283EUR2E6503956492505020924     LCCF231578 F234567                                                         0518206000000283EUR2E6503956492505020924     RCN0425072                                                                 0518206000000283EUR2E6503956492505020924     LIBSOGEFRPPXXX                                                             0518206000000283EUR2E6503956492505020924     MMOEUR200000000375618                                                      0418206000000283EUR2E65039564925C2020924  020924VIR INST DE OPTIMA-SYNTER INTER  0000000100000000000959D                0518206000000283EUR2E65039564925C2020924     NPYOPTIMA-SYNTER INTERNATIONAL VZW                                         0518206000000283EUR2E65039564925C2020924     NBESUCMIN                                                                 0518206000000283EUR2E65039564925C2020924     LCCREF FACTURE F231575                                                     0518206000000283EUR2E65039564925C2020924     REFIP801124088597                     3B65816AD63B4E2085C6750C7395A6D8     0518206000000283EUR2E65039564925C2020924     CBEFR7618206002836503956492591                                             0418206002600283EUR2E6503956492506020924  020924WEB TONY ROUTALLAUX TBXBA GRATI  0000000000000000005785N                0518206002600283EUR2E6503956492506020924     NPYASSOCIATION SUCMIN                                                     0518206002600283EUR2E6503956492506020924     NBETONY ROUTALLAUX                                                         0518206002600283EUR2E6503956492506020924     LCCTBXBA GRATIFICATION STAGE SUCMIN                                       0518206002600283EUR2E6503956492506020924     RCNTBXBA GRATIFICATION STAGE SUCMIN                                       0518206002600283EUR2E6503956492506020924     LIBAGRIFRPP882                                                             0518206002600283EUR2E6503956492506020924     MMOEUR200000000057855                                                      0518206002600283EUR2E6503956492506020924     CBEFR7616908000010200639767304                                             0718206    00245EUR2 63138567924  020924                                                  0000000644544H  169           0117806    00245EUR2 63138567924  300824                                                  0000000611809A  169           0718206    00245EUR2 63138567924  310824                                                  0000000611809A  169           0117806    00245EUR2 63138567924  310824                                                  0000000611809A  169           0718206    00245EUR2 63138567924  010924                                                  0000000611809A  169           `;
 
     expect(parse(text)).toMatchSnapshot();
   });
