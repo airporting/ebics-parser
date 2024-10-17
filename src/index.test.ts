@@ -356,14 +356,12 @@ describe('ebics parser', () => {
     expect(parse(text)).toMatchSnapshot();
   });
 
-  // yogi
   test('no line breaks 3 from jedeclare', () => {
     const text = `0118309    00283EUR2 65189565024  210524                                                  0000000666845F  097           0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718309    00283EUR2 65189565024  220524                                                  0000000666690B                `;
 
     expect(parse(text)).toMatchSnapshot();
   });
 
-  // yogi
   test('line breaks only on header, not on rest, plus empty lines', () => {
     const text = `0118309    00283EUR2 65189565024  260524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  270524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0118309    00283EUR2 65189565024  240524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  250524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0118309    00283EUR2 65189565024  250524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  260524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100
 

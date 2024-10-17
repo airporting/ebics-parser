@@ -22,7 +22,7 @@ export default function (text: string) {
         exploitedLine.match(
           /0[13457][0-9 ]{14}[A-Z]{3}[0-9].[0-9{}ABCDEFGHIJKLMNOPQR ]{13}[0-9]{6}/g
         ) ?? [];
-      console.log({ allAccountsMarkers });
+      // console.log({ allAccountsMarkers });
 
       for (let iter = 1; iter < allAccountsMarkers.length; iter += 1) {
         let endPosition = exploitedLine.indexOf(allAccountsMarkers[iter], 0);
@@ -32,12 +32,12 @@ export default function (text: string) {
         ) {
           endPosition = exploitedLine.indexOf(allAccountsMarkers[iter], 1);
         }
-        console.log({
-          iter,
-          markerEnd: allAccountsMarkers[iter],
-          endPosition,
-          exploitedLine,
-        });
+        // console.log({
+        //   iter,
+        //   markerEnd: allAccountsMarkers[iter],
+        //   endPosition,
+        //   exploitedLine,
+        // });
 
         // get the next statement
         temporarySet.push(exploitedLine.slice(0, endPosition));
@@ -46,7 +46,7 @@ export default function (text: string) {
         exploitedLine = exploitedLine.slice(endPosition);
       }
       temporarySet.push(exploitedLine);
-      console.log({ temporarySet });
+      // console.log({ temporarySet });
     }
     allLines = temporarySet;
   }
