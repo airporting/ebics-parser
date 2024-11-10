@@ -62,13 +62,13 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "9.14.0",
     "eslint-config-prettier": "9.1.0",
-    "globals": "15.11.0",
+    "globals": "15.12.0",
     "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "pkgroll": "2.5.1",
     "prettier": "3.3.3",
     "typescript": "5.6.3",
-    "typescript-eslint": "8.12.2",
+    "typescript-eslint": "8.13.0",
     "vitest": "2.1.4"
   }
 }
