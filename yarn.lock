@@ -186,25 +186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:>6.1.1":
-  version: 19.5.0
-  resolution: "@commitlint/load@npm:19.5.0"
-  dependencies:
-    "@commitlint/config-validator": "npm:^19.5.0"
-    "@commitlint/execute-rule": "npm:^19.5.0"
-    "@commitlint/resolve-extends": "npm:^19.5.0"
-    "@commitlint/types": "npm:^19.5.0"
-    chalk: "npm:^5.3.0"
-    cosmiconfig: "npm:^9.0.0"
-    cosmiconfig-typescript-loader: "npm:^5.0.0"
-    lodash.isplainobject: "npm:^4.0.6"
-    lodash.merge: "npm:^4.6.2"
-    lodash.uniq: "npm:^4.5.0"
-  checksum: 10/87a9450c768632c09e9d98993752a5622aee698642eee5a9b31c3c48625455e043406b7ea6e02a8f41d86c524c9ecbdb9b823caf67da3048f0d96531177fda28
-  languageName: node
-  linkType: hard
-
-"@commitlint/load@npm:^19.6.1":
+"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^19.6.1":
   version: 19.6.1
   resolution: "@commitlint/load@npm:19.6.1"
   dependencies:
@@ -797,13 +779,13 @@ __metadata:
   linkType: hard
 
 "@jridgewell/gen-mapping@npm:^0.3.5":
-  version: 0.3.5
-  resolution: "@jridgewell/gen-mapping@npm:0.3.5"
+  version: 0.3.8
+  resolution: "@jridgewell/gen-mapping@npm:0.3.8"
   dependencies:
     "@jridgewell/set-array": "npm:^1.2.1"
     "@jridgewell/sourcemap-codec": "npm:^1.4.10"
     "@jridgewell/trace-mapping": "npm:^0.3.24"
-  checksum: 10/81587b3c4dd8e6c60252122937cea0c637486311f4ed208b52b62aae2e7a87598f63ec330e6cd0984af494bfb16d3f0d60d3b21d7e5b4aedd2602ff3fe9d32e2
+  checksum: 10/9d3a56ab3612ab9b85d38b2a93b87f3324f11c5130859957f6500e4ac8ce35f299d5ccc3ecd1ae87597601ecf83cee29e9afd04c18777c24011073992ff946df
   languageName: node
   linkType: hard
 
@@ -956,8 +938,8 @@ __metadata:
   linkType: hard
 
 "@rollup/plugin-node-resolve@npm:^15.2.3":
-  version: 15.3.0
-  resolution: "@rollup/plugin-node-resolve@npm:15.3.0"
+  version: 15.3.1
+  resolution: "@rollup/plugin-node-resolve@npm:15.3.1"
   dependencies:
     "@rollup/pluginutils": "npm:^5.0.1"
     "@types/resolve": "npm:1.20.2"
@@ -969,7 +951,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10/214596dd0ecf0822a135e6cb604f6a4469bac4a9d6b43608d277b47c34762e800b79f5f1c18ea0f7317448165ac0cff2439b35446641e093a5bc5c372940c819
+  checksum: 10/874494c0daca8fb0d633a237dd9df0d30609b374326e57508710f2b6d7ddaa93d203d8daa0257960b2b6723f56dfec1177573126f31ff9604700303b6f5fdbe3
   languageName: node
   linkType: hard
 
@@ -989,8 +971,8 @@ __metadata:
   linkType: hard
 
 "@rollup/pluginutils@npm:^5.0.1, @rollup/pluginutils@npm:^5.1.0":
-  version: 5.1.3
-  resolution: "@rollup/pluginutils@npm:5.1.3"
+  version: 5.1.4
+  resolution: "@rollup/pluginutils@npm:5.1.4"
   dependencies:
     "@types/estree": "npm:^1.0.0"
     estree-walker: "npm:^2.0.2"
@@ -1000,7 +982,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10/da24956c4f7ec0aed63a2dd6c6dd64d8ad90155918056e69adda6fbb7b96c607300079805bc63f2e64e33ba256802367301a578d020a22262f408bde98ca3643
+  checksum: 10/598f628988af25541a9a6c6ef154aaf350f8be3238884e500cc0e47138684071abe490563c953f9bda9e8b113ecb1f99c11abfb9dbaf4f72cdd62e257a673fa3
   languageName: node
   linkType: hard
 
@@ -1251,11 +1233,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 22.10.1
-  resolution: "@types/node@npm:22.10.1"
+  version: 22.10.2
+  resolution: "@types/node@npm:22.10.2"
   dependencies:
     undici-types: "npm:~6.20.0"
-  checksum: 10/c802a526da2f3fa3ccefd00a71244e7cb825329951719e79e8fec62b1dbc2855388c830489770611584665ce10be23c05ed585982038b24924e1ba2c2cce03fd
+  checksum: 10/451adfefed4add58b069407173e616220fd4aaa3307cdde1bb701aa053b65b54ced8483db2f870dcedec7a58cb3b06101fbc19d85852716672ec1fd3660947fa
   languageName: node
   linkType: hard
 
@@ -1996,19 +1978,6 @@ __metadata:
   bin:
     conventional-commits-parser: cli.mjs
   checksum: 10/3b56a9313127f18c56b7fc0fdb0c49d2184ec18e0574e64580a0d5a3c3e0f3eecfb8bc3131dce967bfe9fd27debd5f42b7fc1f09e8e541e688e1dd2b57f49278
-  languageName: node
-  linkType: hard
-
-"cosmiconfig-typescript-loader@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "cosmiconfig-typescript-loader@npm:5.1.0"
-  dependencies:
-    jiti: "npm:^1.21.6"
-  peerDependencies:
-    "@types/node": "*"
-    cosmiconfig: ">=8.2"
-    typescript: ">=4"
-  checksum: 10/a3ea9de9633899867ddc8368735d085f9e050dce2c319ca13dbe51187476edd7818586618eabe38bc81e5e981863903415e90da17e346f839bb442eeb29aa38a
   languageName: node
   linkType: hard
 
@@ -3176,12 +3145,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.13.0":
-  version: 2.15.1
-  resolution: "is-core-module@npm:2.15.1"
+"is-core-module@npm:^2.16.0":
+  version: 2.16.0
+  resolution: "is-core-module@npm:2.16.0"
   dependencies:
     hasown: "npm:^2.0.2"
-  checksum: 10/77316d5891d5743854bcef2cd2f24c5458fb69fbc9705c12ca17d54a2017a67d0693bbf1ba8c77af376c0eef6bf6d1b27a4ab08e4db4e69914c3789bdf2ceec5
+  checksum: 10/064442b9eefb7162376a4a414aa98b1e0c6cbb471507e66966b7d6d607a3f60eb09c7da4ee401648640a389e4af0f5a770bd5b3cd9c1084853e4a57f472408f8
   languageName: node
   linkType: hard
 
@@ -3361,15 +3330,6 @@ __metadata:
     "@pkgjs/parseargs":
       optional: true
   checksum: 10/96f8786eaab98e4bf5b2a5d6d9588ea46c4d06bbc4f2eb861fdd7b6b182b16f71d8a70e79820f335d52653b16d4843b29dd9cdcf38ae80406756db9199497cf3
-  languageName: node
-  linkType: hard
-
-"jiti@npm:^1.21.6":
-  version: 1.21.6
-  resolution: "jiti@npm:1.21.6"
-  bin:
-    jiti: bin/jiti.js
-  checksum: 10/289b124cea411c130a14ffe88e3d38376ab44b6695616dfa0a1f32176a8f20ec90cdd6d2b9d81450fc6467cfa4d865f04f49b98452bff0f812bc400fd0ae78d6
   languageName: node
   linkType: hard
 
@@ -3682,11 +3642,11 @@ __metadata:
   linkType: hard
 
 "magic-string@npm:^0.30.10, magic-string@npm:^0.30.12, magic-string@npm:^0.30.3":
-  version: 0.30.14
-  resolution: "magic-string@npm:0.30.14"
+  version: 0.30.15
+  resolution: "magic-string@npm:0.30.15"
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
-  checksum: 10/8ca0f8937c2824e48ebc70e7e065a193c467713639cc6e5972aaba0fa5417b375a6f62c383410a19a66e618c386bb7253fbd3ccbfb0144bb310f0ba772121f12
+  checksum: 10/321f6e3156ac65d938fb7e08b3eaef9f4f5718180b7507f37bb55273f1faf979ab42e3b550a9e5dbbacf1c9a0f416157ab01c08619938734dcbbe02e2ef10872
   languageName: node
   linkType: hard
 
@@ -4364,28 +4324,28 @@ __metadata:
   linkType: hard
 
 "resolve@npm:^1.22.1":
-  version: 1.22.8
-  resolution: "resolve@npm:1.22.8"
+  version: 1.22.9
+  resolution: "resolve@npm:1.22.9"
   dependencies:
-    is-core-module: "npm:^2.13.0"
+    is-core-module: "npm:^2.16.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10/c473506ee01eb45cbcfefb68652ae5759e092e6b0fb64547feadf9736a6394f258fbc6f88e00c5ca36d5477fbb65388b272432a3600fa223062e54333c156753
+  checksum: 10/787b122cffd34944e8e899dc6f934278142df9f47c1228672cf80d21791364f0a9ff17b766374e9e83b78dee1cf4ded28d8387d264343861db77dc1141c5ec78
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>":
-  version: 1.22.8
-  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
+  version: 1.22.9
+  resolution: "resolve@patch:resolve@npm%3A1.22.9#optional!builtin<compat/resolve>::version=1.22.9&hash=c3c19d"
   dependencies:
-    is-core-module: "npm:^2.13.0"
+    is-core-module: "npm:^2.16.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10/f345cd37f56a2c0275e3fe062517c650bb673815d885e7507566df589375d165bbbf4bdb6aa95600a9bc55f4744b81f452b5a63f95b9f10a72787dba3c90890a
+  checksum: 10/423e54ddf58784c85ba2382f1e982f57e55dc19967f348214e1e6bc80d2fdbdaef35453d1a6a3c31810ac5e4e87e05ad9f5b3a3b1f117d3e673de313690eb54a
   languageName: node
   linkType: hard
 
