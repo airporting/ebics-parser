@@ -1,4 +1,3 @@
-# GENERATED FILE - Do not edit manually
 name: check_pr
 'on':
   push:
@@ -8,16 +7,23 @@ name: check_pr
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: [18, 22]
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Enable Yarn
+        run: |
+          corepack enable &&
+          corepack install # use the in-repo yarn version
+      - name: Setup Node.js with yarn in cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
       - name: Set Timezone
         uses: MathRobin/timezone-action@v1.1
         with:

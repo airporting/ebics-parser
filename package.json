@@ -1,6 +1,6 @@
 {
   "name": "@airporting/ebics-parser",
-  "version": "3.2.7",
+  "version": "3.2.8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -20,9 +20,9 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "packageManager": "yarn@4.6.0",
+  "packageManager": "yarn@4.9.1",
   "engines": {
-    "node": "22.9.0"
+    "node": "22.13.1"
   },
   "scripts": {
     "build": "pkgroll",
