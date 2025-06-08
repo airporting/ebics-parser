@@ -20,7 +20,7 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "packageManager": "yarn@4.9.1",
+  "packageManager": "yarn@4.9.2",
   "engines": {
     "node": "22.13.1"
   },
