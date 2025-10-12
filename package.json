@@ -65,7 +65,7 @@
     "globals": "15.15.0",
     "husky": "9.1.7",
     "lint-staged": "16.2.4",
-    "pkgroll": "2.18.0",
+    "pkgroll": "2.18.1",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
     "typescript-eslint": "8.46.0",
