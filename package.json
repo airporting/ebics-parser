@@ -65,10 +65,10 @@
     "globals": "15.15.0",
     "husky": "9.1.7",
     "lint-staged": "16.2.7",
-    "pkgroll": "2.20.1",
+    "pkgroll": "2.21.3",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.3",
+    "typescript-eslint": "8.47.0",
     "vitest": "3.2.4"
   }
 }
