@@ -25,7 +25,7 @@ __metadata:
     husky: "npm:9.1.7"
     joi: "npm:17.13.3"
     lint-staged: "npm:16.2.7"
-    pkgroll: "npm:2.21.3"
+    pkgroll: "npm:2.21.4"
     prettier: "npm:3.6.2"
     typescript: "npm:5.9.3"
     typescript-eslint: "npm:8.47.0"
@@ -4301,9 +4301,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pkgroll@npm:2.21.3":
-  version: 2.21.3
-  resolution: "pkgroll@npm:2.21.3"
+"pkgroll@npm:2.21.4":
+  version: 2.21.4
+  resolution: "pkgroll@npm:2.21.4"
   dependencies:
     "@rollup/plugin-alias": "npm:^6.0.0"
     "@rollup/plugin-commonjs": "npm:^29.0.0"
@@ -4325,7 +4325,7 @@ __metadata:
       optional: true
   bin:
     pkgroll: dist/cli.mjs
-  checksum: 10/4875718dc1a0868834559b8cb214d2c22bf6fa02e07b94a766fe1656f3b043499a41bafff6631f7111aba92d542834e9e9d3ab26d8cf891477d7bd4ee4c6ccfa
+  checksum: 10/0fa70cf26ab67d73c64b1a777e387649ec5824d18bc139d17c55fd4529297e9ad0a46df48319a95e07ff8debed4e32a9f1c3ed8d611b6db72b49dfb78165e1b4
   languageName: node
   linkType: hard
 
