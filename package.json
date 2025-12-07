@@ -51,8 +51,8 @@
     "joi": "17.13.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.1.0",
-    "@commitlint/config-conventional": "20.0.0",
+    "@commitlint/cli": "20.2.0",
+    "@commitlint/config-conventional": "20.2.0",
     "@eslint/js": "9.39.1",
     "@types/babel__core": "7.20.5",
     "@types/eslint-config-prettier": "6.11.3",
@@ -66,9 +66,9 @@
     "husky": "9.1.7",
     "lint-staged": "16.2.7",
     "pkgroll": "2.21.4",
-    "prettier": "3.6.2",
+    "prettier": "3.7.4",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.47.0",
+    "typescript-eslint": "8.48.1",
     "vitest": "3.2.4"
   }
 }
