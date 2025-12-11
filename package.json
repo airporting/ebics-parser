@@ -20,7 +20,7 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "packageManager": "yarn@4.9.4",
+  "packageManager": "yarn@4.12.0",
   "engines": {
     "node": "22.13.1"
   },
@@ -33,8 +33,10 @@
     "prepare": "yarn husky",
     "prettier": "prettier --check ./",
     "prettier:write": "prettier --write ./",
-    "publish": "yarn npm publish && git add package.json yarn.lock && git commit -m 'feat(version): bump' && git push && git status",
-    "test": "vitest run --reporter=verbose --coverage"
+    "test": "vitest run --reporter=verbose --coverage",
+    "v:major": "npm version major -m \"chore: bump major to %s\"",
+    "v:minor": "npm version minor -m \"chore: bump minor to %s\"",
+    "v:patch": "npm version patch -m \"chore: bump patch to %s\""
   },
   "config": {
     "commitizen": {
