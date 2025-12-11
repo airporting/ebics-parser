@@ -10,7 +10,7 @@ Only two dep (date-fns, joi).
 
 Used by [Airporting](https://www.airporting.com)
 
-Tested from NodeJS 18.x to 22.x
+Tested from NodeJS 18.x to 24.x
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/airporting)
 
