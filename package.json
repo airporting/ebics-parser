@@ -70,7 +70,7 @@
     "pkgroll": "2.21.4",
     "prettier": "3.7.4",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.48.1",
+    "typescript-eslint": "8.50.0",
     "vitest": "3.2.4"
   }
 }
