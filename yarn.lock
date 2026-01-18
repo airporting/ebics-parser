@@ -9,8 +9,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@airporting/ebics-parser@workspace:."
   dependencies:
-    "@commitlint/cli": "npm:20.3.0"
-    "@commitlint/config-conventional": "npm:20.3.0"
+    "@commitlint/cli": "npm:20.3.1"
+    "@commitlint/config-conventional": "npm:20.3.1"
     "@eslint/js": "npm:9.39.2"
     "@types/babel__core": "npm:7.20.5"
     "@types/eslint-config-prettier": "npm:6.11.3"
@@ -25,7 +25,7 @@ __metadata:
     husky: "npm:9.1.7"
     joi: "npm:17.13.3"
     lint-staged: "npm:16.2.7"
-    pkgroll: "npm:2.21.4"
+    pkgroll: "npm:2.21.5"
     prettier: "npm:3.7.4"
     typescript: "npm:5.9.3"
     typescript-eslint: "npm:8.51.0"
@@ -96,30 +96,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:20.3.0":
-  version: 20.3.0
-  resolution: "@commitlint/cli@npm:20.3.0"
+"@commitlint/cli@npm:20.3.1":
+  version: 20.3.1
+  resolution: "@commitlint/cli@npm:20.3.1"
   dependencies:
-    "@commitlint/format": "npm:^20.2.0"
-    "@commitlint/lint": "npm:^20.3.0"
-    "@commitlint/load": "npm:^20.3.0"
-    "@commitlint/read": "npm:^20.2.0"
-    "@commitlint/types": "npm:^20.2.0"
+    "@commitlint/format": "npm:^20.3.1"
+    "@commitlint/lint": "npm:^20.3.1"
+    "@commitlint/load": "npm:^20.3.1"
+    "@commitlint/read": "npm:^20.3.1"
+    "@commitlint/types": "npm:^20.3.1"
     tinyexec: "npm:^1.0.0"
     yargs: "npm:^17.0.0"
   bin:
     commitlint: ./cli.js
-  checksum: 10/92d7d3c0f27c9af8ebd3ca18c405b4381d6810cb02fb381aa7af23426f62404e66be4067313f2034278ac0739d8ce3809d14ee1dbf097dbaa58b8605b414ce41
+  checksum: 10/d9be1d922c35729e90ad1f87f3754afd48b9bf4a6ee0893de2ed2b9ff4859a1546f16cfdcbd0f8913649173e7bb16c5ac568ec67773e9b5d69eaad4804ee94fd
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:20.3.0":
-  version: 20.3.0
-  resolution: "@commitlint/config-conventional@npm:20.3.0"
+"@commitlint/config-conventional@npm:20.3.1":
+  version: 20.3.1
+  resolution: "@commitlint/config-conventional@npm:20.3.1"
   dependencies:
-    "@commitlint/types": "npm:^20.2.0"
+    "@commitlint/types": "npm:^20.3.1"
     conventional-changelog-conventionalcommits: "npm:^7.0.2"
-  checksum: 10/410fe56bbe553a591e6a30dad018c992e9a2d5c1851666cd323d26dc3b1a96f15b6350c71cd3c3095653408109cdcaae8cd76eaf69868896cef9e0ea532e0464
+  checksum: 10/48cdaeee9a019b497134356e511558a50606d98d9f4d8e75b01dbf52b2b8f850e8b655b4617ca4e3cc7dcc4651048e166e4932803b8388ec2705905174808d63
   languageName: node
   linkType: hard
 
@@ -154,7 +154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/format@npm:^20.2.0":
+"@commitlint/format@npm:^20.3.1":
   version: 20.3.1
   resolution: "@commitlint/format@npm:20.3.1"
   dependencies:
@@ -174,7 +174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/lint@npm:^20.3.0":
+"@commitlint/lint@npm:^20.3.1":
   version: 20.3.1
   resolution: "@commitlint/lint@npm:20.3.1"
   dependencies:
@@ -186,7 +186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^20.3.0":
+"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^20.3.1":
   version: 20.3.1
   resolution: "@commitlint/load@npm:20.3.1"
   dependencies:
@@ -222,7 +222,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/read@npm:^20.2.0":
+"@commitlint/read@npm:^20.3.1":
   version: 20.3.1
   resolution: "@commitlint/read@npm:20.3.1"
   dependencies:
@@ -277,7 +277,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/types@npm:^20.2.0, @commitlint/types@npm:^20.3.1":
+"@commitlint/types@npm:^20.3.1":
   version: 20.3.1
   resolution: "@commitlint/types@npm:20.3.1"
   dependencies:
@@ -4329,9 +4329,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pkgroll@npm:2.21.4":
-  version: 2.21.4
-  resolution: "pkgroll@npm:2.21.4"
+"pkgroll@npm:2.21.5":
+  version: 2.21.5
+  resolution: "pkgroll@npm:2.21.5"
   dependencies:
     "@rollup/plugin-alias": "npm:^6.0.0"
     "@rollup/plugin-commonjs": "npm:^29.0.0"
@@ -4353,7 +4353,7 @@ __metadata:
       optional: true
   bin:
     pkgroll: dist/cli.mjs
-  checksum: 10/0fa70cf26ab67d73c64b1a777e387649ec5824d18bc139d17c55fd4529297e9ad0a46df48319a95e07ff8debed4e32a9f1c3ed8d611b6db72b49dfb78165e1b4
+  checksum: 10/5702968054df7eb11a87f38d749f4ebbdc5dcda5e106b73f2d213ee10b9c2cd625f111e8b80d72d35f287abeefc9a8d732f948972abd6eeeef60a8cb9864cbca
   languageName: node
   linkType: hard
 
