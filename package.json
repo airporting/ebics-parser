@@ -66,11 +66,11 @@
     "eslint-config-prettier": "10.1.8",
     "globals": "15.15.0",
     "husky": "9.1.7",
-    "lint-staged": "16.3.1",
+    "lint-staged": "16.4.0",
     "pkgroll": "2.27.0",
     "prettier": "3.8.1",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.56.1",
+    "typescript-eslint": "8.57.0",
     "vitest": "3.2.4"
   }
 }
