@@ -1,6 +1,11 @@
 #!/bin/sh
 # GENERATED FILE BY @airporting/airpkg - DO NOT EDIT MANUALLY!
 
+# Skip during rebase or if already bumping
+if [ -d "$(git rev-parse --git-dir)/rebase-merge" ] || [ -d "$(git rev-parse --git-dir)/rebase-apply" ] || [ -n "$AIRPKG_BUMPING" ]; then
+  exit 0
+fi
+
 COMMITS=$(git log $(git branch --show-current) --not --remotes --oneline)
 
 if ! echo "$COMMITS" | grep -q "chore: bump"; then
