@@ -1,6 +1,6 @@
-import { describe, test, expect } from 'vitest';
-
 import { transactionHeaderParser } from '@/src/transactionHeader/index';
+
+import { describe, expect, test } from 'vitest';
 
 const cases: [string, Record<string, string>, []][] = [
   [

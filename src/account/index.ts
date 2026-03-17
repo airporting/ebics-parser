@@ -1,15 +1,16 @@
-import {
-  type ParsedTransactionHeader,
-  transactionHeaderParser,
-} from '@/src/transactionHeader';
-import { transactionBodyParser } from '@/src/transactionBody';
-import { headerParser } from '@/src/header';
 import { footerParser } from '@/src/footer';
-import { schema } from './schema';
+import { headerParser } from '@/src/header';
 import type {
   ParsedTransactionFields,
   TransactionFields,
 } from '@/src/transaction';
+import { transactionBodyParser } from '@/src/transactionBody';
+import {
+  type ParsedTransactionHeader,
+  transactionHeaderParser,
+} from '@/src/transactionHeader';
+
+import { schema } from './schema';
 
 export function accountParser(allLines: string[]) {
   let header: ParsedTransactionFields = {};
