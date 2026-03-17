@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "date-fns": "4.1.0",
-    "joi": "17.13.3"
+    "joi": "18.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.0",
@@ -64,7 +64,7 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "10.0.3",
     "eslint-config-prettier": "10.1.8",
-    "globals": "15.15.0",
+    "globals": "17.4.0",
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
     "pkgroll": "2.27.0",
