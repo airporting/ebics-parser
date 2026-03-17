@@ -200,9 +200,9 @@ export function accountParser(allLines: string[]) {
     problems: problems.length ? problems : null,
   };
 
-  const isAccountValid = schema().validate(account);
+  const isAccountValid = schema().safeParse(account);
 
-  if (isAccountValid.error) {
+  if (!isAccountValid.success) {
     if (!account.problems) {
       account.problems = [];
     }

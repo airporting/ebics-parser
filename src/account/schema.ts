@@ -1,111 +1,106 @@
-import JoiDefault from 'joi';
+import { z } from 'zod';
 
-const Joi = JoiDefault.defaults((schema) =>
-  schema.options({
-    presence: 'required',
-    convert: true,
+const optionalString = z.string().optional();
+
+const transactionSchema = z
+  .object({
+    record_code: z.literal('04'),
+    bank_code: z.string(),
+    operation_date: z.string(),
+    desk_code: z.string(),
+    currency_code: z.string(),
+    nb_of_dec: z.string(),
+    nb_of_dec_amount: optionalString,
+    equivalent_amount: optionalString,
+    nb_of_dec_exchange_rate: optionalString,
+    exchange_rate: optionalString,
+    account_nb: z.string(),
+    reject_code: optionalString,
+    value_date: z.string(),
+    label: z.string().optional(),
+    reference: optionalString,
+    exempt_code: optionalString,
+    amount: z.string(),
+    creditor_id: optionalString,
+    creditor_id_type: optionalString,
+    creditor_name: optionalString,
+    creditor_ref_information: optionalString,
+    ultimate_creditor_id: optionalString,
+    ultimate_creditor_id_type: optionalString,
+    ultimate_creditor_name: optionalString,
+    creditor_account: optionalString,
+    debtor_id: optionalString,
+    debtor_id_type: optionalString,
+    debtor_type: optionalString,
+    debtor_name: optionalString,
+    ultimate_debtor_id: optionalString,
+    ultimate_debtor_id_type: optionalString,
+    ultimate_debtor_name: optionalString,
+    remittance_information_1: optionalString,
+    remittance_information_2: optionalString,
+    end2end_identification: optionalString,
+    purpose: optionalString,
+    payment_infor_id: optionalString,
+    instruction_id: optionalString,
+    mandate_identification: optionalString,
+    sequence_type: optionalString,
+    internal_code: optionalString,
+    operation_code: optionalString,
   })
-);
+  .catchall(z.unknown());
 
 export function schema() {
-  const transactionSchema = Joi.object({
-    record_code: Joi.valid('04'),
-    bank_code: Joi.string(),
-    operation_date: Joi.string(),
-    desk_code: Joi.string(),
-    currency_code: Joi.string(),
-    nb_of_dec: Joi.string(),
-    nb_of_dec_amount: Joi.string().empty('').optional(),
-    equivalent_amount: Joi.string().empty('').optional(),
-    nb_of_dec_exchange_rate: Joi.string().empty('').optional(),
-    exchange_rate: Joi.string().empty('').optional(),
-    account_nb: Joi.string(),
-    reject_code: Joi.string().empty('').optional(),
-    value_date: Joi.string(),
-    label: Joi.string().empty(''),
-    reference: Joi.string().empty('').optional(),
-    exempt_code: Joi.string().empty('').optional(),
-    amount: Joi.string(),
-    creditor_id: Joi.string().empty('').optional(),
-    creditor_id_type: Joi.string().empty('').optional(),
-    creditor_name: Joi.string().empty('').optional(),
-    creditor_ref_information: Joi.string().empty('').optional(),
-    ultimate_creditor_id: Joi.string().empty('').optional(),
-    ultimate_creditor_id_type: Joi.string().empty('').optional(),
-    ultimate_creditor_name: Joi.string().empty('').optional(),
-    creditor_account: Joi.string().empty('').optional(),
-    debtor_id: Joi.string().empty('').optional(),
-    debtor_id_type: Joi.string().empty('').optional(),
-    debtor_type: Joi.string().empty('').optional(),
-    debtor_name: Joi.string().empty('').optional(),
-    ultimate_debtor_id: Joi.string().empty('').optional(),
-    ultimate_debtor_id_type: Joi.string().empty('').optional(),
-    ultimate_debtor_name: Joi.string().empty('').optional(),
-    remittance_information_1: Joi.string().empty('').optional(),
-    remittance_information_2: Joi.string().empty('').optional(),
-    end2end_identification: Joi.string().empty('').optional(),
-    purpose: Joi.string().empty('').optional(),
-    payment_infor_id: Joi.string().empty('').optional(),
-    instruction_id: Joi.string().empty('').optional(),
-    mandate_identification: Joi.string().empty('').optional(),
-    sequence_type: Joi.string().empty('').optional(),
-    internal_code: Joi.string().empty('').optional(),
-    operation_code: Joi.when('internal_code', {
-      is: '',
-      then: Joi.string(),
-      otherwise: Joi.string().empty('').optional(),
+  return z.object({
+    details: z.object({
+      countTransactions: z.number().default(0),
     }),
-  }).unknown();
-
-  return Joi.object({
-    details: Joi.object({
-      countTransactions: Joi.number().default(0),
+    amounts: z
+      .object({
+        diff: z.number().optional(),
+        end: z.number().optional(),
+        start: z.number().optional(),
+        transactions: z.number().optional(),
+      })
+      .passthrough(),
+    header: z.object({
+      record_code: z.literal('01'),
+      bank_code: z.string(),
+      desk_code: z.string(),
+      currency_code: z.string(),
+      nb_of_dec: z.string(),
+      account_nb: z.string(),
+      prev_date: z.string(),
+      prev_amount: z.string(),
+      _1: optionalString,
+      _2: optionalString,
+      _3: optionalString,
+      _4: optionalString,
+      _5: optionalString,
     }),
-    amounts: Joi.object({
-      diff: Joi.number().optional(),
-      end: Joi.number().optional(),
-      start: Joi.number().optional(),
-      transactions: Joi.number().optional(),
-    }).unknown(),
-    header: Joi.object({
-      record_code: Joi.valid('01'),
-      bank_code: Joi.string(),
-      desk_code: Joi.string(),
-      currency_code: Joi.string(),
-      nb_of_dec: Joi.string(),
-      account_nb: Joi.string(),
-      prev_date: Joi.string(),
-      prev_amount: Joi.string(),
-      _1: Joi.string().empty('').optional(),
-      _2: Joi.string().empty('').optional(),
-      _3: Joi.string().empty('').optional(),
-      _4: Joi.string().empty('').optional(),
-      _5: Joi.string().empty('').optional(),
+    footer: z.object({
+      record_code: z.literal('07'),
+      bank_code: z.string(),
+      desk_code: z.string(),
+      currency_code: z.string(),
+      nb_of_dec: z.string(),
+      account_nb: z.string(),
+      next_date: z.string(),
+      next_amount: z.string(),
+      _1: optionalString,
+      _2: optionalString,
+      _3: optionalString,
+      _4: optionalString,
+      _5: optionalString,
     }),
-    footer: Joi.object({
-      record_code: Joi.valid('07'),
-      bank_code: Joi.string(),
-      desk_code: Joi.string(),
-      currency_code: Joi.string(),
-      nb_of_dec: Joi.string(),
-      account_nb: Joi.string(),
-      next_date: Joi.string(),
-      next_amount: Joi.string(),
-      _1: Joi.string().empty('').optional(),
-      _2: Joi.string().empty('').optional(),
-      _3: Joi.string().empty('').optional(),
-      _4: Joi.string().empty('').optional(),
-      _5: Joi.string().empty('').optional(),
-    }),
-    transactions: Joi.array().items(transactionSchema),
-    problems: Joi.array()
-      .items(
-        Joi.object({
-          message: Joi.string(),
-          line: Joi.string().optional(),
-          details: Joi.any().optional(),
+    transactions: z.array(transactionSchema),
+    problems: z
+      .array(
+        z.object({
+          message: z.string(),
+          line: z.string().optional(),
+          details: z.any().optional(),
         })
       )
-      .allow(null),
+      .nullable(),
   });
 }

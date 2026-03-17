@@ -1994,7 +1994,156 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
       {
         "details": [
           {
-            "message": ""header.desk_code" is required",
+            "message": "[
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "header",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "header",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "header",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "header",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "header",
+      "prev_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "header",
+      "prev_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "transactions",
+      0,
+      "amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "transactions",
+      1,
+      "amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
           },
         ],
         "message": "Malformed account",
