@@ -6,8 +6,8 @@ import type {
 } from '@/src/transaction';
 import { transactionBodyParser } from '@/src/transactionBody';
 import {
-  type ParsedTransactionHeader,
   transactionHeaderParser,
+  type ParsedTransactionHeader,
 } from '@/src/transactionHeader';
 
 import { schema } from './schema';

@@ -1,9 +1,9 @@
+import { format, parse } from 'date-fns';
+
 import type {
   ParsedTransactionFields,
   TransactionFields,
 } from '@/src/transaction';
-
-import { format, parse } from 'date-fns';
 
 import qualifierResolver from './qualifier/';
 
