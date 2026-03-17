@@ -6,7 +6,7 @@
 # ebics-parser
 
 Lightweight and very fast parser for EBICS file for Node.js & TypeScript.
-Only two dep (date-fns, joi).
+Only two dep (date-fns, zod).
 
 Used by [Airporting](https://www.airporting.com)
 
