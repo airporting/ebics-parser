@@ -22,7 +22,7 @@
   "type": "module",
   "packageManager": "yarn@4.13.0",
   "engines": {
-    "node": "22.13.1"
+    "node": "24.12.0"
   },
   "scripts": {
     "build": "pkgroll",
@@ -44,7 +44,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "prettier --write"
     ]
   },

@@ -47,7 +47,7 @@
         "aws*sdk*",
         "date-fns",
         "handlebars",
-        "joi",
+        "zod",
         "lambda-returns",
         "lint-staged",
         "log4js",
