@@ -33,6 +33,7 @@
     "prepare": "yarn husky",
     "prettier": "prettier --check ./",
     "prettier:write": "prettier --write ./",
+    "parse": "tsx src/cli.ts",
     "test": "vitest run --reporter=verbose --coverage",
     "v:major": "npm version major -m \"chore: bump major to %s\"",
     "v:minor": "npm version minor -m \"chore: bump minor to %s\"",
@@ -49,6 +50,7 @@
     ]
   },
   "dependencies": {
+    "@types/node": "25.5.0",
     "date-fns": "4.1.0",
     "zod": "4.3.6"
   },
@@ -69,6 +71,7 @@
     "lint-staged": "16.4.0",
     "pkgroll": "2.27.0",
     "prettier": "3.8.1",
+    "tsx": "4.21.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.0",
     "vitest": "4.1.0"
