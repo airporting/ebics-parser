@@ -49,7 +49,6 @@ exports[`ebics parser > Known bank 1`] = `
     ],
     "transactions": [
       {
-        "423": "URN 5335098    VIREMENT N 53350",
         "_1": "",
         "_2": "050",
         "_3": "0",
@@ -72,7 +71,6 @@ exports[`ebics parser > Known bank 1`] = `
         "value_date": "2023-04-05",
       },
       {
-        "423": "INANCEMENT   VIREMENT N 5335098",
         "_1": "",
         "_2": "050",
         "_3": "0",
@@ -144,7 +142,6 @@ exports[`ebics parser > Known bank 2 1`] = `
     "problems": null,
     "transactions": [
       {
-        "323": "URN 5295341    VIREMENT N 52953",
         "_1": "",
         "_2": "040",
         "_3": "0",
@@ -167,7 +164,6 @@ exports[`ebics parser > Known bank 2 1`] = `
         "value_date": "2023-03-04",
       },
       {
-        "323": "INANCEMENT   VIREMENT N 5295341",
         "_1": "",
         "_2": "040",
         "_3": "0",
@@ -190,7 +186,6 @@ exports[`ebics parser > Known bank 2 1`] = `
         "value_date": "2023-03-04",
       },
       {
-        "323": "NT   VIREMENT N 5295341",
         "_1": "",
         "_2": "040",
         "_3": "0",
@@ -257,7 +252,6 @@ exports[`ebics parser > Known bank 2 1`] = `
     "problems": null,
     "transactions": [
       {
-        "323": "R VIREMENT  5295341",
         "_1": "",
         "_2": "040",
         "_3": "0",
@@ -280,7 +274,6 @@ exports[`ebics parser > Known bank 2 1`] = `
         "value_date": "2023-03-04",
       },
       {
-        "423": "295341",
         "_1": "",
         "_2": "150",
         "_3": "0",
@@ -303,7 +296,6 @@ exports[`ebics parser > Known bank 2 1`] = `
         "value_date": "2023-04-15",
       },
       {
-        "323": "INANCEMENT   VIREMENT N 5295341",
         "_1": "",
         "_2": "040",
         "_3": "0",
@@ -326,7 +318,6 @@ exports[`ebics parser > Known bank 2 1`] = `
         "value_date": "2023-03-04",
       },
       {
-        "323": "NT   VIREMENT N 5295341",
         "_1": "",
         "_2": "040",
         "_3": "0",
@@ -563,35 +554,21 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
 [
   {
     "amounts": {
-      "diff": 0,
-      "end": 142089.01,
+      "diff": undefined,
+      "end": undefined,
       "start": 142089.01,
       "transactions": 0,
     },
     "details": {
       "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "** PAS DE MOUVEMENT CE JOUR **",
-      "_5": "100",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "142089.01",
-      "next_date": "2024-05-27",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "** PAS DE MOUVEMENT CE JOUR **",
-      "_5": "100",
+      "_5": "100           0718309    00283EUR2 65189565024  270524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0118309    00283EUR2 65189565024  240524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  250524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0118309    00283EUR2 65189565024  250524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100           0718309    00283EUR2 65189565024  260524        ** PAS DE MOUVEMENT CE JOUR **            0000001420890A  100",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -601,126 +578,113 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-26",
       "record_code": "01",
     },
-    "problems": null,
+    "problems": [
+      {
+        "message": "No end amount",
+      },
+      {
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
+      },
+    ],
     "transactions": [],
   },
   {
     "amounts": {
-      "diff": 0,
-      "end": 142089.01,
-      "start": 142089.01,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "** PAS DE MOUVEMENT CE JOUR **",
-      "_5": "100",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "142089.01",
-      "next_date": "2024-05-25",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "** PAS DE MOUVEMENT CE JOUR **",
-      "_5": "100",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "142089.01",
-      "prev_date": "2024-05-24",
-      "record_code": "01",
-    },
-    "problems": null,
-    "transactions": [],
-  },
-  {
-    "amounts": {
-      "diff": 0,
-      "end": 142089.01,
-      "start": 142089.01,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "** PAS DE MOUVEMENT CE JOUR **",
-      "_5": "100",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "142089.01",
-      "next_date": "2024-05-26",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "** PAS DE MOUVEMENT CE JOUR **",
-      "_5": "100",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "142089.01",
-      "prev_date": "2024-05-25",
-      "record_code": "01",
-    },
-    "problems": null,
-    "transactions": [],
-  },
-  {
-    "amounts": {
-      "diff": 15.54,
-      "end": 66669.02,
+      "diff": undefined,
+      "end": undefined,
       "start": 66684.56,
-      "transactions": 15.54,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 2,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "66669.02",
-      "next_date": "2024-05-22",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "097",
+      "_5": "097           0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718309    00283EUR2 65189565024  220524                                                  0000000666690B",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -730,85 +694,113 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-21",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "-1",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0078",
-        "label": "FRAIS CARTE  TRANGER HORS UE",
-        "nb_of_dec": "2",
-        "operation_code": "62",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-22",
+        "message": "No end amount",
       },
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "-14.54",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0078",
-        "label": "FRAIS CARTE  TRANGER HORS UE",
-        "nb_of_dec": "2",
-        "operation_code": "62",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-22",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
   {
     "amounts": {
-      "diff": 4258.04,
-      "end": 65826.46,
+      "diff": undefined,
+      "end": undefined,
       "start": 61568.42,
-      "transactions": 4258.04,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 5,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "65826.46",
-      "next_date": "2024-05-17",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "095",
+      "_5": "095           0418309000000283EUR2E6518956502405170524  170524VIR OPCO 2I OFDA2I FORMATION     0000000100000000046200{                0518309000000283EUR2E6518956502405170524     NPYOPCO 2I                                                                 0518309000000283EUR2E6518956502405170524     NBENOSTRUM                                                                 0518309000000283EUR2E6518956502405170524     LCCVIR487-IDFR-962776-NOSTRUM                                              0518309000000283EUR2E6518956502405170524     RCNOFDA2I FORMATION                                                        0518309000000283EUR2E6518956502405170524     LIBCEPAFRPP751                                                             0518309000000283EUR2E6518956502405170524     MMOEUR200000000462000                                                      0418309000000283EUR2E6518956502405170524  170524VIR DRFIP ILE DE FRANCE ET DE P  5115700100000000000600{                0518309000000283EUR2E6518956502405170524     NPYDRFIP ILE DE FRANCE ET DE PARIS                                         0518309000000283EUR2E6518956502405170524     NBEASSOC. ASSOCIATION LIAIS                                                0518309000000283EUR2E6518956502405170524     NPOAGENCE DE SERVICES ET DE PAIEMENT                                       0518309000000283EUR2E6518956502405170524     NBUNOSTRUM                                                                 0518309000000283EUR2E6518956502405170524     LCC139619816 SCIV NA-000-21-00243-P1000 ASC SCIV NOSTRUM                   0518309000000283EUR2E6518956502405170524     RCN1D0750000139619816 TEL   0555115700                                     0518309000000283EUR2E6518956502405170524     LIBBDFEFRPP                                                                0518309000000283EUR2E6518956502405170524     MMOEUR200000000006000                                                      0418309005200283EUR2E6518956502411170524  170524CARTE X0566 KYRIAD ROGERS        0000000000000000000957O                0418309005200283EUR2E6518956502411170524  170524CARTE X0566 IT TRATTORIA ROGERS  0000000000000000000158}                0418309002600283EUR2E6518956502406170524  170524WEB HOTEL LILLE NEW KYLE QPFLL   0000000000000000003104}                0518309002600283EUR2E6518956502406170524     NPYASSOCIATION NOSTRUM                                                     0518309002600283EUR2E6518956502406170524     NBEHOTEL LILLE NEW KYLE                                                    0518309002600283EUR2E6518956502406170524     LCCCHAMBRES 206 208 20-21/06/24       HELENE CABY MARION MOUQUET           0518309002600283EUR2E6518956502406170524     RCNQPFLL NOSTRUM 20-21/06/24                                               0518309002600283EUR2E6518956502406170524     LIBAGRIFRPP882                                                             0518309002600283EUR2E6518956502406170524     MMOEUR200000000031040                                                      0518309002600283EUR2E6518956502406170524     CBEFR7630003037700002013303335                                             0718309    00283EUR2 65189565024  170524                                                  0000000658264F",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -818,187 +810,113 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-16",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "4620",
-        "bank_code": "18309",
-        "creditor_name": "NOSTRUM",
-        "currency_code": "EUR",
-        "debtor_name": "OPCO 2I",
-        "desk_code": "00283",
-        "end2end_identification": "OFDA2I FORMATION",
-        "equivalent_amount": "00000000462000",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR OPCO 2I OFDA2I FORMATION",
-        "label_1": "CEPAFRPP751",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-17",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "VIR487-IDFR-962776-NOSTRUM",
-        "value_date": "2024-05-17",
+        "message": "No end amount",
       },
       {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "60",
-        "bank_code": "18309",
-        "creditor_name": "ASSOC. ASSOCIATION LIAIS",
-        "currency_code": "EUR",
-        "debtor_name": "DRFIP ILE DE FRANCE ET DE PARIS",
-        "desk_code": "00283",
-        "end2end_identification": "1D0750000139619816 TEL   0555115700",
-        "equivalent_amount": "00000000006000",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR DRFIP ILE DE FRANCE ET DE P",
-        "label_1": "BDFEFRPP",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-17",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "5115700",
-        "reject_code": "",
-        "remittance_information_1": "139619816 SCIV NA-000-21-00243-P1000 ASC SCIV NOSTRUM",
-        "ultimate_creditor_name": "NOSTRUM",
-        "ultimate_debtor_name": "AGENCE DE SERVICES ET DE PAIEMENT",
-        "value_date": "2024-05-17",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "2",
-        "account_nb": "65189565024",
-        "amount": "-95.76",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X0566 KYRIAD ROGERS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-17",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-17",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "3",
-        "account_nb": "65189565024",
-        "amount": "-15.8",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X0566 IT TRATTORIA ROGERS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-17",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-17",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "4",
-        "account_nb": "65189565024",
-        "amount": "-310.4",
-        "bank_code": "18309",
-        "creditor_account": "FR7630003037700002013303335",
-        "creditor_name": "HOTEL LILLE NEW KYLE",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION NOSTRUM",
-        "desk_code": "00283",
-        "end2end_identification": "QPFLL NOSTRUM 20-21/06/24",
-        "equivalent_amount": "00000000031040",
-        "exchange_rate": "",
-        "exempt_code": "0",
-        "internal_code": "0026",
-        "label": "WEB HOTEL LILLE NEW KYLE QPFLL",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "06",
-        "operation_date": "2024-05-17",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "CHAMBRES 206 208 20-21/06/24       HELENE CABY MARION MOUQUET",
-        "value_date": "2024-05-17",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
   {
     "amounts": {
-      "diff": 15.54,
-      "end": 66669.02,
+      "diff": undefined,
+      "end": undefined,
       "start": 66684.56,
-      "transactions": 15.54,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 2,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "66669.02",
-      "next_date": "2024-05-22",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "097",
+      "_5": "097           0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718309    00283EUR2 65189565024  220524                                                  0000000666690B",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -1008,85 +926,113 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-21",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "-1",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0078",
-        "label": "FRAIS CARTE  TRANGER HORS UE",
-        "nb_of_dec": "2",
-        "operation_code": "62",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-22",
+        "message": "No end amount",
       },
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "-14.54",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0078",
-        "label": "FRAIS CARTE  TRANGER HORS UE",
-        "nb_of_dec": "2",
-        "operation_code": "62",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-22",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
   {
     "amounts": {
-      "diff": 891.06,
-      "end": 66684.56,
+      "diff": undefined,
+      "end": undefined,
       "start": 65793.5,
-      "transactions": 891.06,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 6,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "66684.56",
-      "next_date": "2024-05-21",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "096",
+      "_5": "096           0418309000000283EUR2E6518956502405210524  210524VIR TYB JOBS VIREMENT SEPA PAR   0000000100000000018200{                0518309000000283EUR2E6518956502405210524     NPYTYB JOBS                                                                0518309000000283EUR2E6518956502405210524     NBENOSTRUM                                                                 0518309000000283EUR2E6518956502405210524     LCCNOSTRUM FACTURE F240539                                                 0518309000000283EUR2E6518956502405210524     RCNVIREMENT SEPA PAR INTERNET                                              0518309000000283EUR2E6518956502405210524     LIBCEPAFRPP751                                                             0518309000000283EUR2E6518956502405210524     MMOEUR200000000182000                                                      0418309005200283EUR2E6518956502411210524  210524CARTE X0566 FORNELLI ROGERS      0000000000000000000155}                0418309005200283EUR2E6518956502411210524  210524CARTE X0566 ROGHAN VTC DTTT BOR  0000000000000000000145}                0418309005200283EUR2E6518956502411210524  210524CARTE X4030 RACKETGOALS LLC 415  0000000000000000000488M                0418309005200283EUR2E6518956502411210524  210524CARTE X4030 AIRIMAGE.COM/BILL S  0000000000000000007267O                0418309005200283EUR2E6518956502411210524  210524CARTE X4030 RAPID PUB COMINES    0000000000000000001233M                0718309    00283EUR2 65189565024  210524                                                  0000000666845F  096           0118309    00283EUR2 65189565024  170524                                                  0000000658264F  096           0718309    00283EUR2 65189565024  180524                                                  0000000658264F  096           0118309    00283EUR2 65189565024  180524                                                  0000000658264F  096           0718309    00283EUR2 65189565024  190524                                                  0000000658264F  096           0118309    00283EUR2 65189565024  190524                                                  0000000658264F  096           0418309005000283EUR2E65189565024B1200524  200524FREE MOBILE                      0000000000000000000329O                0518309005000283EUR2E65189565024B1200524     NBEFREE MOBILE                                                             0518309005000283EUR2E65189565024B1200524     IBEFR07ZZZ591778                      SEPA                                 0518309005000283EUR2E65189565024B1200524     NPYNOSTRUM                                                                 0518309005000283EUR2E65189565024B1200524     IPYFMC-41823696                                                            0518309005000283EUR2E65189565024B1200524     REF257585102                                                               0518309005000283EUR2E65189565024B1200524     RUMFM-41114570-1                      RCUR                                 0518309005000283EUR2E65189565024B1200524     CPYFR7618309002836518956502491                                             0718309    00283EUR2 65189565024  200524                                                  0000000657935{  096",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -1096,347 +1042,113 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-20",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "1820",
-        "bank_code": "18309",
-        "creditor_name": "NOSTRUM",
-        "currency_code": "EUR",
-        "debtor_name": "TYB JOBS",
-        "desk_code": "00283",
-        "end2end_identification": "VIREMENT SEPA PAR INTERNET",
-        "equivalent_amount": "00000000182000",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR TYB JOBS VIREMENT SEPA PAR",
-        "label_1": "CEPAFRPP751",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-21",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "NOSTRUM FACTURE F240539",
-        "value_date": "2024-05-21",
+        "message": "No end amount",
       },
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "-15.5",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X0566 FORNELLI ROGERS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-21",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "2",
-        "account_nb": "65189565024",
-        "amount": "-14.5",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X0566 ROGHAN VTC DTTT BOR",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-21",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "3",
-        "account_nb": "65189565024",
-        "amount": "-48.84",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 RACKETGOALS LLC 415",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-21",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "4",
-        "account_nb": "65189565024",
-        "amount": "-726.76",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 AIRIMAGE.COM/BILL S",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-21",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "5",
-        "account_nb": "65189565024",
-        "amount": "-123.34",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 RAPID PUB COMINES",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-21",
-      },
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
     ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
   },
   {
-    "amounts": {
-      "diff": 0,
-      "end": 65826.46,
-      "start": 65826.46,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "65826.46",
-      "next_date": "2024-05-18",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "65826.46",
-      "prev_date": "2024-05-17",
-      "record_code": "01",
-    },
-    "problems": null,
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
+      },
+    ],
     "transactions": [],
   },
   {
     "amounts": {
-      "diff": 0,
-      "end": 65826.46,
-      "start": 65826.46,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "65826.46",
-      "next_date": "2024-05-19",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "65826.46",
-      "prev_date": "2024-05-18",
-      "record_code": "01",
-    },
-    "problems": null,
-    "transactions": [],
-  },
-  {
-    "amounts": {
-      "diff": 32.96,
-      "end": 65793.5,
-      "start": 65826.46,
-      "transactions": 32.96,
-    },
-    "details": {
-      "countTransactions": 1,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "65793.5",
-      "next_date": "2024-05-20",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "096",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "65826.46",
-      "prev_date": "2024-05-19",
-      "record_code": "01",
-    },
-    "problems": null,
-    "transactions": [
-      {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "-32.96",
-        "bank_code": "18309",
-        "creditor_id": "FR07ZZZ591778                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "FREE MOBILE",
-        "currency_code": "EUR",
-        "debtor_id": "FMC-41823696",
-        "debtor_name": "NOSTRUM",
-        "debtor_type": "",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "",
-        "internal_code": "0050",
-        "label": "FREE MOBILE",
-        "mandate_identification": "FM-41114570-1                      ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-20",
-        "payment_infor_id": "257585102",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-20",
-      },
-    ],
-  },
-  {
-    "amounts": {
-      "diff": 13856.24,
-      "end": 52812.78,
+      "diff": undefined,
+      "end": undefined,
       "start": 66669.02,
-      "transactions": 13856.24,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 6,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "52812.78",
-      "next_date": "2024-05-23",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "098",
+      "_5": "098           0418309005000283EUR2E65189565024B2230524  230524B2B DGFIP                        0000000000000000042330}                0518309005000283EUR2E65189565024B2230524     NBEDGFIP                                                                   0518309005000283EUR2E65189565024B2230524     IBEFR46ZZZ005002                      SEPA                                 0518309005000283EUR2E65189565024B2230524     NBUDGFIP IMPOT                                                             0518309005000283EUR2E65189565024B2230524     NPYASSOC NOSTRUM                                                           0518309005000283EUR2E65189565024B2230524     IPY824244826-01-11                                                         0518309005000283EUR2E65189565024B2230524     REF257779319                          24142-5337-PSR-B2I-01-00709265       0518309005000283EUR2E65189565024B2230524     LCCPASDSN15052024-042024-82424482600064                                    0518309005000283EUR2E65189565024B2230524     RUMNN824244826DGFIP2020159699K6J36J76 RCUR                                 0518309005000283EUR2E65189565024B2230524     CPYFR7618309002836518956502491                                             0418309005000283EUR2E65189565024B1230524  230524FREE MOBILE                      0000000000000000000912M                0518309005000283EUR2E65189565024B1230524     NBEFREE MOBILE                                                             0518309005000283EUR2E65189565024B1230524     IBEFR07ZZZ591778                      SEPA                                 0518309005000283EUR2E65189565024B1230524     NPYASSOCIATION NOSTRUM                                                     0518309005000283EUR2E65189565024B1230524     IPYFMC-33495513                                                            0518309005000283EUR2E65189565024B1230524     REF257835205                                                               0518309005000283EUR2E65189565024B1230524     RUMFM-37872046-1                      RCUR                                 0518309005000283EUR2E65189565024B1230524     CPYFR7618309002836518956502491                                             0418309005000283EUR2E65189565024B1230524  230524SAS GAROFIBRE FRANCE             0000000000000000000660}                0518309005000283EUR2E65189565024B1230524     NBESAS GAROFIBRE FRANCE                                                    0518309005000283EUR2E65189565024B1230524     IBEFR71ZZZ587716                      SEPA                                 0518309005000283EUR2E65189565024B1230524     NPYNOSTRUM                                                                 0518309005000283EUR2E65189565024B1230524     REF257835490                          T241430000266298                     0518309005000283EUR2E65189565024B1230524     LCCEAF-2024050646                                                          0518309005000283EUR2E65189565024B1230524     RUMRUM0001867-EAF                     RCUR                                 0518309005000283EUR2E65189565024B1230524     CPYFR7618309002836518956502491                                             0418309000000283EUR2E6518956502405230524  230524VIR TRESORERIE LILLE DELEGATION  2113734100000000010000{                0518309000000283EUR2E6518956502405230524     NPYTRESORERIE LILLE DELEGATION                                             0518309000000283EUR2E6518956502405230524     NBENOSTRUM                                                                 0518309000000283EUR2E6518956502405230524     NPOVILLE DE LILLE - BUDGET PRINCIPA                                        0518309000000283EUR2E6518956502405230524     LCC24/146PDV NOSTRUMVILLE DE LILLE - BUDGET PRINCIPA                       0518309000000283EUR2E6518956502405230524     RCN160590240532002024-05-2113734                                           0518309000000283EUR2E6518956502405230524     LIBBDFEFRPP                                                                0518309000000283EUR2E6518956502405230524     MMOEUR200000000100000                                                      0418309002600283EUR2E6518956502406230524  230524WEB IMPOTS ENTREPRISES P CREANC  0000000000000000104560}                0518309002600283EUR2E6518956502406230524     NPYASSOCIATION NOSTRUM                                                     0518309002600283EUR2E6518956502406230524     NBEIMPOTS ENTREPRISES PARIS 20                                             0518309002600283EUR2E6518956502406230524     LCCCREANCE 202445450 NOSTRUM          TAXE SUR LES SALAIRES MARS 2024      0518309002600283EUR2E6518956502406230524     RCNCREANCE 202445450 NOSTRUM                                               0518309002600283EUR2E6518956502406230524     LIBAGRIFRPP882                                                             0518309002600283EUR2E6518956502406230524     MMOEUR200000001045600                                                      0518309002600283EUR2E6518956502406230524     CBEFR7630001000644691009525996                                             0418309005200283EUR2E6518956502411230524  230524CARTE X4030 LIFA PARIS           0000000000000000000100}                0718309    00283EUR2 65189565024  230524                                                  0000000528127H",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -1446,231 +1158,113 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-22",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "-4233",
-        "bank_code": "18309",
-        "creditor_id": "FR46ZZZ005002                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "DGFIP",
-        "currency_code": "EUR",
-        "debtor_id": "824244826-01-11",
-        "debtor_name": "ASSOC NOSTRUM",
-        "debtor_type": "",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "24142-5337-PSR-B2I-01-00709265",
-        "internal_code": "0050",
-        "label": "B2B DGFIP",
-        "mandate_identification": "NN824244826DGFIP2020159699K6J36J76 ",
-        "nb_of_dec": "2",
-        "operation_code": "B2",
-        "operation_date": "2024-05-23",
-        "payment_infor_id": "257779319                          ",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "PASDSN15052024-042024-82424482600064",
-        "sequence_type": "RCUR",
-        "ultimate_creditor_name": "DGFIP IMPOT",
-        "value_date": "2024-05-23",
+        "message": "No end amount",
       },
       {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "-91.24",
-        "bank_code": "18309",
-        "creditor_id": "FR07ZZZ591778                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "FREE MOBILE",
-        "currency_code": "EUR",
-        "debtor_id": "FMC-33495513",
-        "debtor_name": "ASSOCIATION NOSTRUM",
-        "debtor_type": "",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "",
-        "internal_code": "0050",
-        "label": "FREE MOBILE",
-        "mandate_identification": "FM-37872046-1                      ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-23",
-        "payment_infor_id": "257835205",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-23",
-      },
-      {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "2",
-        "account_nb": "65189565024",
-        "amount": "-66",
-        "bank_code": "18309",
-        "creditor_id": "FR71ZZZ587716                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "SAS GAROFIBRE FRANCE",
-        "currency_code": "EUR",
-        "debtor_name": "NOSTRUM",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "T241430000266298",
-        "internal_code": "0050",
-        "label": "SAS GAROFIBRE FRANCE",
-        "mandate_identification": "RUM0001867-EAF                     ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-23",
-        "payment_infor_id": "257835490                          ",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "EAF-2024050646",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-23",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "3",
-        "account_nb": "65189565024",
-        "amount": "1000",
-        "bank_code": "18309",
-        "creditor_name": "NOSTRUM",
-        "currency_code": "EUR",
-        "debtor_name": "TRESORERIE LILLE DELEGATION",
-        "desk_code": "00283",
-        "end2end_identification": "160590240532002024-05-2113734",
-        "equivalent_amount": "00000000100000",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR TRESORERIE LILLE DELEGATION",
-        "label_1": "BDFEFRPP",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-23",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "2113734",
-        "reject_code": "",
-        "remittance_information_1": "24/146PDV NOSTRUMVILLE DE LILLE - BUDGET PRINCIPA",
-        "ultimate_debtor_name": "VILLE DE LILLE - BUDGET PRINCIPA",
-        "value_date": "2024-05-23",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "4",
-        "account_nb": "65189565024",
-        "amount": "-10456",
-        "bank_code": "18309",
-        "creditor_account": "FR7630001000644691009525996",
-        "creditor_name": "IMPOTS ENTREPRISES PARIS 20",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION NOSTRUM",
-        "desk_code": "00283",
-        "end2end_identification": "CREANCE 202445450 NOSTRUM",
-        "equivalent_amount": "00000001045600",
-        "exchange_rate": "",
-        "exempt_code": "0",
-        "internal_code": "0026",
-        "label": "WEB IMPOTS ENTREPRISES P CREANC",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "06",
-        "operation_date": "2024-05-23",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "CREANCE 202445450 NOSTRUM          TAXE SUR LES SALAIRES MARS 2024",
-        "value_date": "2024-05-23",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "5",
-        "account_nb": "65189565024",
-        "amount": "-10",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 LIFA PARIS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-23",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-23",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
   {
     "amounts": {
-      "diff": 89276.23,
-      "end": 142089.01,
+      "diff": undefined,
+      "end": undefined,
       "start": 52812.78,
-      "transactions": 89276.23,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 9,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "142089.01",
-      "next_date": "2024-05-24",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "099",
+      "_5": "099           0418309005000283EUR2E65189565024B1240524  240524SEM ASIAMUSICOLOGIES             0000000000000000013417M                0518309005000283EUR2E65189565024B1240524     NBESEM ASIAMUSICOLOGIES                                                    0518309005000283EUR2E65189565024B1240524     IBEFR23ZZZ607786                      SEPA                                 0518309005000283EUR2E65189565024B1240524     NPYNOSTRUM                                                                 0518309005000283EUR2E65189565024B1240524     REF257937043                          NOSTRUM                              0518309005000283EUR2E65189565024B1240524     LCCREGLT. PRELEV NOSTRUM                                                   0518309005000283EUR2E65189565024B1240524     RUMEURA0414                           RCUR                                 0518309005000283EUR2E65189565024B1240524     CPYFR7618309002836518956502491                                             0418309005000283EUR2E65189565024B1240524  240524B2V GESTION GU COTISATIO         0000000000000000098861P                0518309005000283EUR2E65189565024B1240524     NBEB2V GESTION GU COTISATIO                                                0518309005000283EUR2E65189565024B1240524     IBEFR92ZZZ498486                      SEPA                                 0518309005000283EUR2E65189565024B1240524     NPYNOSTRUM                                                                 0518309005000283EUR2E65189565024B1240524     REF257979938                          T241440002351726                     0518309005000283EUR2E65189565024B1240524     LCCB2V  63388707.1701105 DU 240524                                         0518309005000283EUR2E65189565024B1240524     RUMRUBE000067226X                     RCUR                                 0518309005000283EUR2E65189565024B1240524     CPYFR7618309002836518956502491                                             0418309005000283EUR2E65189565024B1240524  240524FREE MOBILE                      0000000000000000000057}                0518309005000283EUR2E65189565024B1240524     NBEFREE MOBILE                                                             0518309005000283EUR2E65189565024B1240524     IBEFR07ZZZ591778                      SEPA                                 0518309005000283EUR2E65189565024B1240524     NPYJOHN FIT                                                                0518309005000283EUR2E65189565024B1240524     IPYFMC-48905510                                                            0518309005000283EUR2E65189565024B1240524     REF257994665                                                               0518309005000283EUR2E65189565024B1240524     RUMFM-50409381-1                      RCUR                                 0518309005000283EUR2E65189565024B1240524     CPYFR7618309002836518956502491                                             0418309000000283EUR2E6518956502405240524  240524VIR DRFIP ILE DE FRANCE ET DE P  0633400100000000003000{                0518309000000283EUR2E6518956502405240524     NPYDRFIP ILE DE FRANCE ET DE PARIS                                         0518309000000283EUR2E6518956502405240524     NBEASSOC. ASSOCIATION LIAIS                                                0518309000000283EUR2E6518956502405240524     NPOAGENCE DE SERVICES ET DE PAIEMENT                                       0518309000000283EUR2E6518956502405240524     NBUNOSTRUM                                                                 0518309000000283EUR2E6518956502405240524     LCC139734237 SCIV NA-000-21-00243-S1001 ASC SCIV NOSTRUM                   0518309000000283EUR2E6518956502405240524     RCN1D0750000139734237 TEL   0320633400                                     0518309000000283EUR2E6518956502405240524     LIBBDFEFRPP                                                                0518309000000283EUR2E6518956502405240524     MMOEUR200000000030000                                                      0418309000000283EUR2E6518956502405240524  240524VIR DRFIP ILE DE FRANCE ET DE P  5115700100000000004133C                0518309000000283EUR2E6518956502405240524     NPYDRFIP ILE DE FRANCE ET DE PARIS                                         0518309000000283EUR2E6518956502405240524     NBEASSOC. ASSOCIATION LIAIS                                                0518309000000283EUR2E6518956502405240524     NPOAGENCE DE SERVICES ET DE PAIEMENT                                       0518309000000283EUR2E6518956502405240524     NBUNOSTRUM                                                                 0518309000000283EUR2E6518956502405240524     LCC139734236 SCIV NA-000-21-00243-P1000 ASC SCIV NOSTRUM                   0518309000000283EUR2E6518956502405240524     RCN1D0750000139734236 TEL   0555115700                                     0518309000000283EUR2E6518956502405240524     LIBBDFEFRPP                                                                0518309000000283EUR2E6518956502405240524     MMOEUR200000000041333                                                      0418309005200283EUR2E6518956502411240524  240524CARTE X4030 HELLER HODKIEWIC DU  0000000000000000000547M                0418309005200283EUR2E6518956502411240524  240524CARTE X4030 YAMM.COM 1190 BRUSS  0000000000000000000600}                0418309002600283EUR2E6518956502406240524  240524WEB GOLEM RHIZOTTO GHYSE IBXAA   0000000000000000000887N                0518309002600283EUR2E6518956502406240524     NPYASSOCIATION NOSTRUM                                                     0518309002600283EUR2E6518956502406240524     NBEGOLEM RHIZOTTO GHYSE                                                    0518309002600283EUR2E6518956502406240524     LCCIBXAA SERVICE CIVIQUE NOSTRUM                                           0518309002600283EUR2E6518956502406240524     RCNIBXAA SERVICE CIVIQUE NOSTRUM                                           0518309002600283EUR2E6518956502406240524     LIBAGRIFRPP882                                                             0518309002600283EUR2E6518956502406240524     MMOEUR200000000008875                                                      0518309002600283EUR2E6518956502406240524     CBEFR7640618804050004041134186                                             0418309000000283EUR2E6518956502405240524  240524VIREMENT INTERNE ASSOCIATION KO  0000000100000001000000{                0518309000000283EUR2E6518956502405240524     NPYASSOCIATION NOSTRUM                                                     0518309000000283EUR2E6518956502405240524     NBEASSOCIATION NOSTRUM                                                     0518309000000283EUR2E6518956502405240524     LCCVIREMENT INTERNE                                                        0518309000000283EUR2E6518956502405240524     RCNVIREMENT INTERNE                                                        0518309000000283EUR2E6518956502405240524     LIBAGRIFRPP882                                                             0518309000000283EUR2E6518956502405240524     MMOEUR200000010000000                                                      0518309000000283EUR2E6518956502405240524     CBEFR7618309002836518956502491                                             0718309    00283EUR2 65189565024  240524                                                  0000001420890A",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -1680,288 +1274,95 @@ exports[`ebics parser > line breaks only on header, not on rest, plus empty line
       "prev_date": "2024-05-23",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "-1341.74",
-        "bank_code": "18309",
-        "creditor_id": "FR23ZZZ607786                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "SEM ASIAMUSICOLOGIES",
-        "currency_code": "EUR",
-        "debtor_name": "NOSTRUM",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "NOSTRUM",
-        "internal_code": "0050",
-        "label": "SEM ASIAMUSICOLOGIES",
-        "mandate_identification": "EURA0414                           ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-24",
-        "payment_infor_id": "257937043                          ",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "REGLT. PRELEV NOSTRUM",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-24",
+        "message": "No end amount",
       },
       {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "-9886.17",
-        "bank_code": "18309",
-        "creditor_id": "FR92ZZZ498486                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "B2V GESTION GU COTISATIO",
-        "currency_code": "EUR",
-        "debtor_name": "NOSTRUM",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "T241440002351726",
-        "internal_code": "0050",
-        "label": "B2V GESTION GU COTISATIO",
-        "mandate_identification": "RUBE000067226X                     ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-24",
-        "payment_infor_id": "257979938                          ",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "B2V  63388707.1701105 DU 240524",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-24",
-      },
-      {
-        "CPY": "FR7618309002836518956502491",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "2",
-        "account_nb": "65189565024",
-        "amount": "-5.7",
-        "bank_code": "18309",
-        "creditor_id": "FR07ZZZ591778                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "FREE MOBILE",
-        "currency_code": "EUR",
-        "debtor_id": "FMC-48905510",
-        "debtor_name": "JOHN FIT",
-        "debtor_type": "",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "",
-        "internal_code": "0050",
-        "label": "FREE MOBILE",
-        "mandate_identification": "FM-50409381-1                      ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-24",
-        "payment_infor_id": "257994665",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-24",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "3",
-        "account_nb": "65189565024",
-        "amount": "300",
-        "bank_code": "18309",
-        "creditor_name": "ASSOC. ASSOCIATION LIAIS",
-        "currency_code": "EUR",
-        "debtor_name": "DRFIP ILE DE FRANCE ET DE PARIS",
-        "desk_code": "00283",
-        "end2end_identification": "1D0750000139734237 TEL   0320633400",
-        "equivalent_amount": "00000000030000",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR DRFIP ILE DE FRANCE ET DE P",
-        "label_1": "BDFEFRPP",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-24",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0633400",
-        "reject_code": "",
-        "remittance_information_1": "139734237 SCIV NA-000-21-00243-S1001 ASC SCIV NOSTRUM",
-        "ultimate_creditor_name": "NOSTRUM",
-        "ultimate_debtor_name": "AGENCE DE SERVICES ET DE PAIEMENT",
-        "value_date": "2024-05-24",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "4",
-        "account_nb": "65189565024",
-        "amount": "413.33",
-        "bank_code": "18309",
-        "creditor_name": "ASSOC. ASSOCIATION LIAIS",
-        "currency_code": "EUR",
-        "debtor_name": "DRFIP ILE DE FRANCE ET DE PARIS",
-        "desk_code": "00283",
-        "end2end_identification": "1D0750000139734236 TEL   0555115700",
-        "equivalent_amount": "00000000041333",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR DRFIP ILE DE FRANCE ET DE P",
-        "label_1": "BDFEFRPP",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-24",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "5115700",
-        "reject_code": "",
-        "remittance_information_1": "139734236 SCIV NA-000-21-00243-P1000 ASC SCIV NOSTRUM",
-        "ultimate_creditor_name": "NOSTRUM",
-        "ultimate_debtor_name": "AGENCE DE SERVICES ET DE PAIEMENT",
-        "value_date": "2024-05-24",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "5",
-        "account_nb": "65189565024",
-        "amount": "-54.74",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 HELLER HODKIEWIC DU",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-24",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-24",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "6",
-        "account_nb": "65189565024",
-        "amount": "-60",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 YAMM.COM 1190 BRUSS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-24",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-24",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "7",
-        "account_nb": "65189565024",
-        "amount": "-88.75",
-        "bank_code": "18309",
-        "creditor_account": "FR7640618804050004041134186",
-        "creditor_name": "GOLEM RHIZOTTO GHYSE",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION NOSTRUM",
-        "desk_code": "00283",
-        "end2end_identification": "IBXAA SERVICE CIVIQUE NOSTRUM",
-        "equivalent_amount": "00000000008875",
-        "exchange_rate": "",
-        "exempt_code": "0",
-        "internal_code": "0026",
-        "label": "WEB GOLEM RHIZOTTO GHYSE IBXAA",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "06",
-        "operation_date": "2024-05-24",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "IBXAA SERVICE CIVIQUE NOSTRUM",
-        "value_date": "2024-05-24",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "8",
-        "account_nb": "65189565024",
-        "amount": "100000",
-        "bank_code": "18309",
-        "creditor_account": "FR7618309002836518956502491",
-        "creditor_name": "ASSOCIATION NOSTRUM",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION NOSTRUM",
-        "desk_code": "00283",
-        "end2end_identification": "VIREMENT INTERNE",
-        "equivalent_amount": "00000010000000",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIREMENT INTERNE ASSOCIATION KO",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-24",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "VIREMENT INTERNE",
-        "value_date": "2024-05-24",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
 ]
 `;
@@ -2171,7 +1572,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-03-03",
       },
       {
-        "23D": "EVENANT FINANCABLE NON GARANTI",
         "_1": "",
         "_2": "0303",
         "_3": "0",
@@ -2192,7 +1592,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-03-03",
       },
       {
-        "23U": "RN 5292443 VIREMENT N 52924",
         "_1": "",
         "_2": "0103",
         "_3": "0",
@@ -2215,9 +1614,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-03-01",
       },
       {
-        "23E": "N 2717960 0418020353600001EUR2 00410GXLT0167020323 010323TVA SUR COMM. DE FINANCEMENT CO 1974131 00000000002523O000002",
-        "23M": "PLEMENTAIRE ARRETES DE LA PERI",
-        "23N": "T VIREMENT N 5292443 0418020101100001EUR2 00410GXLT0191030323 030323REPRISE DE FACTURES INDISPONIBL 1993288 00000000381110R000004",
         "_1": "",
         "_2": "0103",
         "_3": "0",
@@ -2240,7 +1636,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-03-01",
       },
       {
-        "23A": "IRE ARRETES DE LA PERIODE 2023",
         "_1": "",
         "_2": "0103",
         "_3": "0",
@@ -2263,8 +1658,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-03-01",
       },
       {
-        "23": "2715010 0418020404100001EUR2 00410GXLT0121280223 260223VIREMENT BANCAIRE EN VOTRE FAVE 1842999 00000002360952M000070",
-        "23U": "RN 5286537 VIREMENT N 52865",
         "_1": "",
         "_2": "2602",
         "_3": "0",
@@ -2287,7 +1680,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-03-01",
       },
       {
-        "23A": "NCABLE GARANTIE DEBITEUR LERO",
         "_1": "",
         "_2": "2802",
         "_3": "0",
@@ -2310,9 +1702,6 @@ exports[`ebics parser > malformed - no footer  unknown line qualifier 03 1`] = `
         "value_date": "2023-02-28",
       },
       {
-        "23E": "N 2712826 0718020 00001EUR2 00410GXLT01",
-        "23M": "ISE N 2712826 0418020100100001EUR2 00410GXLT0191270223 270223ACHAT REMISE DE FACTURES REMIS 1780522 00000002820357B000001",
-        "23N": "T VIREMENT N 5285067 0418020545100001EUR2 00410GXLT0105270223 280223RESTITUTION REGLEMENT VIR LEROY 1805894 00000000009919F000001",
         "_1": "",
         "_2": "2702",
         "_3": "0",
@@ -2384,7 +1773,6 @@ exports[`ebics parser > manually added line breaks 2 to jedeclare 1`] = `
     "problems": null,
     "transactions": [
       {
-        "CPY": "FR7612736002836503956493291",
         "_1": "E",
         "_2": "",
         "_3": "0",
@@ -2743,35 +2131,21 @@ exports[`ebics parser > no line breaks 2 from jedeclare 1`] = `
 [
   {
     "amounts": {
-      "diff": 1286.17,
-      "end": 111473.92,
+      "diff": undefined,
+      "end": undefined,
       "start": 112760.09,
-      "transactions": 1286.17,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 10,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "088",
-      "account_nb": "65039564932",
-      "bank_code": "12736",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "111473.92",
-      "next_date": "2024-05-06",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "088",
+      "_5": "088           0412736005000283EUR2E65039564932B1060524  060524EDUSIGN                          0000000000000000002500}                0512736005000283EUR2E65039564932B1060524     NBEEDUSIGN                                                                 0512736005000283EUR2E65039564932B1060524     IBEFR89ZZZ86C6DB                      SEPA                                 0512736005000283EUR2E65039564932B1060524     NPYSINCITY                                                                 0512736005000283EUR2E65039564932B1060524     REF256150872                          CITISEPA036424302175211027438        0512736005000283EUR2E65039564932B1060524     LCCEDUSIGN                                                                 0512736005000283EUR2E65039564932B1060524     RUMFUHD1ONZFF77GD0B                   RCUR                                 0512736005000283EUR2E65039564932B1060524     CPYFR7612736002836503956493291                                             0412736000000283EUR2E6503956493205060524  060524VIR AFDAS 0392100                0392100100000000032128{                0512736000000283EUR2E6503956493205060524     NPYAFDAS                                                                   0512736000000283EUR2E6503956493205060524     NBESINCITY                                                                 0512736000000283EUR2E6503956493205060524     LCCF240521                                                                 0512736000000283EUR2E6503956493205060524     RCN0392100                                                                 0512736000000283EUR2E6503956493205060524     LIBSOGEFRPPXXX                                                             0512736000000283EUR2E6503956493205060524     MMOEUR200000000321280                                                      0412736005200283EUR2E6503956493211060524  060524CARTE X4030 ROOOTS KZMMNZM55LLN  0000000000000000000416L                0412736005200283EUR2E6503956493211060524  060524CARTE X4030 BLOODY LABS  INC. S  0000000000000000000573O                0412736005200283EUR2E6503956493211060524  060524CARTE X4030 ROOTS PUB COMINES    0000000000000000001250O                0412736005200283EUR2E6503956493211060524  060524CARTE X4030 BUREAU VALLEE AUBIN  0000000000000000003814R                0412736002600283EUR2E6503956493206060524  060524WEB JORDAN ADAM IBXBB SALAIRE K  0000000000000000016691R                0512736002600283EUR2E6503956493206060524     NPYASSOCIATION SINCITY                                                     0512736002600283EUR2E6503956493206060524     NBEJORDAN ADAM                                                             0512736002600283EUR2E6503956493206060524     LCCIBXBB SALAIRE SINCITY                                                   0512736002600283EUR2E6503956493206060524     RCNIBXBB SALAIRE SINCITY                                                   0512736002600283EUR2E6503956493206060524     LIBAGRIFRPP882                                                             0512736002600283EUR2E6503956493206060524     MMOEUR200000000166919                                                      0512736002600283EUR2E6503956493206060524     CBEFR6620041010123609093T03365                                             0412736002600283EUR2E6503956493206060524  060524WEB RAYMONDE SIMONETA IBXBB SAL  0000000000000000016842M                0512736002600283EUR2E6503956493206060524     NPYASSOCIATION SINCITY                                                     0512736002600283EUR2E6503956493206060524     NBERAYMONDE SIMONETA                                                       0512736002600283EUR2E6503956493206060524     LCCIBXBB SALAIRE SINCITY                                                   0512736002600283EUR2E6503956493206060524     RCNIBXBB SALAIRE SINCITY                                                   0512736002600283EUR2E6503956493206060524     LIBAGRIFRPP882                                                             0512736002600283EUR2E6503956493206060524     MMOEUR200000000168424                                                      0512736002600283EUR2E6503956493206060524     CBEFR7615589335540619874514069                                             0412736005200283EUR2E6503956493211060524  060524CARTE X0566 GRDF INTERNET PARIS  0000000000000000001870}                0412736005200283EUR2E6503956493211060524  060524CARTE X4030 GRDF INTERNET PARIS  0000000000000000001030}                0712736    00283EUR2 65039564932  060524                                                  0000001114739B  088           0112736    00283EUR2 65039564932  030524                                                  0000001127600I  088           0712736    00283EUR2 65039564932  040524                                                  0000001127600I  088           0112736    00283EUR2 65039564932  040524                                                  0000001127600I  088           0712736    00283EUR2 65039564932  050524                                                  0000001127600I  088",
       "account_nb": "65039564932",
       "bank_code": "12736",
       "currency_code": "EUR",
@@ -2781,359 +2155,94 @@ exports[`ebics parser > no line breaks 2 from jedeclare 1`] = `
       "prev_date": "2024-05-05",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "CPY": "FR7612736002836503956493291",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65039564932",
-        "amount": "-250",
-        "bank_code": "12736",
-        "creditor_id": "FR89ZZZ86C6DB                      ",
-        "creditor_id_type": "SEPA",
-        "creditor_name": "EDUSIGN",
-        "currency_code": "EUR",
-        "debtor_name": "SINCITY",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "instruction_id": "CITISEPA036424302175211027438",
-        "internal_code": "0050",
-        "label": "EDUSIGN",
-        "mandate_identification": "FUHD1ONZFF77GD0B                   ",
-        "nb_of_dec": "2",
-        "operation_code": "B1",
-        "operation_date": "2024-05-06",
-        "payment_infor_id": "256150872                          ",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "EDUSIGN",
-        "sequence_type": "RCUR",
-        "value_date": "2024-05-06",
+        "message": "No end amount",
       },
       {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65039564932",
-        "amount": "3212.8",
-        "bank_code": "12736",
-        "creditor_name": "SINCITY",
-        "currency_code": "EUR",
-        "debtor_name": "AFDAS",
-        "desk_code": "00283",
-        "end2end_identification": "0392100",
-        "equivalent_amount": "00000000321280",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR AFDAS 0392100",
-        "label_1": "SOGEFRPPXXX",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-05-06",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0392100",
-        "reject_code": "",
-        "remittance_information_1": "F240521",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "2",
-        "account_nb": "65039564932",
-        "amount": "-41.63",
-        "bank_code": "12736",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 ROOOTS KZMMNZM55LLN",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-06",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "3",
-        "account_nb": "65039564932",
-        "amount": "-57.36",
-        "bank_code": "12736",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 BLOODY LABS  INC. S",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-06",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "4",
-        "account_nb": "65039564932",
-        "amount": "-125.06",
-        "bank_code": "12736",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 ROOTS PUB COMINES",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-06",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "5",
-        "account_nb": "65039564932",
-        "amount": "-381.49",
-        "bank_code": "12736",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 BUREAU VALLEE AUBIN",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-06",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "6",
-        "account_nb": "65039564932",
-        "amount": "-1669.19",
-        "bank_code": "12736",
-        "creditor_account": "FR6620041010123609093T03365",
-        "creditor_name": "JORDAN ADAM",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION SINCITY",
-        "desk_code": "00283",
-        "end2end_identification": "IBXBB SALAIRE SINCITY",
-        "equivalent_amount": "00000000166919",
-        "exchange_rate": "",
-        "exempt_code": "0",
-        "internal_code": "0026",
-        "label": "WEB JORDAN ADAM IBXBB SALAIRE K",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "06",
-        "operation_date": "2024-05-06",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "IBXBB SALAIRE SINCITY",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "7",
-        "account_nb": "65039564932",
-        "amount": "-1684.24",
-        "bank_code": "12736",
-        "creditor_account": "FR7615589335540619874514069",
-        "creditor_name": "RAYMONDE SIMONETA",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION SINCITY",
-        "desk_code": "00283",
-        "end2end_identification": "IBXBB SALAIRE SINCITY",
-        "equivalent_amount": "00000000168424",
-        "exchange_rate": "",
-        "exempt_code": "0",
-        "internal_code": "0026",
-        "label": "WEB RAYMONDE SIMONETA IBXBB SAL",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "06",
-        "operation_date": "2024-05-06",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "IBXBB SALAIRE SINCITY",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "8",
-        "account_nb": "65039564932",
-        "amount": "-187",
-        "bank_code": "12736",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X0566 GRDF INTERNET PARIS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-06",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-06",
-      },
-      {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "9",
-        "account_nb": "65039564932",
-        "amount": "-103",
-        "bank_code": "12736",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "0",
-        "internal_code": "0052",
-        "label": "CARTE X4030 GRDF INTERNET PARIS",
-        "nb_of_dec": "2",
-        "operation_code": "11",
-        "operation_date": "2024-05-06",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-06",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
-  },
-  {
-    "amounts": {
-      "diff": 0,
-      "end": 112760.09,
-      "start": 112760.09,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "088",
-      "account_nb": "65039564932",
-      "bank_code": "12736",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "112760.09",
-      "next_date": "2024-05-04",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "088",
-      "account_nb": "65039564932",
-      "bank_code": "12736",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "112760.09",
-      "prev_date": "2024-05-03",
-      "record_code": "01",
-    },
-    "problems": null,
-    "transactions": [],
-  },
-  {
-    "amounts": {
-      "diff": 0,
-      "end": 112760.09,
-      "start": 112760.09,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "088",
-      "account_nb": "65039564932",
-      "bank_code": "12736",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "112760.09",
-      "next_date": "2024-05-05",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "088",
-      "account_nb": "65039564932",
-      "bank_code": "12736",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "prev_amount": "112760.09",
-      "prev_date": "2024-05-04",
-      "record_code": "01",
-    },
-    "problems": null,
     "transactions": [],
   },
 ]
@@ -3143,35 +2252,21 @@ exports[`ebics parser > no line breaks 3 from jedeclare 1`] = `
 [
   {
     "amounts": {
-      "diff": 15.54,
-      "end": 66669.02,
+      "diff": undefined,
+      "end": undefined,
       "start": 66684.56,
-      "transactions": 15.54,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 2,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65189565024",
-      "bank_code": "18309",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "66669.02",
-      "next_date": "2024-05-22",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "097",
+      "_5": "097           0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000010}                0418309007800283EUR2E6518956502462210524  220524FRAIS CARTE  TRANGER HORS UE     0000000100000000000145M                0718309    00283EUR2 65189565024  220524                                                  0000000666690B",
       "account_nb": "65189565024",
       "bank_code": "18309",
       "currency_code": "EUR",
@@ -3181,53 +2276,95 @@ exports[`ebics parser > no line breaks 3 from jedeclare 1`] = `
       "prev_date": "2024-05-21",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65189565024",
-        "amount": "-1",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0078",
-        "label": "FRAIS CARTE  TRANGER HORS UE",
-        "nb_of_dec": "2",
-        "operation_code": "62",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-22",
+        "message": "No end amount",
       },
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65189565024",
-        "amount": "-14.54",
-        "bank_code": "18309",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0078",
-        "label": "FRAIS CARTE  TRANGER HORS UE",
-        "nb_of_dec": "2",
-        "operation_code": "62",
-        "operation_date": "2024-05-21",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "value_date": "2024-05-22",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
 ]
 `;
@@ -3236,35 +2373,21 @@ exports[`ebics parser > no line breaks from jedeclare 1`] = `
 [
   {
     "amounts": {
-      "diff": 23526.49,
-      "end": 130710.62,
+      "diff": undefined,
+      "end": undefined,
       "start": 107184.13,
-      "transactions": 825.2,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 1,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "",
-      "account_nb": "65041564965",
-      "bank_code": "17406",
-      "currency_code": "EUR",
-      "desk_code": "00283",
-      "nb_of_dec": "2",
-      "next_amount": "130710.62",
-      "next_date": "2024-03-07",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "047",
+      "_5": "047           0417406000200283EUR2E6504156496502070324  070324REMISE CHQ 6316889 RANDOM PILES  6316889100000000008252{                0717406    00283EUR2 65041564965  070324                                                  0000001307106B",
       "account_nb": "65041564965",
       "bank_code": "17406",
       "currency_code": "EUR",
@@ -3276,33 +2399,93 @@ exports[`ebics parser > no line breaks from jedeclare 1`] = `
     },
     "problems": [
       {
-        "message": "Sum of transactions (825.2) doesn't match with difference between start amount 107184.13 and end amount 130710.62",
+        "message": "No end amount",
       },
-    ],
-    "transactions": [
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65041564965",
-        "amount": "825.2",
-        "bank_code": "17406",
-        "currency_code": "EUR",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "internal_code": "0002",
-        "label": "REMISE CHQ 6316889 RANDOM PILES",
-        "nb_of_dec": "2",
-        "operation_code": "02",
-        "operation_date": "2024-03-07",
-        "record_code": "04",
-        "reference": "6316889",
-        "reject_code": "",
-        "value_date": "2024-03-07",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
+    "transactions": [],
   },
 ]
 `;
@@ -3311,35 +2494,21 @@ exports[`ebics parser > no line breaks from jedeclare 3 1`] = `
 [
   {
     "amounts": {
-      "diff": 3273.57,
-      "end": 64454.48,
+      "diff": undefined,
+      "end": undefined,
       "start": 61180.91,
-      "transactions": 3273.57,
+      "transactions": 0,
     },
     "details": {
-      "countTransactions": 3,
+      "countTransactions": 0,
     },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "169",
-      "account_nb": "63138567924",
-      "bank_code": "18206",
-      "currency_code": "EUR",
-      "desk_code": "00245",
-      "nb_of_dec": "2",
-      "next_amount": "64454.48",
-      "next_date": "2024-09-02",
-      "record_code": "07",
-    },
+    "footer": {},
     "header": {
       "_1": "",
       "_2": "",
       "_3": "",
       "_4": "",
-      "_5": "169",
+      "_5": "169           0418206000000283EUR2E6503956492505020924  020924VIR AGDIS 0375061                0425072100000000037561H                0518206000000283EUR2E6503956492505020924     NPYAFDAS                                                                   0518206000000283EUR2E6503956492505020924     NBESUCMIN                                                                 0518206000000283EUR2E6503956492505020924     LCCF231578 F234567                                                         0518206000000283EUR2E6503956492505020924     RCN0425072                                                                 0518206000000283EUR2E6503956492505020924     LIBSOGEFRPPXXX                                                             0518206000000283EUR2E6503956492505020924     MMOEUR200000000375618                                                      0418206000000283EUR2E65039564925C2020924  020924VIR INST DE OPTIMA-SYNTER INTER  0000000100000000000959D                0518206000000283EUR2E65039564925C2020924     NPYOPTIMA-SYNTER INTERNATIONAL VZW                                         0518206000000283EUR2E65039564925C2020924     NBESUCMIN                                                                 0518206000000283EUR2E65039564925C2020924     LCCREF FACTURE F231575                                                     0518206000000283EUR2E65039564925C2020924     REFIP801124088597                     3B65816AD63B4E2085C6750C7395A6D8     0518206000000283EUR2E65039564925C2020924     CBEFR7618206002836503956492591                                             0418206002600283EUR2E6503956492506020924  020924WEB TONY ROUTALLAUX TBXBA GRATI  0000000000000000005785N                0518206002600283EUR2E6503956492506020924     NPYASSOCIATION SUCMIN                                                     0518206002600283EUR2E6503956492506020924     NBETONY ROUTALLAUX                                                         0518206002600283EUR2E6503956492506020924     LCCTBXBA GRATIFICATION STAGE SUCMIN                                       0518206002600283EUR2E6503956492506020924     RCNTBXBA GRATIFICATION STAGE SUCMIN                                       0518206002600283EUR2E6503956492506020924     LIBAGRIFRPP882                                                             0518206002600283EUR2E6503956492506020924     MMOEUR200000000057855                                                      0518206002600283EUR2E6503956492506020924     CBEFR7616908000010200639767304                                             0718206    00245EUR2 63138567924  020924                                                  0000000644544H  169           0117806    00245EUR2 63138567924  300824                                                  0000000611809A  169           0718206    00245EUR2 63138567924  310824                                                  0000000611809A  169           0117806    00245EUR2 63138567924  310824                                                  0000000611809A  169           0718206    00245EUR2 63138567924  010924                                                  0000000611809A  169",
       "account_nb": "63138567924",
       "bank_code": "17806",
       "currency_code": "EUR",
@@ -3349,189 +2518,94 @@ exports[`ebics parser > no line breaks from jedeclare 3 1`] = `
       "prev_date": "2024-09-01",
       "record_code": "01",
     },
-    "problems": null,
-    "transactions": [
+    "problems": [
       {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "0",
-        "account_nb": "65039564925",
-        "amount": "3756.18",
-        "bank_code": "18206",
-        "creditor_name": "SUCMIN",
-        "currency_code": "EUR",
-        "debtor_name": "AFDAS",
-        "desk_code": "00283",
-        "end2end_identification": "0425072",
-        "equivalent_amount": "00000000375618",
-        "exchange_rate": "",
-        "exempt_code": "1",
-        "internal_code": "0000",
-        "label": "VIR AGDIS 0375061",
-        "label_1": "SOGEFRPPXXX",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "05",
-        "operation_date": "2024-09-02",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0425072",
-        "reject_code": "",
-        "remittance_information_1": "F231578 F234567",
-        "value_date": "2024-09-02",
+        "message": "No end amount",
       },
       {
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "1",
-        "account_nb": "65039564925",
-        "amount": "95.94",
-        "bank_code": "18206",
-        "creditor_account": "FR7618206002836503956492591",
-        "creditor_name": "SUCMIN",
-        "currency_code": "EUR",
-        "debtor_name": "OPTIMA-SYNTER INTERNATIONAL VZW",
-        "desk_code": "00283",
-        "exempt_code": "1",
-        "instruction_id": "3B65816AD63B4E2085C6750C7395A6D8",
-        "internal_code": "0000",
-        "label": "VIR INST DE OPTIMA-SYNTER INTER",
-        "nb_of_dec": "2",
-        "operation_code": "C2",
-        "operation_date": "2024-09-02",
-        "payment_infor_id": "IP801124088597                     ",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "REF FACTURE F231575",
-        "value_date": "2024-09-02",
-      },
-      {
-        "_": "",
-        "_1": "E",
-        "_2": "",
-        "_3": "0",
-        "_4:": "",
-        "_rank": "2",
-        "account_nb": "65039564925",
-        "amount": "-578.55",
-        "bank_code": "18206",
-        "creditor_account": "FR7616908000010200639767304",
-        "creditor_name": "TONY ROUTALLAUX",
-        "currency_code": "EUR",
-        "debtor_name": "ASSOCIATION SUCMIN",
-        "desk_code": "00283",
-        "end2end_identification": "TBXBA GRATIFICATION STAGE SUCMIN",
-        "equivalent_amount": "00000000057855",
-        "exchange_rate": "",
-        "exempt_code": "0",
-        "internal_code": "0026",
-        "label": "WEB TONY ROUTALLAUX TBXBA GRATI",
-        "label_1": "AGRIFRPP882",
-        "nb_of_dec": "2",
-        "nb_of_dec_amount": "2",
-        "nb_of_dec_exchange_rate": "",
-        "operation_code": "06",
-        "operation_date": "2024-09-02",
-        "purpose": "",
-        "record_code": "04",
-        "reference": "0000000",
-        "reject_code": "",
-        "remittance_information_1": "TBXBA GRATIFICATION STAGE SUCMIN",
-        "value_date": "2024-09-02",
+        "details": [
+          {
+            "message": "[
+  {
+    "code": "invalid_value",
+    "values": [
+      "07"
+    ],
+    "path": [
+      "footer",
+      "record_code"
+    ],
+    "message": "Invalid input: expected \\"07\\""
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "bank_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "desk_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "currency_code"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "nb_of_dec"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "account_nb"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_date"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "footer",
+      "next_amount"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  }
+]",
+          },
+        ],
+        "message": "Malformed account",
       },
     ],
-  },
-  {
-    "amounts": {
-      "diff": 0,
-      "end": 61180.91,
-      "start": 61180.91,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "169",
-      "account_nb": "63138567924",
-      "bank_code": "18206",
-      "currency_code": "EUR",
-      "desk_code": "00245",
-      "nb_of_dec": "2",
-      "next_amount": "61180.91",
-      "next_date": "2024-08-31",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "169",
-      "account_nb": "63138567924",
-      "bank_code": "17806",
-      "currency_code": "EUR",
-      "desk_code": "00245",
-      "nb_of_dec": "2",
-      "prev_amount": "61180.91",
-      "prev_date": "2024-08-30",
-      "record_code": "01",
-    },
-    "problems": null,
-    "transactions": [],
-  },
-  {
-    "amounts": {
-      "diff": 0,
-      "end": 61180.91,
-      "start": 61180.91,
-      "transactions": 0,
-    },
-    "details": {
-      "countTransactions": 0,
-    },
-    "footer": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "169",
-      "account_nb": "63138567924",
-      "bank_code": "18206",
-      "currency_code": "EUR",
-      "desk_code": "00245",
-      "nb_of_dec": "2",
-      "next_amount": "61180.91",
-      "next_date": "2024-09-01",
-      "record_code": "07",
-    },
-    "header": {
-      "_1": "",
-      "_2": "",
-      "_3": "",
-      "_4": "",
-      "_5": "169",
-      "account_nb": "63138567924",
-      "bank_code": "17806",
-      "currency_code": "EUR",
-      "desk_code": "00245",
-      "nb_of_dec": "2",
-      "prev_amount": "61180.91",
-      "prev_date": "2024-08-31",
-      "record_code": "01",
-    },
-    "problems": null,
     "transactions": [],
   },
 ]
@@ -3837,7 +2911,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
     "problems": null,
     "transactions": [
       {
-        "623": "OIS DE JUIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -3860,7 +2933,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "623": "UIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -3883,7 +2955,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "623": "T PERIODE   JUIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -3906,7 +2977,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "623": "E   JUIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -3929,7 +2999,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "723": "0335 ASCENS PARIS",
         "_1": "",
         "_2": "070",
         "_3": "0",
@@ -3952,7 +3021,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-07",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -3975,7 +3043,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE REGIE",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -3998,7 +3065,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4021,7 +3087,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4044,7 +3109,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4067,7 +3131,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE REGIE",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4090,7 +3153,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE REGIE",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4113,7 +3175,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE REGIE",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4136,7 +3197,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE EGIS",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4159,7 +3219,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE CHRON",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4182,7 +3241,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE B INF",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4205,7 +3263,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE ALAIN",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4228,7 +3285,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE REGIE",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4251,7 +3307,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE QUADI",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4274,7 +3329,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE QUADI",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4297,7 +3351,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE CHRON",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4320,7 +3373,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE CHRON",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4343,7 +3395,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE CHRON",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4366,7 +3417,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE B INF",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4389,7 +3439,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE B INF",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4412,7 +3461,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE AUTOD",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4435,7 +3483,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE ALTUR",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4458,7 +3505,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE ALTUR",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4481,7 +3527,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE ALAIN",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4504,7 +3549,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4527,7 +3571,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4550,7 +3593,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4573,7 +3615,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4596,7 +3637,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4619,7 +3659,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4642,7 +3681,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE SAFRA",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4665,7 +3703,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ENANT FINANCABLE GARANTIE REGIE",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4688,7 +3725,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "URN 5441552    VIREMENT N 54415",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4711,7 +3747,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "INANCEMENT   VIREMENT N 5441552",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4734,7 +3769,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "NT   VIREMENT N 5441552",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4757,7 +3791,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "MISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4780,7 +3813,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "ES  REMISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4803,7 +3835,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "E SUR REMISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4826,7 +3857,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "MISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4849,7 +3879,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "E N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -4872,7 +3901,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "MPLEMENTAIRE ARRETES DE LA PERI",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4895,7 +3923,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "AIRE ARRETES DE LA PERIODE 2023",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4918,7 +3945,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "INANCABLE GARANTIE  DEBITEUR RE",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4941,7 +3967,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "INANCABLE GARANTIE  DEBITEUR RE",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4964,7 +3989,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "FINANCABLE GARANTIE  DEBITEUR R",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -4987,7 +4011,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "INANCABLE GARANTIE  DEBITEUR RE",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5010,7 +4033,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "TRAT EN LIGNE",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5033,7 +4055,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "LIGNE",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5100,7 +4121,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
     "problems": null,
     "transactions": [
       {
-        "623": "OIS DE JUIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -5123,7 +4143,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "623": "UIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -5146,7 +4165,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "623": "T PERIODE   JUIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -5169,7 +4187,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "623": "E   JUIN 2023",
         "_1": "",
         "_2": "300",
         "_3": "0",
@@ -5192,7 +4209,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-06-30",
       },
       {
-        "723": "0335 ASCENS PARIS",
         "_1": "",
         "_2": "070",
         "_3": "0",
@@ -5215,7 +4231,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-07",
       },
       {
-        "723": "T DU FINANCEMENT VIREMENT  5441",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5238,7 +4253,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "823": "441552",
         "_1": "",
         "_2": "210",
         "_3": "0",
@@ -5261,7 +4275,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-08-21",
       },
       {
-        "723": "INANCEMENT   VIREMENT N 5441552",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5284,7 +4297,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "NT   VIREMENT N 5441552",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5307,7 +4319,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "0334 ALAIN AFFLELOU FRANCHISEUR",
         "_1": "",
         "_2": "070",
         "_3": "0",
@@ -5330,7 +4341,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-07",
       },
       {
-        "723": "MISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -5353,7 +4363,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "E SUR REMISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -5376,7 +4385,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "MISE N 2793426",
         "_1": "",
         "_2": "030",
         "_3": "0",
@@ -5399,7 +4407,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-03",
       },
       {
-        "723": "MPLEMENTAIRE ARRETES DE LA PERI",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5422,7 +4429,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "AIRE ARRETES DE LA PERIODE 2023",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5445,7 +4451,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "TRAT EN LIGNE",
         "_1": "",
         "_2": "010",
         "_3": "0",
@@ -5468,7 +4473,6 @@ exports[`ebics parser > unknown bank - missed lines 1`] = `
         "value_date": "2023-07-01",
       },
       {
-        "723": "LIGNE",
         "_1": "",
         "_2": "010",
         "_3": "0",

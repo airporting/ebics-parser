@@ -23,7 +23,6 @@ const cases: [string, Record<string, string>][] = [
   [
     `0518020404100001EUR2 00410GXLT0121070423  050423URN 5335098    VIREMENT N 53350`,
     {
-      423: 'URN 5335098    VIREMENT N 53350',
       _1: '',
       _2: '050',
       account_nb: '00410GXLT01',
@@ -40,7 +39,6 @@ const cases: [string, Record<string, string>][] = [
   [
     `0518020312600001EUR2 00410GXLT0167070423  050423INANCEMENT   VIREMENT N 5335098`,
     {
-      423: 'INANCEMENT   VIREMENT N 5335098',
       _1: '',
       _2: '050',
       account_nb: '00410GXLT01',
@@ -73,7 +71,6 @@ const cases: [string, Record<string, string>][] = [
   [
     `0518020404100001EUR2 00410GXLT0121280223 260223URN 5286537 VIREMENT N 52865`,
     {
-      '23U': 'RN 5286537 VIREMENT N 52865',
       _1: '',
       _2: '2602',
       account_nb: '00410GXLT01',
@@ -90,7 +87,6 @@ const cases: [string, Record<string, string>][] = [
   [
     `0518020100200001EUR2 00410GXLT0191280223 280223 2715010 0418020404100001EUR2 00410GXLT0121280223 260223VIREMENT BANCAIRE EN VOTRE FAVE 1842999 00000002360952M000070`,
     {
-      23: '2715010 0418020404100001EUR2 00410GXLT0121280223 260223VIREMENT BANCAIRE EN VOTRE FAVE 1842999 00000002360952M000070',
       _1: '',
       _2: '2802',
       account_nb: '00410GXLT01',

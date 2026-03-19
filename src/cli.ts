@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join, parse } from 'node:path';
+import { join, parse, resolve } from 'node:path';
 
 import parser from '@/src/index';
 
@@ -10,10 +10,11 @@ if (!filePath) {
   process.exit(1);
 }
 
-const text = readFileSync(filePath, 'utf-8');
+const resolvedPath = resolve(filePath);
+const text = readFileSync(resolvedPath, 'utf-8');
 const result = parser(text);
 
-const { dir, name } = parse(filePath);
+const { dir, name } = parse(resolvedPath);
 const outputPath = join(dir, `${name}.parsed.json`);
 
 writeFileSync(outputPath, JSON.stringify(result, null, 2), 'utf-8');

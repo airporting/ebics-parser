@@ -98,7 +98,14 @@ export function schema() {
         z.object({
           message: z.string(),
           line: z.string().optional(),
-          details: z.any().optional(),
+          details: z
+            .array(
+              z.object({
+                message: z.string(),
+                line: z.string().optional(),
+              }),
+            )
+            .optional(),
         })
       )
       .nullable(),

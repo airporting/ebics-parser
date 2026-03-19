@@ -34,6 +34,16 @@ export type ParsedTransaction = {
   [key: string]: string | undefined;
 } & Omit<ParsedTransactionFields, 'qualifier' | 'additional_info'>;
 
+const KNOWN_QUALIFIERS = new Set([
+  'CBE', 'IBE', 'IBU', 'IPO', 'IPY', 'LCC', 'LC2', 'LCS',
+  'LIB', 'MMO', 'NBE', 'NBU', 'NPO', 'NPY', 'PDO', 'RCN', 'REF', 'RUM',
+]);
+
+/**
+ * Resolve an EBICS qualifier (from line 05) into structured SEPA fields.
+ * Known qualifiers are mapped to specific transaction properties.
+ * Unknown qualifiers are stored under their qualifier code as key.
+ */
 export default function ({
   qualifier,
   additional_info,
@@ -109,7 +119,9 @@ export default function ({
       transaction.sequence_type = additional_info?.slice(35);
       break;
     default:
-      if (qualifier) transaction[qualifier] = additional_info;
+      if (qualifier && KNOWN_QUALIFIERS.has(qualifier)) {
+        transaction[qualifier] = additional_info;
+      }
   }
 
   return { ...transaction, ...restTransaction };

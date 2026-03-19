@@ -28,6 +28,15 @@ const debitLettersList = {
 
 const debitLetters = Object.keys(debitLettersList);
 
+/**
+ * Decode an EBICS-encoded amount string.
+ * The last character encodes both the final digit and the sign (credit/debit).
+ * Credit: A=1..I=9, {=0. Debit: J=1..R=9, }=0.
+ *
+ * @param word - The raw amount string (13 digits + 1 letter)
+ * @param nbDecimals - Number of decimal places
+ * @returns The decoded amount as a string (negative for debits)
+ */
 export function getAmount(word: string, nbDecimals: string | number): string {
   let amount;
 

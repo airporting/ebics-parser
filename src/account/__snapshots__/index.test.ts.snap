@@ -48,7 +48,6 @@ exports[`account > Known bank - with specific provider transactions 1`] = `
   ],
   "transactions": [
     {
-      "323": "41 LEROY MERLIN FRANCE",
       "_1": "",
       "_2": "310",
       "_3": "0",
@@ -71,7 +70,6 @@ exports[`account > Known bank - with specific provider transactions 1`] = `
       "value_date": "2023-03-31",
     },
     {
-      "323": "32 LEROY MERLIN FRANCE",
       "_1": "",
       "_2": "310",
       "_3": "0",
@@ -94,7 +92,6 @@ exports[`account > Known bank - with specific provider transactions 1`] = `
       "value_date": "2023-03-31",
     },
     {
-      "323": "40 LEROY MERLIN FRANCE",
       "_1": "",
       "_2": "310",
       "_3": "0",
@@ -117,7 +114,6 @@ exports[`account > Known bank - with specific provider transactions 1`] = `
       "value_date": "2023-03-31",
     },
     {
-      "323": "62 LEROY MERLIN FRANCE",
       "_1": "",
       "_2": "310",
       "_3": "0",
@@ -140,7 +136,6 @@ exports[`account > Known bank - with specific provider transactions 1`] = `
       "value_date": "2023-03-31",
     },
     {
-      "323": "01 LEROY MERLIN FRANCE",
       "_1": "",
       "_2": "310",
       "_3": "0",
@@ -210,7 +205,6 @@ exports[`account > Known bank 1`] = `
   "problems": null,
   "transactions": [
     {
-      "423": "URN 5335098    VIREMENT N 53350",
       "_1": "",
       "_2": "050",
       "_3": "0",
@@ -233,7 +227,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-05",
     },
     {
-      "423": "INANCEMENT   VIREMENT N 5335098",
       "_1": "",
       "_2": "050",
       "_3": "0",
@@ -256,7 +249,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-05",
     },
     {
-      "423": "NT   VIREMENT N 5335098",
       "_1": "",
       "_2": "050",
       "_3": "0",
@@ -279,7 +271,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-05",
     },
     {
-      "423": "MISE N 2740649",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -302,7 +293,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "SUR REMISE N 2740649",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -325,7 +315,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "E SUR REMISE N 2740649",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -348,7 +337,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "MISE N 2740649",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -371,7 +359,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "E N 2740649",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -394,7 +381,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "AVOIRS   REMISE N 2740651",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -417,7 +403,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "REMISE N 2740651",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -440,7 +425,6 @@ exports[`account > Known bank 1`] = `
       "value_date": "2023-04-07",
     },
     {
-      "423": "2740651",
       "_1": "",
       "_2": "070",
       "_3": "0",
@@ -510,7 +494,6 @@ exports[`account > Known bank 2 1`] = `
   "problems": null,
   "transactions": [
     {
-      "323": "URN 5295341    VIREMENT N 52953",
       "_1": "",
       "_2": "040",
       "_3": "0",
@@ -533,7 +516,6 @@ exports[`account > Known bank 2 1`] = `
       "value_date": "2023-03-04",
     },
     {
-      "323": "INANCEMENT   VIREMENT N 5295341",
       "_1": "",
       "_2": "040",
       "_3": "0",
@@ -556,7 +538,6 @@ exports[`account > Known bank 2 1`] = `
       "value_date": "2023-03-04",
     },
     {
-      "323": "NT   VIREMENT N 5295341",
       "_1": "",
       "_2": "040",
       "_3": "0",
@@ -718,7 +699,6 @@ exports[`account > Sobank 1`] = `
   "problems": null,
   "transactions": [
     {
-      "NOM": "SAS  TACOS                         O Reilly IT",
       "_1": "",
       "_2": "",
       "_3": "0",

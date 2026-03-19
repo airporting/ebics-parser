@@ -12,6 +12,17 @@ import {
 
 import { schema } from './schema';
 
+type Problem = {
+  message: string;
+  line?: string;
+  details?: { message: string; line?: string }[];
+};
+
+/**
+ * Parse all lines belonging to a single EBICS account block.
+ * Returns header, footer, transactions, computed amounts, and any
+ * problems encountered during parsing.
+ */
 export function accountParser(allLines: string[]) {
   let header: ParsedTransactionFields = {};
   let footer: ParsedTransactionFields = {};
@@ -19,35 +30,33 @@ export function accountParser(allLines: string[]) {
   let currentTransaction: ParsedTransactionHeader | null = null;
   let currentTransactionIncrement = -1;
   let currentLabelIncrement = 0;
-  const problems: {
-    message: string;
-    line?: string;
-    details?: { message: string; line?: string }[];
-  }[] = [];
+  const problems: Problem[] = [];
   let startAmount: string | undefined;
   let endAmount: string | undefined;
   const transactionsAmounts: string[] = [];
 
-  allLines.forEach((line) => {
-    if (!line.length) {
-      return;
+  const flushCurrentTransaction = (contextLine: string) => {
+    if (!currentTransaction) return;
+
+    currentLabelIncrement = 0;
+    if (currentTransaction.problems?.length) {
+      problems.push({
+        message: `Transaction #${transactionsList.length} has problem(s)`,
+        line: contextLine,
+        details: currentTransaction.problems,
+      });
     }
+    transactionsList.push(currentTransaction.transaction);
+  };
+
+  allLines.forEach((line) => {
+    if (!line.length) return;
 
     try {
       const lineQualifier = line.slice(0, 2);
 
       if (lineQualifier === '04' || lineQualifier === '03') {
-        if (currentTransaction) {
-          currentLabelIncrement = 0;
-          if (currentTransaction.problems?.length) {
-            problems.push({
-              message: `Transaction #${transactionsList.length} has problem(s)`,
-              line,
-              details: currentTransaction.problems,
-            });
-          }
-          transactionsList.push(currentTransaction.transaction);
-        }
+        flushCurrentTransaction(line);
         currentTransactionIncrement += 1;
         currentTransaction = transactionHeaderParser(line);
 
@@ -102,29 +111,14 @@ export function accountParser(allLines: string[]) {
 
       if (lineQualifier === '01') {
         header = headerParser(line);
-
         startAmount = header.prev_amount;
-
         return;
       }
 
       if (lineQualifier === '07') {
-        if (currentTransaction) {
-          currentLabelIncrement = 0;
-          if (currentTransaction.problems?.length) {
-            problems.push({
-              message: `Transaction #${transactionsList.length} has problem(s)`,
-              line,
-              details: currentTransaction.problems,
-            });
-          }
-          transactionsList.push(currentTransaction.transaction);
-        }
-
+        flushCurrentTransaction(line);
         footer = footerParser(line);
-
         endAmount = footer.next_amount;
-
         return;
       }
 
@@ -134,45 +128,39 @@ export function accountParser(allLines: string[]) {
       });
     } catch (err) {
       problems.push({
-        message: (err as string).toString(),
+        message: (err as Error).message ?? String(err),
         line,
       });
     }
   });
 
   const allTransactionsAmountsSum = transactionsAmounts.reduce(
-    (currentSum, currentAmount) => {
-      return currentSum + +currentAmount;
-    },
-    0
+    (currentSum, currentAmount) => currentSum + +currentAmount,
+    0,
   );
 
   if (!startAmount) {
-    problems.push({
-      message: 'No start amount',
-    });
+    problems.push({ message: 'No start amount' });
   }
   if (!endAmount) {
-    problems.push({
-      message: 'No end amount',
-    });
+    problems.push({ message: 'No end amount' });
   }
 
   let diff;
   const transactionsSum = Math.abs(
-    Math.round(allTransactionsAmountsSum * 100) / 100
+    Math.round(allTransactionsAmountsSum * 100) / 100,
   );
   if (startAmount && endAmount) {
     diff = Math.abs(
       Math.round(
-        (Number.parseFloat(startAmount) - Number.parseFloat(endAmount)) * 100
-      ) / 100
+        (Number.parseFloat(startAmount) - Number.parseFloat(endAmount)) * 100,
+      ) / 100,
     );
 
     if (diff !== transactionsSum) {
       problems.push({
         message: `Sum of transactions (${Math.abs(
-          allTransactionsAmountsSum
+          allTransactionsAmountsSum,
         )}) doesn't match with difference between start amount ${startAmount} and end amount ${endAmount}`,
       });
     }
