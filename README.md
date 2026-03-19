@@ -1,12 +1,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Static Badge](https://img.shields.io/badge/coverage-91.34-brightgreen)
-![Static Badge](https://img.shields.io/badge/release-3.1.0-blue)
+![Static Badge](https://img.shields.io/badge/release-3.3.0-blue)
 [![test](https://github.com/airporting/ebics-parser/actions/workflows/test.yml/badge.svg)](https://github.com/airporting/ebics-parser/actions/workflows/test.yml)
 
 # ebics-parser
 
-Lightweight and very fast parser for EBICS file for Node.js & TypeScript.
-Only two dep (date-fns, zod).
+Lightweight and very fast parser for EBICS files for Node.js & TypeScript.
+Only two deps (date-fns, zod).
 
 Used by [Airporting](https://www.airporting.com)
 
@@ -14,14 +14,21 @@ Tested from NodeJS 18.x to 24.x
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/airporting)
 
-## External docs to understand the EBICS standard
+## Setup
 
-https://www.ca-centreloire.fr/Vitrine/ObjCommun/Fic/CentreLoire/Entreprise/GuideParamRel_EDI.pdf
+```bash
+# Install
+yarn add @airporting/ebics-parser
 
-With more details on qualifier "05" (additional details on transaction, qualifier "04")
-https://www.promosoft.fr/wp-content/uploads/2013/06/Livre_blanc_SEPA.pdf
+# Or with npm
+npm install @airporting/ebics-parser
+```
+
+Requires Node.js 18+.
 
 ## Usage
+
+### As a library
 
 ```javascript
 import ebicsParser from '@airporting/ebics-parser';
@@ -39,39 +46,38 @@ const result = ebicsParser(fileContent);
 console.log(result);
 ```
 
-Result:
+### CLI tool
+
+```bash
+yarn parse <filepath>
+```
+
+Reads an EBICS file, parses it, and writes the result as JSON to `<filename>.parsed.json` in the same directory.
+
+### Result structure
 
 ```json5
 [
   {
     details: {
-      // obvious
       countTransactions: 1,
     },
     amounts: {
-      start: 656482.79,
-      // account start balance
-      end: 636338.79,
-      // account end balance
-      diff: 20144,
-      // difference between start and end
-      transactions: 35919,
-      // sum of transactions amount
+      start: 656482.79,   // opening balance
+      end: 636338.79,     // closing balance
+      diff: 20144,        // |start - end|
+      transactions: 35919, // sum of transaction amounts
     },
     header: {
       record_code: '01',
       bank_code: '30012',
-      _1: '',
       desk_code: '00585',
       currency_code: 'EUR',
       nb_of_dec: '2',
-      _2: '',
       account_nb: '00010156142',
-      _3: '',
       prev_date: '2023-03-28',
-      _4: '',
       prev_amount: '656482.79',
-      _5: '',
+      // _1.._5: padding fields
     },
     footer: {
       record_code: '07',
@@ -91,29 +97,20 @@ Result:
         desk_code: '00585',
         currency_code: 'EUR',
         nb_of_dec: '2',
-        _1: '',
         account_nb: '00010156142',
         operation_code: '18',
         operation_date: '2023-03-29',
-        reject_code: '',
         value_date: '2023-03-29',
         label: 'DOMUSVI',
-        _2: '',
-        reference: '0000000',
-        exempt_code: '',
-        _3: '',
         amount: '35919',
-        '_4:': '',
         debtor_name: 'DOMUSVI',
         remittance_information_1: '/INV/3867 8.2.2023',
         end2end_identification: 'NOTPROVIDED',
-        purpose: '',
         PDO: 'FR FRANCE',
-        // Position in account transactions'list, not an official field
-        _rank: '0',
+        _rank: '0',  // position in transaction list (not an official field)
       },
     ],
-    // problems detected during parse. If no problems, null
+    // problems detected during parse, null if none
     problems: [
       {
         message: "Sum of transactions (35919) doesn't match with difference between start amount 656482.79 and end amount 636338.79",
@@ -122,6 +119,56 @@ Result:
   },
 ]
 ```
+
+## Architecture
+
+```
+src/
+├── index.ts                    # Entry point: split lines, demultiplex, chunk by account
+├── cli.ts                      # CLI tool (yarn parse)
+├── account/
+│   ├── index.ts                # Per-account parser: orchestrates header/footer/transactions
+│   └── schema.ts               # Zod validation schema for parsed accounts
+├── header/index.ts             # Record 01 parser (opening balance)
+├── footer/index.ts             # Record 07 parser (closing balance)
+├── transactionHeader/index.ts  # Record 04/03 parser (transaction main line)
+├── transactionBody/
+│   ├── index.ts                # Record 05 parser (transaction detail line)
+│   └── qualifier/index.ts      # SEPA qualifier resolver (CBE, IBE, NBE, etc.)
+├── transaction/index.ts        # Shared types (TransactionFields, QualifierType)
+├── amount/index.ts             # EBICS amount decoding (letter → digit + sign)
+└── shared/
+    └── parseLineWithParts.ts   # Generic regex-based line parser (shared by all record parsers)
+```
+
+### Parsing flow
+
+1. **Split & clean** — Input text is split into lines, empty lines removed
+2. **Demultiplex** — If all lines start with `01`, detect concatenated records and split them
+3. **Chunk** — Group lines by account (each `01` line starts a new account)
+4. **Parse account** — For each chunk:
+   - `01` → `headerParser` (opening balance)
+   - `04`/`03` → `transactionHeaderParser` (transaction)
+   - `05` → `transactionBodyParser` → `qualifierResolver` (SEPA details)
+   - `07` → `footerParser` (closing balance)
+5. **Validate** — Zod schema validation, amount consistency check
+
+### EBICS line record codes
+
+| Code | Description |
+|------|---|
+| 01 | Account header (opening balance) |
+| 03 | Transaction (variant of 04, treated as 04) |
+| 04 | Transaction main line |
+| 05 | Transaction detail (qualifier-based SEPA fields) |
+| 07 | Account footer (closing balance) |
+
+## External docs to understand the EBICS standard
+
+https://www.ca-centreloire.fr/Vitrine/ObjCommun/Fic/CentreLoire/Entreprise/GuideParamRel_EDI.pdf
+
+With more details on qualifier "05" (additional details on transaction, qualifier "04")
+https://www.promosoft.fr/wp-content/uploads/2013/06/Livre_blanc_SEPA.pdf
 
 ## Opinions, known bugs & pitfalls
 
