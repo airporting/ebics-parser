@@ -64,7 +64,7 @@
     "@vitest/coverage-v8": "4.1.2",
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "10.0.3",
+    "eslint": "10.1.0",
     "eslint-config-prettier": "10.1.8",
     "globals": "17.4.0",
     "husky": "9.1.7",
