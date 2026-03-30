@@ -343,34 +343,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emnapi/core@npm:^1.7.1":
-  version: 1.9.1
-  resolution: "@emnapi/core@npm:1.9.1"
-  dependencies:
-    "@emnapi/wasi-threads": "npm:1.2.0"
-    tslib: "npm:^2.4.0"
-  checksum: 10/c44cfe471702b43306b84d0f4f2f1506dac0065dbd73dc5a41bd99a2c39802ca7e2d7ebfbfae8997468d1ff0420603596bf35b19eabd5951bad1eb630d2d4574
-  languageName: node
-  linkType: hard
-
-"@emnapi/runtime@npm:^1.7.1":
-  version: 1.9.1
-  resolution: "@emnapi/runtime@npm:1.9.1"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 10/337767fa44ec1f6277494342664be8773f16aad4086e9e49423a9f06c5eee7495e2e1b0b50dcd764c5a5cc4c15c9d80c13fba2da6763a97c06a48115cd7ccd14
-  languageName: node
-  linkType: hard
-
-"@emnapi/wasi-threads@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@emnapi/wasi-threads@npm:1.2.0"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 10/c8e48c7200530744dc58170d2e25933b61433e4a0c50b4f192f5d8d4b065c7023dbfc48dac0afadbc29bd239013f2ae454c6e54e0ca6e8248402bf95c9e77e22
-  languageName: node
-  linkType: hard
-
 "@esbuild/aix-ppc64@npm:0.26.0":
   version: 0.26.0
   resolution: "@esbuild/aix-ppc64@npm:0.26.0"
@@ -921,13 +893,14 @@ __metadata:
   linkType: hard
 
 "@napi-rs/wasm-runtime@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@napi-rs/wasm-runtime@npm:1.1.1"
+  version: 1.1.2
+  resolution: "@napi-rs/wasm-runtime@npm:1.1.2"
   dependencies:
-    "@emnapi/core": "npm:^1.7.1"
-    "@emnapi/runtime": "npm:^1.7.1"
     "@tybys/wasm-util": "npm:^0.10.1"
-  checksum: 10/080e7f2aefb84e09884d21c650a2cbafdf25bfd2634693791b27e36eec0ddaa3c1656a943f8c913ac75879a0b04e68f8a827897ee655ab54a93169accf05b194
+  peerDependencies:
+    "@emnapi/core": ^1.7.1
+    "@emnapi/runtime": ^1.7.1
+  checksum: 10/fcb8a5cff65dfb6c44277a1f7a16da5a1be2ed609c83e13f4bb621db97b511129b8ccf808794c8906abd3561e10c2e66d3ba550f0a1a0db18f53f1e399a0a5f8
   languageName: node
   linkType: hard
 
@@ -1918,21 +1891,21 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^1.1.7":
-  version: 1.1.12
-  resolution: "brace-expansion@npm:1.1.12"
+  version: 1.1.13
+  resolution: "brace-expansion@npm:1.1.13"
   dependencies:
     balanced-match: "npm:^1.0.0"
     concat-map: "npm:0.0.1"
-  checksum: 10/12cb6d6310629e3048cadb003e1aca4d8c9bb5c67c3c321bafdd7e7a50155de081f78ea3e0ed92ecc75a9015e784f301efc8132383132f4f7904ad1ac529c562
+  checksum: 10/b5f4329fdbe9d2e25fa250c8f866ebd054ba946179426e99b86dcccddabdb1d481f0e40ee5430032e62a7d0a6c2837605ace6783d015aa1d65d85ca72154d936
   languageName: node
   linkType: hard
 
 "brace-expansion@npm:^5.0.2":
-  version: 5.0.4
-  resolution: "brace-expansion@npm:5.0.4"
+  version: 5.0.5
+  resolution: "brace-expansion@npm:5.0.5"
   dependencies:
     balanced-match: "npm:^4.0.2"
-  checksum: 10/cfd57e20d8ded9578149e47ae4d3fff2b2f78d06b54a32a73057bddff65c8e9b930613f0cbcfefedf12dd117151e19d4da16367d5127c54f3bff02d8a4479bb2
+  checksum: 10/f259b2ddf04489da9512ad637ba6b4ef2d77abd4445d20f7f1714585f153435200a53fa6a2e4a5ee974df14ddad4cd16421f6f803e96e8b452bd48598878d0ee
   languageName: node
   linkType: hard
 
@@ -2193,20 +2166,20 @@ __metadata:
   linkType: hard
 
 "conventional-changelog-angular@npm:^8.2.0":
-  version: 8.3.0
-  resolution: "conventional-changelog-angular@npm:8.3.0"
+  version: 8.3.1
+  resolution: "conventional-changelog-angular@npm:8.3.1"
   dependencies:
     compare-func: "npm:^2.0.0"
-  checksum: 10/c5be846ed1d52e5bb697eee27c01fc5edda0c970f2048096e047c51775a3f998569b301ae71ae1151bbc00d306156736e505f50f16a669bde6f38ab1807a662a
+  checksum: 10/c9f32ddcc2095fa8b60f1f623fe5c49e0d16a2d83060a1c35990400da40b1cd3e765878f0333f4e0cff4f89c3a0bf63edc47e38aba5470a6334cfea2f7e5731c
   languageName: node
   linkType: hard
 
 "conventional-changelog-conventionalcommits@npm:^9.2.0":
-  version: 9.3.0
-  resolution: "conventional-changelog-conventionalcommits@npm:9.3.0"
+  version: 9.3.1
+  resolution: "conventional-changelog-conventionalcommits@npm:9.3.1"
   dependencies:
     compare-func: "npm:^2.0.0"
-  checksum: 10/678785cf8189b563d89f3e3dc070d36d74a0b0c4ec24e67ca2892e8c030be993e6da446885352c6240ac2146baf4431df1ba01cc35617bed986feae7d73adc6f
+  checksum: 10/6b924adcf31d36cbe1442f5c2d29dad345666bea9e805d8af6bfa28ab694e93abbdcb2462716b2a993f6eabf1d4bdc45209076249bd4825f5513ff061a99a4a2
   languageName: node
   linkType: hard
 
@@ -2218,14 +2191,14 @@ __metadata:
   linkType: hard
 
 "conventional-commits-parser@npm:^6.3.0":
-  version: 6.3.0
-  resolution: "conventional-commits-parser@npm:6.3.0"
+  version: 6.4.0
+  resolution: "conventional-commits-parser@npm:6.4.0"
   dependencies:
     "@simple-libs/stream-utils": "npm:^1.2.0"
     meow: "npm:^13.0.0"
   bin:
     conventional-commits-parser: dist/cli/index.js
-  checksum: 10/e57ed66a739cf5c747d9c89594dbffb35572ad5d8324767416d8cfd9014aecbf0d0cc0f0f29e9d16595ec795dc868d83597b38275ab2667971ba6aba38d2fcb0
+  checksum: 10/0caf5e3595cace090ab7724c1442de6b2e00d82faf90762331b5421cd8a056407f0ce99a6c4b4eb47833a26bd8ad25ac5a331e2ebbce2a819143450053ef6d0d
   languageName: node
   linkType: hard
 
@@ -4011,11 +3984,11 @@ __metadata:
   linkType: hard
 
 "minipass-flush@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "minipass-flush@npm:1.0.5"
+  version: 1.0.7
+  resolution: "minipass-flush@npm:1.0.7"
   dependencies:
     minipass: "npm:^3.0.0"
-  checksum: 10/56269a0b22bad756a08a94b1ffc36b7c9c5de0735a4dd1ab2b06c066d795cfd1f0ac44a0fcae13eece5589b908ecddc867f04c745c7009be0b566421ea0944cf
+  checksum: 10/dc43fd1644aaea31b6ba88281d928a136b9fcd5425c718791e1007db15cf2cd41c75d073548d2f46088f90971833b3bd86752d2a2612bf8256122dedf5b7f3db
   languageName: node
   linkType: hard
 
@@ -4308,20 +4281,13 @@ __metadata:
   linkType: hard
 
 "picomatch@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "picomatch@npm:2.3.1"
-  checksum: 10/60c2595003b05e4535394d1da94850f5372c9427ca4413b71210f437f7b2ca091dbd611c45e8b37d10036fa8eade25c1b8951654f9d3973bfa66a2ff4d3b08bc
+  version: 2.3.2
+  resolution: "picomatch@npm:2.3.2"
+  checksum: 10/b788ef8148a2415b9dec12f0bb350ae6a5830f8f1950e472abc2f5225494debf7d1b75eb031df0ceaea9e8ec3e7bad599e8dbf3c60d61b42be429ba41bff4426
   languageName: node
   linkType: hard
 
-"picomatch@npm:^4.0.2, picomatch@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "picomatch@npm:4.0.3"
-  checksum: 10/57b99055f40b16798f2802916d9c17e9744e620a0db136554af01d19598b96e45e2f00014c91d1b8b13874b80caa8c295b3d589a3f72373ec4aaf54baa5962d5
-  languageName: node
-  linkType: hard
-
-"picomatch@npm:^4.0.4":
+"picomatch@npm:^4.0.2, picomatch@npm:^4.0.3, picomatch@npm:^4.0.4":
   version: 4.0.4
   resolution: "picomatch@npm:4.0.4"
   checksum: 10/f6ef80a3590827ce20378ae110ac78209cc4f74d39236370f1780f957b7ee41c12acde0e4651b90f39983506fd2f5e449994716f516db2e9752924aff8de93ce
@@ -4960,15 +4926,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.5.4":
-  version: 7.5.12
-  resolution: "tar@npm:7.5.12"
+  version: 7.5.13
+  resolution: "tar@npm:7.5.13"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
     minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10/a72114d28ab9b4878eeebaae8987692a577c390683c13f150d8330e139237038cc46fbb0be6983b02acf5a31b01d74776436ba03790f320a59efb44b8ac39e39
+  checksum: 10/2bc2b6f0349038a6621dbba1c4522d45752d5071b2994692257113c2050cd23fafc30308f820e5f8ad6fda3f7d7f92adc9a432aa733daa04c42af2061c021c3f
   languageName: node
   linkType: hard
 
