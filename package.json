@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@types/node": "25.5.0",
-    "date-fns": "4.3.0",
+    "date-fns": "4.4.0",
     "zod": "4.4.3"
   },
   "devDependencies": {
