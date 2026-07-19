@@ -55,13 +55,13 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "21.2.0",
+    "@commitlint/cli": "21.2.1",
     "@commitlint/config-conventional": "21.2.0",
     "@eslint/js": "10.0.1",
     "@ianvs/prettier-plugin-sort-imports": "4.7.1",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/eslint__js": "9.14.0",
-    "@vitest/coverage-v8": "4.1.9",
+    "@vitest/coverage-v8": "4.1.10",
     "commitizen": "4.3.2",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "10.6.0",
@@ -70,10 +70,10 @@
     "husky": "9.1.7",
     "lint-staged": "17.0.8",
     "pkgroll": "2.27.1",
-    "prettier": "3.9.4",
-    "tsx": "4.23.0",
+    "prettier": "3.9.5",
+    "tsx": "4.23.1",
     "typescript": "5.9.3",
     "typescript-eslint": "8.62.1",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   }
 }
