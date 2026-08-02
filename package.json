@@ -71,7 +71,7 @@
     "lint-staged": "17.3.0",
     "pkgroll": "2.27.1",
     "prettier": "3.9.6",
-    "tsx": "4.23.1",
+    "tsx": "4.23.4",
     "typescript": "5.9.3",
     "typescript-eslint": "8.65.0",
     "vitest": "4.1.10"
